@@ -12,10 +12,11 @@
     "clean:ng2": "rm -r -f node_modules/angular2/manual_typings node_modules/angular2/bundles/typings node_modules/angular2/typings",
     "mkdist": "mkdir dist dist/src",
     "copy:src": "npm run mkdist && cp -r src/assets dist/src && cp system.config.js src/index.html dist/src && find src/ -name '*.css' -exec rsync -R {} dist/ \\; && find src/ -name '*.html' -exec rsync -R {} dist/ \\;",
+    "less": "find src/ -name '*.less' -exec lessc {} {}.css \\; && find src/ -name '*.less.css' -exec bash -c 'mv \"$0\" \"${0%\\.less.css}.css\"' {} \\;",
     "prestart": "npm run build",
     "start": "nodemon dist/src/server.js",
     "watch": "npm run build && nodemon dist/src/server.js --watch src",
-    "build": "npm run clean && npm run copy:src && tsc"
+    "build": "npm run clean && npm run copy:src && npm run less && tsc"
   },
   "license": "MIT",
   "contributors": [
@@ -41,6 +42,7 @@
   "devDependencies": {
     "concurrently": "~2.0.0",
     "del": "~2.2.0",
+    "less": "^2.6.0",
     "systemjs": "~0.19.23",
     "systemjs-builder": "~0.15.10",
     "typescript": "~1.8.7",
