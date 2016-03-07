@@ -20,7 +20,6 @@ app.set('view engine', 'html');
 // ngApp
 function ngApp(req, res) {
   let baseUrl = '/';
-  let url = req.originalUrl || '/';
 
   res.render('index', {
     App,
