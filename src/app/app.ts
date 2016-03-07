@@ -39,11 +39,7 @@ export class About {
     ...ROUTER_DIRECTIVES,
     XLarge
   ],
-  styles: [`
-    nav a.router-link-active {
-      background-color: red;
-    }
-  `],
+  styleUrls: ['src/app/app.css'],
   template: `
   <div>
     <nav>
