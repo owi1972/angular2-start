@@ -8,7 +8,7 @@ npm-debug.log
 
 /tsd_typings/
 
-logs/*
+/logs/*
 !.gitkeep
 /coverage
 tmp
@@ -17,4 +17,5 @@ tmp
 *.log
 _SpecRunner.html
 nohup.out
+src/**/*.css
 
