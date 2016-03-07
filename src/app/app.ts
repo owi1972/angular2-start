@@ -65,5 +65,3 @@ export class About {
 export class App {
   name: string = 'AngularConnect';
 }
-
-
