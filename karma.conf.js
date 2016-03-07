@@ -2,12 +2,25 @@
 module.exports = function(config) {
   config.set({
 
+
+    // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '.',
 
+
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+
+    // list of files to exclude
+    exclude: [ ],
+
+
+    // list of files / patterns to load in the browser
     files: [
       // paths loaded by Karma
+      {pattern: 'node_modules/es6-shim/es6-shim.js', included: true, watched: true},
+      {pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
       {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
       {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
@@ -21,7 +34,8 @@ module.exports = function(config) {
 
       // paths to support debugging with source maps in dev tools
       {pattern: 'src/**/*.ts', included: false, watched: false},
-      {pattern: 'dist/**/*.js.map', included: false, watched: false}
+      {pattern: 'dist/**/*.js.map', included: false, watched: false},
+      {pattern: 'node_modules/**/*.js.map', included: false, watched: false}
     ],
 
     // proxied base paths
@@ -30,25 +44,45 @@ module.exports = function(config) {
       '/src/': '/base/src/'
     },
 
+
+    // web server port
     port: 9876,
 
-    logLevel: config.LOG_INFO,
 
+    // enable / disable colors in the output (reporters and logs)
     colors: true,
 
-    autoWatch: true,
 
-    browsers: ['Chrome'],
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+
+
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: false,
+
+
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: [
+      'PhantomJS',
+      'Chrome'
+    ],
 
     // Karma plugins loaded
     plugins: [
       'karma-jasmine',
       'karma-coverage',
+      'karma-phantomjs-launcher', 
       'karma-chrome-launcher'
     ],
 
-    // Coverage reporter generates the coverage
-    reporters: ['progress', 'dots', 'coverage'],
+
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['progress', 'coverage'],
+
 
     // Source files that you wanna generate coverage for.
     // Do not include tests or libraries (these files will be instrumented by Istanbul)
@@ -56,12 +90,24 @@ module.exports = function(config) {
       'dist/**/!(*spec).js': ['coverage']
     },
 
+
     coverageReporter: {
-      reporters:[
-        {type: 'json', subdir: '.', file: 'coverage-final.json'}
+      dir : 'coverage/',
+      reporters: [
+        { type: 'text' },
+        { type: 'lcov', subdir: '.' },
+        { type: 'html' }
       ]
     },
 
-    singleRun: true
+
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: true,
+
+
+    // Concurrency level
+    // how many browser should be started simultaneous
+    concurrency: Infinity
   })
 };
