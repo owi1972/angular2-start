@@ -65,16 +65,16 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      'PhantomJS',
-      'Chrome'
+      // 'Chrome',
+      'PhantomJS'
     ],
 
     // Karma plugins loaded
     plugins: [
       'karma-jasmine',
       'karma-coverage',
-      'karma-phantomjs-launcher', 
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher'
     ],
 
 
@@ -94,9 +94,10 @@ module.exports = function(config) {
     coverageReporter: {
       dir : 'coverage/',
       reporters: [
-        { type: 'text' },
-        { type: 'lcov', subdir: '.' },
-        { type: 'html' }
+        { type: 'text', subdir: './text', file : 'coverage.txt' },
+        { type: 'json', subdir: './' },
+        { type: 'lcovonly', subdir: './' },
+        { type: 'html', subdir: './' }
       ]
     },
 
