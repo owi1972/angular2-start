@@ -20,12 +20,13 @@ app.set('view engine', 'html');
 // ngApp
 function ngApp(req, res) {
   let baseUrl = '/';
+  let url = req.originalUrl.replace(baseUrl, '') || '/';
 
   res.render('index', {
     App,
     providers: [
       ROUTER_PROVIDERS,
-      provide(REQUEST_URL, {useValue: req.originalUrl}),
+      provide(REQUEST_URL, {useValue: url}),
       provide(APP_BASE_HREF, {useValue: baseUrl}),
       NODE_LOCATION_PROVIDERS,
     ],
