@@ -6,11 +6,15 @@ import {ng2engine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-universa
 import {provide, enableProdMode} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 import {App} from './app/app';
+import {ENV} from './env';
 
 let app = express();
 let root = path.join(path.resolve(__dirname, '..', '..'));
+let nodeEnv = process.env.NODE_ENV || 'development';
 
-enableProdMode();
+if (nodeEnv === 'production') {
+  enableProdMode();
+}
 
 // Express View
 app.engine('.html', ng2engine);
@@ -29,6 +33,7 @@ function ngApp(req, res) {
       provide(REQUEST_URL, {useValue: url}),
       provide(APP_BASE_HREF, {useValue: baseUrl}),
       NODE_LOCATION_PROVIDERS,
+      provide('config', { useValue: ENV[nodeEnv] }),
     ],
     preboot: true
   });
@@ -45,4 +50,5 @@ app.use('/home', ngApp);
 // Server
 app.listen(3000, () => {
   console.log('Listen on http://localhost:3000');
+  console.log('Environment: ' + nodeEnv);
 });
