@@ -27,8 +27,8 @@
     "Ed Opare-Aryee <ed@thisissoon.com>"
   ],
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
-    "angular2-universal-preview": "0.70.3",
+    "angular2": "2.0.0-beta.8",
+    "angular2-universal-preview": "0.70.6",
     "bootstrap": "3.3.6",
     "css": "2.2.1",
     "es6-shim": "0.33.3",
