@@ -1,3 +1,7 @@
+'use strict';
+
+var pkg = require('./package.json');
+
 exports.config = {
   baseUrl: 'http://localhost:3000/',
 
@@ -23,12 +27,62 @@ exports.config = {
   },
   directConnect: true,
 
-  capabilities: {
+  // Saucelabs capabilities reference
+  // https://docs.saucelabs.com/reference/platforms-configurator/#/
+  multiCapabilities: [{
     'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['show-fps-counter=true']
-    }
-  },
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (Chrome: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '45',
+    'platform': 'Linux'
+  },{
+    'browserName': 'firefox',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (FF: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '41',
+    'platform': 'Linux'
+  },{
+    'browserName': 'safari',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '9',
+    'platform': 'OS X 10.11'
+  },{
+    'browserName': 'internet explorer',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (IE11: Win 8.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '11',
+    'platform': 'Windows 8.1'
+  },{
+    'browserName': 'internet explorer',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (IE10: Win 8) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '10',
+    'platform': 'Windows 8'
+  },{
+    'browserName': 'Browser',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (Android Browser: Android 5.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'platformName': 'Android',
+    'platformVersion': '5.1',
+    'deviceName': 'Android Emulator',
+    'appiumVersion': '1.4.11',
+    'deviceOrientation': 'portrait'
+  },{
+    'browserName': 'iphone',
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER,
+    'name':  pkg.name + ' (Safari: iOS) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'platform': 'OS X 10.10',
+    'deviceName': 'iPhone 6',
+    'deviceOrientation': 'portrait'
+  }],
 
   rootElement: 'app',
 
