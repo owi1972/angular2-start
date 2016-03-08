@@ -8,6 +8,10 @@ npm start &
 
 sleep 10
 
-protractor protractor.conf.js
+if [ "$CI" == true ]; then
+    protractor protractor.saucelabs.conf.js
+else
+    protractor protractor.conf.js
+fi
 
 killall java node
