@@ -31,7 +31,7 @@ exports.config = {
 
   onPrepare: function() { },
 
-  seleniumServerJar: "node_modules/protractor/selenium/selenium-server-standalone-2.51.0.jar",
+  seleniumServerJar: null,
 
   /**
    * Angular 2 configuration

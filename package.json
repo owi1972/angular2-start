@@ -20,7 +20,8 @@
     "pretest": "npm run build",
     "test": "karma start",
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/lcov.info -t lcovonly && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/html -t html && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/coverage.txt -t text && cat coverage/coverage.txt",
-    "lint": "find src/ -name '*.ts' -exec tslint {} {}.ts \\;"
+    "lint": "find src/ -name '*.ts' -exec tslint {} {}.ts \\;",
+    "e2e": "sh ./test-e2e.sh"
   },
   "license": "MIT",
   "contributors": [
@@ -44,7 +45,6 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
-    "concurrently": "~2.0.0",
     "del": "~2.2.0",
     "es6-module-loader": "~0.17.11",
     "jasmine-core": "~2.4.1",
