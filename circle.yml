@@ -1,0 +1,56 @@
+#
+# CircleCI Configuration
+#
+
+# Machine Settings
+
+machine:
+  services:
+    - docker
+  node:
+    version: 5.6
+  environment:
+    REPO: registry.soon.build/angular2-start
+    TAG: $(sed 's/master/latest/;s/\//\-/' <<<$CIRCLE_BRANCH)
+
+# Dependencies
+
+dependencies:
+  pre:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
+  override:
+    - npm install
+
+# Test Commands
+
+test:
+  override:
+    - npm run lint
+    - npm run test
+  post:
+    - ./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info
+
+# Deployment
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - npm run build
+      - docker build -t $REPO:$TAG .
+      - docker tag $REPO:$TAG $REPO:prod
+      - docker push $REPO:prod
+  qa:
+    branch: /release\/.*/
+    commands:
+      - npm run build
+      - docker build -t $REPO:$TAG .
+      - docker tag $REPO:$TAG $REPO:qa
+      - docker push $REPO:qa
+  latest:
+    branch: develop
+    commands:
+      - npm run build
+      - docker build -t $REPO:$TAG .
+      - docker tag $REPO:$TAG $REPO:latest
+      - docker push $REPO:latest
