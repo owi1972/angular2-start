@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - "4.3"
-  - "5.6"
+  - '4.3'
+  - '5.6'
+env:
+  global:
+  - secure: fqHAeUsuLZIe1iYlMLPEhAetrqhBm2fiZz4fYZRkKPZkIE+JaI2OVMfh/Ml8IdaBIXbficmKjNlZ30KKUmyI6B4kX3jkGAHcPHNt7qMH7Q57GSOCgahdzARQNiFNTBo1Sm4AOVnvBT+mPq9wailJD7oA1hfrx3QiNo1MbFlGTObszVsT1i10Nb/A20qSbFI+24JTK+zShhhx6F9c1VyGqR4ahUAAfjrxcfkTm8x4gFgp+W0g7HhUhsuyOhecQb1l3Z7J6nTOL9rmYnpMo5ryl1gW8VHRayi2EV0nw6kFec9rx6zqF7b3pwvKlKS0EwhSrIT9fm67IWXysj4P9wQrp04c6rBPwda998/9tT/8AKBMUiteo4TmcAPdv9+NbpGEI2fwvkNfT1HRst7RsuCakqcD/EzMVnOyKKGUXkOAQvEn6+e6p7ahWHu1RfkBonybFjpyEx8P9SaGdmo6ov0obCk4iOon+lWB9FTTBPAaq8R2pWramlDTQTQ2yPwkUvgD3bP4M1wjyKaBjLaTkEpBcAekEORW24uqYkY+ad+mGDEpqep3kIWL+lTIeleAtHxtp5YjrnxGBKWB0qeS8KR5FZwqdyGVvhq5CTy3ajy2VFu1GCl0TkA936C9sb2UfjrBpeAbIqKlucYuYzsQ6HDvWuKLb/KN8AnY/MVEmseB6Yo=
+  - secure: sQ/CKkKerd+RCMlD4vHpVROUNz2IC69ymZL5NTuoDCfhl8bpAYnqf9iqBPnd7eCH4Y+EjeBXwaEllWhs8s1CHSoM6gmgsvjiUcrd5U/y3GQ7tuuB7MIN3C3MGgSnxAyIc1ObQjx2TLAmVjkyf10M5+TlxJEXiRBfITe7tdo8I5vUzpBPVmNguU3NEdyQjC1NsmEdcFTKUlmdHfkWRStUv1VdMSdx9XnaHlK/zoKltCAu2fiAvPI+xnRIv158AjqdHc+CrXjip6nVZmCqZIpCrtBIkYdOBsdS7ljukWvd2uGoxfpGrqodQUeYqMnKzbbdIZBjF7sag3dwHFItxhfmumjL0+RNlF9kmzmGlzI4l3k+6+TvD3TfaHXIQzXUrJxObgHX3MciB7pNK+WFmR+s/MIbinD0rWL7qC2qK7c2SyIZQCt37q6E83iAgUWsRPJ3FZvqDavPZnd51l5BG5BkrqLg+K+K794ucdMeDcZmYZi6/7ELXCEghj2kNIuB9q5JC0U74einzaVwkiWO12l7b/NGtSk7v0B+ygT/bsMYEzGyuALgiWa1Tng4mITR65Gz3EgBUmzmjANaOYh2mPbFEkl+Sy+C+igYlJQ9jYMGoJxkwH8E+yxG7Th97qSEvCCcCcSdQ3DIKq8aDldLtb0dcBbN4WTWen+uVZh9gOPy3pw=
 before_install:
   - npm install -g typescript typings nodemon coveralls
 install:
@@ -10,3 +14,5 @@ script:
   - npm test
 after_success:
   - coveralls < coverage/lcov.info
+addons:
+  sauce_connect: true
