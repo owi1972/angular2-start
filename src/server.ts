@@ -2,7 +2,9 @@ import * as path from 'path';
 import * as express from 'express';
 
 // Angular 2
-import {ng2engine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
+import 'zone.js';
+import 'reflect-metadata';
+import {expressEngine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
 import {provide, enableProdMode} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 import {App} from './app/app';
@@ -17,7 +19,7 @@ if (nodeEnv === 'production') {
 }
 
 // Express View
-app.engine('.html', ng2engine);
+app.engine('.html', expressEngine);
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
@@ -27,7 +29,7 @@ function ngApp(req, res) {
   let url = req.originalUrl.replace(baseUrl, '') || '/';
 
   res.render('index', {
-    App,
+    directives: [App],
     providers: [
       ROUTER_PROVIDERS,
       provide(REQUEST_URL, {useValue: url}),
