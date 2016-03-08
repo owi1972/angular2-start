@@ -30,11 +30,12 @@
   ],
   "dependencies": {
     "angular2": "2.0.0-beta.8",
+    "angular2-config": "1.1.1",
     "angular2-universal-preview": "0.70.6",
     "bootstrap": "3.3.6",
     "css": "2.2.1",
-    "es6-shim": "0.33.3",
     "es6-promise": "3.0.2",
+    "es6-shim": "0.33.3",
     "express": "4.13.4",
     "lodash": "4.6.0",
     "parse5": "1.5.0",
