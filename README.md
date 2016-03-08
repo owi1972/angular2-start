@@ -12,6 +12,9 @@ A starter project for angular 2 inspired by [Angular2 Universal Starter](https:/
 * `npm start` to build your client app and start a web server
 * `npm run build` to prepare a distributable bundle
 
-## Watch files
-* `npm watch` to build your client app and start a web server
+## Unit Testing
+* `npm test` to run unit test via karma
+
+## End 2 End Testing
+* `npm run e2e` to build your client app and start a web server
 
