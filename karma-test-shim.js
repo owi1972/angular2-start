@@ -13,6 +13,11 @@ System.config({
       defaultExtension: false,
       format: 'cjs',
       map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
+    },
+    'base/dist/src': {
+      defaultExtension: false,
+      format: 'cjs',
+      map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
     }
   }
 });

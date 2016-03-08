@@ -8,7 +8,7 @@
     "sourceMap": true,
     "removeComments": true,
     "declaration": true,
-    "outDir": "./dist"
+    "outDir": "./dist/src/"
   },
   "exclude": [
     "typings/main.d.ts",

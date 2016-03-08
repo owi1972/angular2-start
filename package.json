@@ -17,7 +17,8 @@
     "start": "nodemon dist/src/server.js",
     "watch": "npm run build && nodemon dist/src/server.js --watch src",
     "build": "npm run clean && npm run copy:src && npm run less && tsc",
-    "test": "npm run build && karma start",
+    "pretest": "npm run build",
+    "test": "karma start",
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/lcov.info -t lcovonly && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/html -t html && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/coverage.txt -t text && cat coverage/coverage.txt",
     "lint": "find src/ -name '*.ts' -exec tslint {} {}.ts \\;"
   },
@@ -27,8 +28,8 @@
     "Ed Opare-Aryee <ed@thisissoon.com>"
   ],
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
-    "angular2-universal-preview": "0.55.4",
+    "angular2": "2.0.0-beta.8",
+    "angular2-universal-preview": "0.70.6",
     "bootstrap": "3.3.6",
     "css": "2.2.1",
     "es6-shim": "0.33.3",
