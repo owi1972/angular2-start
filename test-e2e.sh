@@ -9,10 +9,10 @@ npm start &
 sleep 10
 
 if [ "$CI" ]; then
-  echo "ci"
+  echo "Running e2e tests in CI mode"
   protractor protractor.saucelabs.conf.js
 else
-  echo "local"
+  echo "Running e2e tests in local mode"
   protractor protractor.conf.js
 fi
 
