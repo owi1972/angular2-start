@@ -35,6 +35,29 @@ exports.config = {
 
   seleniumServerJar: null,
 
+  // ----- The test framework -----
+  //
+  // Jasmine is fully supported as a test and assertion framework.
+  // Mocha has limited beta support. You will need to include your own
+  // assertion framework if working with mocha.
+  framework: 'jasmine',
+
+  // ----- Options to be passed to minijasminenode -----
+  //
+  // See the full list at https://github.com/juliemr/minijasminenode
+  jasmineNodeOpts: {
+    // onComplete will be called just before the driver quits.
+    onComplete: null,
+    // If true, display spec names.
+    isVerbose: true,
+    // If true, print colors to the terminal.
+    showColors: true,
+    // If true, include stack traces in failures.
+    includeStackTrace: true,
+    // Default time to wait in ms before a test fails.
+    defaultTimeoutInterval: 5000
+  }
+
   /**
    * Angular 2 configuration
    *
