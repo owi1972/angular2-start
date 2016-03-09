@@ -20,7 +20,8 @@
     "pretest": "npm run build",
     "test": "karma start",
     "posttest": "node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/lcov.info -t lcovonly && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/html -t html && node_modules/.bin/remap-istanbul -i coverage/coverage-final.json -o coverage/coverage.txt -t text && cat coverage/coverage.txt",
-    "lint": "find src/ -name '*.ts' -exec tslint {} {}.ts \\;"
+    "lint": "find src/ -name '*.ts' -exec tslint {} {}.ts \\;",
+    "minify:js": "uglifyjs dist/src/app/app.js -m --compress='sequences,properties,dead_code,drop_debugger,conditionals,comparisons,booleans,unused,if_return,join_vars,warnings,drop_console' --preamble '/*! '$npm_package_name' - v'$npm_package_version' - '$(date +%Y-%m-%d)' */' --output dist/src/app/app.min.js"
   },
   "license": "MIT",
   "contributors": [
@@ -64,6 +65,7 @@
     "systemjs-builder": "~0.15.10",
     "tslint": "~3.5.0",
     "typescript": "~1.8.7",
-    "typings": "~0.6.8"
+    "typings": "~0.6.8",
+    "uglify-js": "~2.6.2"
   }
 }
