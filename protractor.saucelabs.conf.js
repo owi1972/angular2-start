@@ -15,6 +15,9 @@ exports.config = {
   // than the maximum time your application needs to stabilize between tasks.
   allScriptsTimeout: 30000,
 
+  // How long to wait for a page to load.
+  getPageTimeout: 30000,
+
   // ----- What tests to run -----
   //
   // Spec patterns are relative to the location of this config.
@@ -64,7 +67,7 @@ exports.config = {
     // If true, include stack traces in failures.
     includeStackTrace: true,
     // Default time to wait in ms before a test fails.
-    defaultTimeoutInterval: 400000
+    defaultTimeoutInterval: 300000
   },
 
   /**

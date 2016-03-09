@@ -8,7 +8,7 @@ describe('App', () => {
 
   it('should have input "name" with value set to "SOON_"', () => {
     let input = element(by.css('app #name'));
-    let result = 'fail';
+    let result = 'SOON_';
     expect(input.getAttribute('value')).toBe(result);
   });
 
