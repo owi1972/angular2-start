@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "concurrently": "~2.0.0",
+    "coveralls": "~2.11.8",
     "del": "~2.2.0",
     "es6-module-loader": "~0.17.11",
     "forever": "~0.15.1",
