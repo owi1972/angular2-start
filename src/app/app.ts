@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 
 import {Search} from './search/search';
 import {Results} from './results/results';
+import {Version} from './version/version';
 
 
 @Component({
@@ -11,10 +12,12 @@ import {Results} from './results/results';
   directives: [
     ...ROUTER_DIRECTIVES,
     Search,
-    Results
+    Results,
+    Version
   ],
   styleUrls: ['src/app/app.css'],
   template: `
+  <p class="text-right">App version: <strong version></strong></p>
   <router-outlet></router-outlet>
   `
 })

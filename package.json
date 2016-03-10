@@ -31,7 +31,6 @@
   ],
   "dependencies": {
     "angular2": "2.0.0-beta.8",
-    "angular2-config": "1.1.1",
     "angular2-universal-preview": "0.70.6",
     "bootstrap": "3.3.6",
     "css": "2.2.1",

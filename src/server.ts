@@ -35,7 +35,7 @@ function ngApp(req, res) {
       provide(REQUEST_URL, {useValue: url}),
       provide(APP_BASE_HREF, {useValue: baseUrl}),
       NODE_LOCATION_PROVIDERS,
-      provide('config', { useValue: ENV[nodeEnv] }),
+      provide('config', { useValue: ENV[nodeEnv] })
     ],
     preboot: true
   });
