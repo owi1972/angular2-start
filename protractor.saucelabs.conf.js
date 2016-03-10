@@ -13,10 +13,10 @@ exports.config = {
 
   // The timeout for each script run on the browser. This should be longer
   // than the maximum time your application needs to stabilize between tasks.
-  allScriptsTimeout: 30000,
+  allScriptsTimeout: 60000,
 
   // How long to wait for a page to load.
-  getPageTimeout: 30000,
+  getPageTimeout: 60000,
 
   // ----- What tests to run -----
   //
@@ -26,16 +26,66 @@ exports.config = {
     'src/**/*.e2e.ts'
   ],
 
-    // Saucelabs capabilities reference
-  // https://docs.saucelabs.com/reference/platforms-configurator/#/
-  multiCapabilities: [{
-    'browserName': 'chrome',
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'build': process.env.TRAVIS_JOB_NUMBER,
-    'name':  pkg.name + ' (Chrome: Windows 10) Build: ' + process.env.TRAVIS_JOB_NUMBER,
-    'version': '48.0',
-    'platform': 'Windows 10'
-  }],
+  // Saucelabs capabilities reference
+  // https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/
+  multiCapabilities: [
+    {
+      'browserName': 'firefox',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_JOB_NUMBER,
+      'name':  pkg.name + ' (Firefox 44: Linux) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'version': '44.0',
+      'platform': 'Linux'
+    },
+    {
+      'browserName': 'chrome',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_JOB_NUMBER,
+      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'version': '48.0',
+      'platform': 'Linux'
+    },
+    // {
+    //   'browserName': 'MicrosoftEdge',
+    //   'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    //   'build': process.env.TRAVIS_JOB_NUMBER,
+    //   'name':  pkg.name + ' (MSEdge 20: Windows 10) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+    //   'version': '20.10240',
+    //   'platform': 'Windows 10'
+    // },
+    {
+      'browserName': 'internet explorer',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_JOB_NUMBER,
+      'name':  pkg.name + ' (IE11: Windows 10) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'version': '11.0',
+      'platform': 'Windows 10'
+    },
+    {
+      'browserName': 'internet explorer',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_JOB_NUMBER,
+      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'version': '10.0',
+      'platform': 'Windows 8'
+    },
+    // {
+    //   'browserName': 'internet explorer',
+    //   'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    //   'build': process.env.TRAVIS_JOB_NUMBER,
+    //   'name':  pkg.name + ' (IE9: Windows 7) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+    //   'version': '9.0',
+    //   'platform': 'Windows 7'
+    // },
+    {
+      'browserName': 'safari',
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': process.env.TRAVIS_JOB_NUMBER,
+      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'version': '9.0',
+      'platform': 'OS X 10.11'
+    }
+  ],
 
   // ----- More information for your tests ----
   //

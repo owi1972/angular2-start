@@ -17,3 +17,4 @@ after_success:
   - coveralls < coverage/lcov.info
 addons:
   sauce_connect: true
+  

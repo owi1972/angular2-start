@@ -2,8 +2,14 @@
 
 describe('App', () => {
 
-  beforeEach(() => {
+  beforeEach((done) => {
     browser.get('/home');
+    $('body').isPresent().then(()=> {
+      done();
+    }, () => {
+      //error skipped
+      done();
+    });
   });
 
   it('should have input "name" with value set to "SOON_"', () => {
