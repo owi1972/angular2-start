@@ -3,7 +3,7 @@ node_js:
   - "4.3"
   - "5.6"
 before_install:
-  - npm install -g typescript typings nodemon coveralls
+  - npm install -g typescript typings coveralls
 install:
   - npm install
 script:
