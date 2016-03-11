@@ -1,6 +1,7 @@
 'use strict';
 
-var pkg = require('./package.json');
+var pkg = require('./package.json'),
+    buildNo = process.env.CIRCLE_BUILD_NUM || process.env.TRAVIS_JOB_NUMBER;
 
 exports.config = {
 
@@ -31,57 +32,50 @@ exports.config = {
   multiCapabilities: [
     {
       'browserName': 'firefox',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_JOB_NUMBER,
-      'name':  pkg.name + ' (Firefox 44: Linux) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'build': buildNo,
+      'name':  pkg.name + ' (Firefox 44: Linux) Build: ' + buildNo,
       'version': '44.0',
       'platform': 'Linux'
     },
     {
       'browserName': 'chrome',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_JOB_NUMBER,
-      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'build': buildNo,
+      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + buildNo,
       'version': '48.0',
       'platform': 'Linux'
     },
     // {
     //   'browserName': 'MicrosoftEdge',
-    //   'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    //   'build': process.env.TRAVIS_JOB_NUMBER,
-    //   'name':  pkg.name + ' (MSEdge 20: Windows 10) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+    //   'build': buildNo,
+    //   'name':  pkg.name + ' (MSEdge 20: Windows 10) Build: ' + buildNo,
     //   'version': '20.10240',
     //   'platform': 'Windows 10'
     // },
     {
       'browserName': 'internet explorer',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_JOB_NUMBER,
-      'name':  pkg.name + ' (IE11: Windows 10) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'build': buildNo,
+      'name':  pkg.name + ' (IE11: Windows 10) Build: ' + buildNo,
       'version': '11.0',
       'platform': 'Windows 10'
     },
     {
       'browserName': 'internet explorer',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_JOB_NUMBER,
-      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'build': buildNo,
+      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + buildNo,
       'version': '10.0',
       'platform': 'Windows 8'
     },
     // {
     //   'browserName': 'internet explorer',
-    //   'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    //   'build': process.env.TRAVIS_JOB_NUMBER,
-    //   'name':  pkg.name + ' (IE9: Windows 7) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+    //   'build': buildNo,
+    //   'name':  pkg.name + ' (IE9: Windows 7) Build: ' + buildNo,
     //   'version': '9.0',
     //   'platform': 'Windows 7'
     // },
     {
       'browserName': 'safari',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_JOB_NUMBER,
-      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.TRAVIS_JOB_NUMBER,
+      'build': buildNo,
+      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + buildNo,
       'version': '9.0',
       'platform': 'OS X 10.11'
     }
