@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/thisissoon/angular2-start.git"
   },
+  "main": "dist/src/server.js",
   "scripts": {
     "postinstall": "typings install && npm run clean:ng2",
     "clean": "rm -rf dist coverage",
@@ -14,9 +15,10 @@
     "copy:src": "npm run mkdist && cp -r src/assets dist/src && cp system.config.js src/index.html dist/src && find src/ -name '*.css' -exec rsync -R {} dist/ \\; && find src/ -name '*.html' -exec rsync -R {} dist/ \\;",
     "less": "find src/ -name '*.less' -exec lessc {} {}.css \\; && find src/ -name '*.less.css' -exec bash -c 'mv \"$0\" \"${0%\\.less.css}.css\"' {} \\;",
     "prestart": "npm run build",
-    "start": "forever start dist/src/server.js",
-    "restart": "forever restart dist/src/server.js",
-    "stop": "forever stop dist/src/server.js",
+    "start": "forever start $npm_package_main",
+    "start:docker": "forever $npm_package_main",
+    "restart": "forever restart $npm_package_main",
+    "stop": "forever stop $npm_package_main",
     "prewatch": "npm start",
     "watch": "gaze 'npm run build && npm restart' 'src/**/*.ts' 'src/**/*.less' 'src/**/*.html'",
     "build": "npm run clean && npm run copy:src && npm run less && tsc",
