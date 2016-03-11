@@ -1,7 +1,8 @@
 'use strict';
 
 var pkg = require('./package.json'),
-    buildNo = process.env.CIRCLE_BUILD_NUM || process.env.TRAVIS_JOB_NUMBER;
+    buildNo =  process.env.TRAVIS_JOB_NUMBER || process.env.CIRCLE_BUILD_NUM,
+    tunnelId = process.env.TRAVIS_JOB_NUMBER || undefined;
 
 exports.config = {
 
@@ -32,6 +33,7 @@ exports.config = {
   multiCapabilities: [
     {
       'browserName': 'firefox',
+      'tunnel-identifier': tunnelId,
       'build': buildNo,
       'name':  pkg.name + ' (Firefox 44: Linux) Build: ' + buildNo,
       'version': '44.0',
@@ -39,6 +41,7 @@ exports.config = {
     },
     {
       'browserName': 'chrome',
+      'tunnel-identifier': tunnelId,
       'build': buildNo,
       'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + buildNo,
       'version': '48.0',
@@ -46,6 +49,7 @@ exports.config = {
     },
     // {
     //   'browserName': 'MicrosoftEdge',
+    //   'tunnel-identifier': tunnelId, 
     //   'build': buildNo,
     //   'name':  pkg.name + ' (MSEdge 20: Windows 10) Build: ' + buildNo,
     //   'version': '20.10240',
@@ -53,6 +57,7 @@ exports.config = {
     // },
     {
       'browserName': 'internet explorer',
+      'tunnel-identifier': tunnelId,
       'build': buildNo,
       'name':  pkg.name + ' (IE11: Windows 10) Build: ' + buildNo,
       'version': '11.0',
@@ -60,6 +65,7 @@ exports.config = {
     },
     {
       'browserName': 'internet explorer',
+      'tunnel-identifier': tunnelId,
       'build': buildNo,
       'name':  pkg.name + ' (IE10: Windows 8) Build: ' + buildNo,
       'version': '10.0',
@@ -67,6 +73,7 @@ exports.config = {
     },
     // {
     //   'browserName': 'internet explorer',
+    //   'tunnel-identifier': tunnelId,   
     //   'build': buildNo,
     //   'name':  pkg.name + ' (IE9: Windows 7) Build: ' + buildNo,
     //   'version': '9.0',
@@ -74,6 +81,7 @@ exports.config = {
     // },
     {
       'browserName': 'safari',
+      'tunnel-identifier': tunnelId,
       'build': buildNo,
       'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + buildNo,
       'version': '9.0',
