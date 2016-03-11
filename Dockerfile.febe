@@ -1,0 +1,14 @@
+#
+# Angular2 Start FE App Server
+# Builds a docker image to run the frontend app server for Angular2 Start
+#
+
+FROM soon/angular2-start:base
+
+# Use the SOON user
+RUN chown -R soon /angular2-start
+USER soon
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start:docker"]

@@ -1,0 +1,14 @@
+#
+# Angular2 Start FE
+# Builds a docker image to run the Frontend nginx service for Angular2 Start
+#
+
+FROM soon/angular2-start:base
+
+# Add nginx config - overwrite bundled nginx.conf
+COPY nginx.conf /etc/nginx/
+
+# Expose ports
+EXPOSE 80
+
+CMD nginx

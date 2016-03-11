@@ -1,0 +1,19 @@
+#
+# FE Service
+#
+
+fe:
+  image: soon/angular2-start:latest
+  ports:
+    - 8000:80
+  links:
+    - febe:febe
+  volumes:
+    - ./dist:/angular2-start/dist
+
+febe:
+  image: soon/angular2-start-febe:latest
+  environment:
+    NODE_ENV: production
+  volumes:
+    - ./dist:/angular2-start/dist
