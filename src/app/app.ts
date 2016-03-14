@@ -47,10 +47,10 @@ export class About {
       <a [routerLink]=" ['./About'] ">About</a>
     </nav>
     <div>
-      <span x-large>Hello, {{ name }}!</span>
+      <span class="name" x-large>Hello, {{ name }}!</span>
     </div>
 
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
+    name: <input type="text" id="name" [value]="name" (input)="name = $event.target.value" autofocus>
     <main>
       <router-outlet></router-outlet>
     </main>
@@ -63,5 +63,5 @@ export class About {
   { path: '/about', component: About, name: 'About' }
 ])
 export class App {
-  name: string = 'AngularConnect';
+  name: string = 'SOON_';
 }

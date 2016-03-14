@@ -16,7 +16,7 @@ describe('App', () => {
   ]);
 
   it('should have a name', inject([ App ], (app) => {
-    expect(app.name).toEqual('AngularConnect');
+    expect(app.name).toEqual('SOON_');
   }));
 
 });
