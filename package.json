@@ -11,7 +11,7 @@
     "clean": "rm -r -f dist",
     "clean:ng2": "rm -r -f node_modules/angular2/manual_typings node_modules/angular2/bundles/typings node_modules/angular2/typings",
     "mkdist": "mkdir dist dist/src",
-    "copy:src": "npm run mkdist && cp -r src/assets dist/src && cp system.config.js src/index.html dist/src && find src/ -name '*.css' -exec rsync -R {} dist/ \\; && find src/ -name '*.html' -exec rsync -R {} dist/ \\;",
+    "copy:src": "npm run mkdist && cp -r src/assets dist/src && cp system.conf.js src/index.html dist/src && find src/ -name '*.css' -exec rsync -R {} dist/ \\; && find src/ -name '*.html' -exec rsync -R {} dist/ \\;",
     "less": "find src/ -name '*.less' -exec lessc {} {}.css \\; && find src/ -name '*.less.css' -exec bash -c 'mv \"$0\" \"${0%\\.less.css}.css\"' {} \\;",
     "prestart": "npm run build",
     "start": "forever start dist/src/server.js",
