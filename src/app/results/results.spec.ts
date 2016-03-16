@@ -28,7 +28,7 @@ import {
   AuxRoute,
   AsyncRoute,
   Redirect
-} from 'angular2/src/router/route_config_decorator';
+} from 'angular2/src/router/route_config/route_config_decorator';
 import {RouteRegistry} from 'angular2/src/router/route_registry';
 import {DirectiveResolver} from 'angular2/src/core/linker/directive_resolver';
 
