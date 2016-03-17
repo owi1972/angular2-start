@@ -29,39 +29,43 @@ import {App} from '../app';
 import {Search} from './search';
 import {SearchFormComponent} from './search-form.component';
 
-describe('SearchFormComponent', () => {
-  // provide our implementations or mocks to the dependency injector
-  beforeEachProviders(() => [
-    BaseRequestOptions,
-    MockBackend,
-    provide(Http, {
-      useFactory: function(backend, defaultOptions) {
-        return new Http(backend, defaultOptions);
-      },
-      deps: [MockBackend, BaseRequestOptions]
-    }),
-    RouteRegistry,
-    provide(Location, { useClass: SpyLocation }),
-    provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
-    provide(Router, {useClass: RootRouter}),
-    SearchFormComponent
-  ]);
+export function main() {
+  describe('SearchFormComponent', () => {
+    // provide our implementations or mocks to the dependency injector
+    beforeEachProviders(() => [
+      BaseRequestOptions,
+      MockBackend,
+      provide(Http, {
+        useFactory: function(backend, defaultOptions) {
+          return new Http(backend, defaultOptions);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      }),
+      RouteRegistry,
+      provide(Location, { useClass: SpyLocation }),
+      provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
+      provide(Router, { useClass: RootRouter }),
+      SearchFormComponent
+    ]);
 
-  it( 'should have default data',
-    inject([SearchFormComponent], (sfc: SearchFormComponent) => {
-      expect(sfc.model.query).toEqual(null);
-    }
-  ));
+    it('should have default data',
+      inject([SearchFormComponent], (sfc: SearchFormComponent) => {
+        expect(sfc.model.query).toEqual(null);
+      }
+      ));
 
-  it('should navigate to results page on submit',
-    inject([SearchFormComponent], (sfc: SearchFormComponent) => {
-      spyOn(console, 'log');
-      expect(console.log).not.toHaveBeenCalled();
+    it('should navigate to results page on submit',
+      inject([SearchFormComponent], (sfc: SearchFormComponent) => {
+        spyOn(console, 'log');
+        expect(console.log).not.toHaveBeenCalled();
 
-      sfc.onSubmit('london');
-      expect(console.log).toHaveBeenCalledWith('london');
-      expect(sfc.submitted).toBeTruthy();
-    }
-  ));
+        sfc.onSubmit('london');
+        expect(console.log).toHaveBeenCalledWith('london');
+        expect(sfc.submitted).toBeTruthy();
+      }
+      ));
 
-});
+  });
+}
+
+

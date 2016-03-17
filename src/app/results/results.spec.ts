@@ -36,33 +36,37 @@ import {DirectiveResolver} from 'angular2/src/core/linker/directive_resolver';
 import {Results} from './results';
 import {App} from '../app';
 
-describe('Results', () => {
-  // provide our implementations or mocks to the dependency injector
-  beforeEachProviders(() => [
-    BaseRequestOptions,
-    MockBackend,
-    provide(Http, {
-      useFactory: function(backend, defaultOptions) {
-        return new Http(backend, defaultOptions);
-      },
-      deps: [MockBackend, BaseRequestOptions]
-    }),
-    provide(Location, { useClass: SpyLocation }),
-    provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
-    provide(Router, { useClass: RootRouter }),
-    provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
-    Results
-  ]);
+export function main() {
+  describe('Results', () => {
+    // provide our implementations or mocks to the dependency injector
+    beforeEachProviders(() => [
+      BaseRequestOptions,
+      MockBackend,
+      provide(Http, {
+        useFactory: function(backend, defaultOptions) {
+          return new Http(backend, defaultOptions);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      }),
+      provide(Location, { useClass: SpyLocation }),
+      provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
+      provide(Router, { useClass: RootRouter }),
+      provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
+      Results
+    ]);
 
-  // it('should have default data',
-  //   inject([Results, MockBackend, Http, RouteParams],
-  //          (results, mockBackend, http, routeParams) => {
-  //     let connection;
-  //     connection = mockBackend.connections.subscribe(c => connection = c);
-  //     results = new Results(http, routeParams);
-  //     connection.mockRespond(200,[123, 456]);
-  //     expect(results.results).toEqual([]);
-  //   }
-  // ));
 
-});
+
+    // it('should have default data',
+    //   inject([Results, MockBackend, Http, RouteParams],
+    //          (results, mockBackend, http, routeParams) => {
+    //     let connection;
+    //     connection = mockBackend.connections.subscribe(c => connection = c);
+    //     results = new Results(http, routeParams);
+    //     connection.mockRespond(200,[123, 456]);
+    //     expect(results.results).toEqual([]);
+    //   }
+    // ));
+
+  });
+}
