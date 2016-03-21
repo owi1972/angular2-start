@@ -19,7 +19,6 @@ export class Results {
       search: 'address=' + params.get('query') + '&sensor=false'
     })
       .map(res => res.json())
-      .do(data => console.log(data))
       .subscribe(data => this.results = data.results);
   };
 }
