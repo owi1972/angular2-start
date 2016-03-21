@@ -24,7 +24,12 @@ describe('SearchFormComponent', () => {
         result = 'foobar';
 
     input.clear();
-    input.sendKeys(result);
+    browser.sleep(500);
+    // sending all the keys at once fails on IE10
+    for (var i = 0; i < result.split("").length; ++i) {
+      input.sendKeys(result.split("")[i]);
+      browser.sleep(500); 
+    }
     expect(modelDisplay.getText()).toContain(result);
   });
 
@@ -35,7 +40,12 @@ describe('SearchFormComponent', () => {
         query = 'london';
 
     input.clear();
-    input.sendKeys(query);
+    browser.sleep(500);
+    // sending all the keys at once fails on IE10
+    for (var i = 0; i < query.split("").length; ++i) {
+      input.sendKeys(query.split("")[i]);
+      browser.sleep(500);
+    }
 
     btn.click().then(function() {
       return browser.driver.wait(function() {
