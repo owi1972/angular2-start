@@ -19,7 +19,13 @@ import {Version} from './version/version';
   template: `
   <p class="text-right">App version: <strong version></strong></p>
   <router-outlet></router-outlet>
-  <footer><p>Made by {{ name }}</p></footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <footer class="footer"><p>Made by {{ name }}</p></footer>
+      </div>
+    </div>
+  </div>
   `
 })
 @RouteConfig([
