@@ -7,8 +7,4 @@ import {SearchFormComponent} from './search-form.component';
   styleUrls: ['src/app/search/search.css'],
   templateUrl: 'src/app/search/search.html'
 })
-export class Search {
-  ngOnInit() {
-    console.log('hello `Search` component');
-  }
-}
+export class Search { }

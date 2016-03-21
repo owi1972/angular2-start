@@ -22,8 +22,4 @@ export class Results {
       .do(data => console.log(data))
       .subscribe(data => this.results = data.results);
   };
-  
-  ngOnInit() {
-    console.log('hello `Results` component');
-  };
 }
