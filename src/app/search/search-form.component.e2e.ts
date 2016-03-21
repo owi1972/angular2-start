@@ -1,10 +1,19 @@
 'use strict'; 
 
+var sendKeys = function (el, word) {
+  let keys = word.split('');
+  for (var i = 0; i < keys.length; ++i) {
+    el.sendKeys(keys[i]);
+    browser.sleep(500);
+  }
+}
+
 describe('SearchFormComponent', () => {
 
   beforeEach((done) => {
     browser.get('/search');
     $('body').isPresent().then(()=> {
+      browser.sleep(1000);
       done();
     }, () => {
       //error skipped
@@ -26,10 +35,7 @@ describe('SearchFormComponent', () => {
     input.clear();
     browser.sleep(500);
     // sending all the keys at once fails on IE10
-    for (var i = 0; i < result.split('').length; ++i) {
-      input.sendKeys(result.split('')[i]);
-      browser.sleep(500); 
-    }
+    sendKeys(input, result);
     expect(modelDisplay.getText()).toContain(result);
   });
 
@@ -42,10 +48,7 @@ describe('SearchFormComponent', () => {
     input.clear();
     browser.sleep(500);
     // sending all the keys at once fails on IE10
-    for (var i = 0; i < query.split('').length; ++i) {
-      input.sendKeys(query.split('')[i]);
-      browser.sleep(500);
-    }
+    sendKeys(input, query);
 
     btn.click().then(function() {
       return browser.driver.wait(function() {

@@ -14,10 +14,7 @@ export class SearchFormComponent {
   constructor(private _router: Router) { };
     
   onSubmit(query) {
-    console.log(query);
     this.submitted = true;
-    this._router.navigate( ['Results', { query: this.model.query }] );
+    this._router.navigate( ['Results', { query: query }] );
   }
-
-  get diagnostic() { return JSON.stringify(this.model); }
 }

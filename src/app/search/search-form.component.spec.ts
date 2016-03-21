@@ -55,12 +55,12 @@ export function main() {
       ));
 
     it('should navigate to results page on submit',
-      inject([SearchFormComponent], (sfc: SearchFormComponent) => {
-        spyOn(console, 'log');
-        expect(console.log).not.toHaveBeenCalled();
+      inject([SearchFormComponent, Router], (sfc: SearchFormComponent, _router: Router) => {
+        spyOn(_router, 'navigate');
+        expect(_router.navigate).not.toHaveBeenCalled();
 
         sfc.onSubmit('london');
-        expect(console.log).toHaveBeenCalledWith('london');
+        expect(_router.navigate).toHaveBeenCalledWith(['Results', { query: 'london' }]);
         expect(sfc.submitted).toBeTruthy();
       }
       ));

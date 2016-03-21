@@ -5,6 +5,7 @@ describe('App', () => {
   beforeEach((done) => {
     browser.get('/home');
     $('body').isPresent().then(()=> {
+      browser.sleep(1000);
       done();
     }, () => {
       //error skipped
