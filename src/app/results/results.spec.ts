@@ -1,72 +1,60 @@
+import {provide} from 'angular2/core';
+import {BaseRequestOptions, Http} from 'angular2/http';
+import {RootRouter} from 'angular2/src/router/router';
+import {RouteRegistry} from 'angular2/src/router/route_registry';
+
+
 import {
   it,
   inject,
   injectAsync,
-  describe,
   beforeEachProviders,
-  TestComponentBuilder,
+  TestComponentBuilder
 } from 'angular2/testing';
-
-import {Component, provide} from 'angular2/core';
-import {BaseRequestOptions, Http, Response, ResponseOptions} from 'angular2/http';
-import {MockBackend, MockConnection} from 'angular2/http/testing';
-
+import {MockBackend} from 'angular2/http/testing';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
-import {RootRouter} from 'angular2/src/router/router';
+
 import {
   Router,
-  RouterOutlet,
-  RouterLink,
   RouteParams,
-  RouteData,
-  Location,
   ROUTER_PRIMARY_COMPONENT
 } from 'angular2/router';
-import {
-  RouteConfig,
-  Route,
-  AuxRoute,
-  AsyncRoute,
-  Redirect
-} from 'angular2/src/router/route_config/route_config_decorator';
-import {RouteRegistry} from 'angular2/src/router/route_registry';
-import {DirectiveResolver} from 'angular2/src/core/linker/directive_resolver';
 
 // Load the implementations that should be tested
-import {Results} from './results';
 import {App} from '../app';
+import {Results} from './results';
 
 export function main() {
+
   describe('Results', () => {
     // provide our implementations or mocks to the dependency injector
     beforeEachProviders(() => [
       BaseRequestOptions,
       MockBackend,
+      provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
       provide(Http, {
         useFactory: function(backend, defaultOptions) {
           return new Http(backend, defaultOptions);
         },
         deps: [MockBackend, BaseRequestOptions]
       }),
+      RouteRegistry,
       provide(Location, { useClass: SpyLocation }),
       provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
       provide(Router, { useClass: RootRouter }),
-      provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
-      Results
+      provide(Results, {
+        useFactory: function(Http, RouteParams) {
+          return new Results(Http, RouteParams);
+        },
+        deps: [Http, RouteParams]
+      })
     ]);
 
-
-
-    // it('should have default data',
-    //   inject([Results, MockBackend, Http, RouteParams],
-    //          (results, mockBackend, http, routeParams) => {
-    //     let connection;
-    //     connection = mockBackend.connections.subscribe(c => connection = c);
-    //     results = new Results(http, routeParams);
-    //     connection.mockRespond(200,[123, 456]);
-    //     expect(results.results).toEqual([]);
-    //   }
-    // ));
+    it('should have a name', inject([Results], (results) => {
+      expect(results.results).toEqual([]);
+    }));
 
   });
 }
+
+
