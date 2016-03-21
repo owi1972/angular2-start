@@ -4,7 +4,7 @@ describe('Search', () => {
 
   beforeEach((done) => {
     browser.get('/search');
-    $('body').isPresent().then(()=> {
+    $('router-outlet').isPresent().then(() => {
       browser.sleep(1000);
       done();
     }, () => {

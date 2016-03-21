@@ -33,7 +33,7 @@ test:
     # - npm run e2e // NOTE: not running on circle as e2e test already run in travis
   post:
     - nvm use 5.7
-    # - coveralls < coverage/lcov.info // NOTE: not running on circle as e2e test already run in travis
+    # - coveralls < coverage/lcov.info // NOTE: not running on circle as coverage is already run in travis
 
 # Deployment
 

@@ -4,7 +4,7 @@ describe('Results', () => {
 
   beforeEach((done) => {
     browser.get('/results?query=london');
-    $('body').isPresent().then(()=> {
+    $('router-outlet').isPresent().then(() => {
       browser.driver.sleep(3000);
       done();
     }, () => {
