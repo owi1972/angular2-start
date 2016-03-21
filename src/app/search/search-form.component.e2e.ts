@@ -26,8 +26,8 @@ describe('SearchFormComponent', () => {
     input.clear();
     browser.sleep(500);
     // sending all the keys at once fails on IE10
-    for (var i = 0; i < result.split("").length; ++i) {
-      input.sendKeys(result.split("")[i]);
+    for (var i = 0; i < result.split('').length; ++i) {
+      input.sendKeys(result.split('')[i]);
       browser.sleep(500); 
     }
     expect(modelDisplay.getText()).toContain(result);
@@ -42,8 +42,8 @@ describe('SearchFormComponent', () => {
     input.clear();
     browser.sleep(500);
     // sending all the keys at once fails on IE10
-    for (var i = 0; i < query.split("").length; ++i) {
-      input.sendKeys(query.split("")[i]);
+    for (var i = 0; i < query.split('').length; ++i) {
+      input.sendKeys(query.split('')[i]);
       browser.sleep(500);
     }
 
@@ -54,7 +54,7 @@ describe('SearchFormComponent', () => {
           expect(h1.getText()).toContain(result);
           return /results\?query=london/.test(url);
         });
-      }, 10000);
+      }, 30000);
     });
   });
 

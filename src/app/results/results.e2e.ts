@@ -4,9 +4,8 @@ describe('Results', () => {
 
   beforeEach((done) => {
     browser.get('/results?query=london');
-    browser.driver.sleep(3000);
-
     $('body').isPresent().then(()=> {
+      browser.driver.sleep(3000);
       done();
     }, () => {
       //error skipped
