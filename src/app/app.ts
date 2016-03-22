@@ -1,67 +1,39 @@
-import {Component, Directive, ElementRef, Renderer} from 'angular2/core';
+import {Component, ElementRef, Renderer} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import 'rxjs/Rx';
 
-
-@Directive({
-  selector: '[x-large]'
-})
-export class XLarge {
-  constructor(element: ElementRef, renderer: Renderer) {
-    // we must interact with the dom through Renderer for webworker/server to see the changes
-    renderer.setElementStyle(element.nativeElement, 'fontSize', 'x-large');
-  }
-}
-
-
-
-@Component({
-  selector: 'home',
-  template: `
-  Home
-  `
-})
-export class Home {
-}
-
-@Component({
-  selector: 'about',
-  template: `
-  About
-  `
-})
-export class About {
-}
+import {Search} from './search/search';
+import {Results} from './results/results';
+import {Version} from './version/version';
 
 
 @Component({
   selector: 'app',
   directives: [
     ...ROUTER_DIRECTIVES,
-    XLarge
+    Search,
+    Results,
+    Version
   ],
   styleUrls: ['src/app/app.css'],
   template: `
-  <div>
-    <nav>
-      <a [routerLink]=" ['./Home'] ">Home</a>
-      <a [routerLink]=" ['./About'] ">About</a>
-    </nav>
-    <div>
-      <span x-large>Hello, {{ name }}!</span>
+  <p class="text-right">App version: <strong version></strong></p>
+  <router-outlet></router-outlet>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <footer class="footer"><p>Made by {{ name }}</p></footer>
+      </div>
     </div>
-
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
   </div>
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Home' },
-  { path: '/home', component: Home, name: 'Home' },
-  { path: '/about', component: About, name: 'About' }
+  { path: '/', component: Search, name: 'Search', useAsDefault: true },
+  { path: '/search', component: Search, name: 'Search' },
+  { path: '/results', component: Results, name: 'Results' },
+  { path: '/**', redirectTo: ['Search'] }
 ])
 export class App {
-  name: string = 'AngularConnect';
+  name: string = 'SOON_';
 }

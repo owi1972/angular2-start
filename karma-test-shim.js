@@ -1,57 +1,77 @@
-// Tun on full stack traces in errors to help debugging
-Error.stackTraceLimit = Infinity;
- 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
- 
-// // Cancel Karma's synchronous start,
-// // we will call `__karma__.start()` later, once all the specs are loaded.
-__karma__.loaded = function() {};
- 
-System.config({
-  packages: {
-    'base/dist': {
-      defaultExtension: false,
-      format: 'cjs',
-      map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
-    },
-    'base/dist/src': {
-      defaultExtension: false,
-      format: 'cjs',
-      map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
+if (!Object.hasOwnProperty('name')) {
+  Object.defineProperty(Function.prototype, 'name', {
+    get: function() {
+      var matches = this.toString().match(/^\s*function\s*(\S*)\s*\(/);
+      var name = matches && matches.length > 1 ? matches[1] : "";
+      Object.defineProperty(this, 'name', {value: name});
+      return name;
     }
+  });
+}
+
+// Turn on full stack traces in errors to help debugging
+Error.stackTraceLimit = Infinity;
+
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+
+// Cancel Karma's synchronous start,
+// we will call `__karma__.start()` later, once all the specs are loaded.
+__karma__.loaded = function() {};
+
+System.config({
+  baseURL: '/base/',
+  defaultJSExtensions: true,
+  paths: {
+    'angular2/*': 'node_modules/angular2/*.js',
+    'rxjs/*': 'node_modules/rxjs/*.js'
   }
 });
- 
-System.import('angular2/src/platform/browser/browser_adapter')
-  .then(function(browser_adapter) { browser_adapter.BrowserDomAdapter.makeCurrent(); })
-  .then(function() { return Promise.all(resolveTestFiles()); })
-  .then(function() { __karma__.start(); }, function(error) { __karma__.error(error.stack || error); });
- 
-function createPathRecords(pathsMapping, appPath) {
-  // creates local module name mapping to global path with karma's fingerprint in path, e.g.:
-  // './vg-player/vg-player':
-  // '/base/dist/vg-player/vg-player.js?f4523daf879cfb7310ef6242682ccf10b2041b3e'
-  var pathParts = appPath.split('/');
-  var moduleName = './' + pathParts.slice(Math.max(pathParts.length - 2, 1)).join('/');
-  moduleName = moduleName.replace(/\.js$/, '');
-  pathsMapping[moduleName] = appPath + '?' + window.__karma__.files[appPath];
-  return pathsMapping;
-}
- 
-function onlyAppFiles(filePath) {
-  return /\/base\/dist\/(?!.*\.spec\.js$).*\.js$/.test(filePath);
-}
- 
-function onlySpecFiles(path) {
-  return /\.spec\.js$/.test(path);
-}
- 
-function resolveTestFiles() {
-  return Object.keys(window.__karma__.files)  // All files served by Karma.
+
+Promise.all([
+  System.import('angular2/src/platform/browser/browser_adapter'),
+  System.import('angular2/platform/testing/browser'),
+  System.import('angular2/testing')
+]).then(function (modules) {
+  var browser_adapter = modules[0];
+  var providers = modules[1];
+  var testing = modules[2];
+  testing.setBaseTestProviders(providers.TEST_BROWSER_PLATFORM_PROVIDERS,
+                       providers.TEST_BROWSER_APPLICATION_PROVIDERS);
+
+  browser_adapter.BrowserDomAdapter.makeCurrent();
+}).then(function() {
+  return Promise.all(
+    Object.keys(window.__karma__.files) // All files served by Karma.
     .filter(onlySpecFiles)
-    .map(function(moduleName) {
-      // loads all spec files via their global module names (e.g.
-      // 'base/dist/vg-player/vg-player.spec')
-      return System.import(moduleName);
-    });
+    .map(file2moduleName)
+    .map(function(path) {
+      return System.import(path).then(function(module) {
+        if (module.hasOwnProperty('main')) {
+          module.main();
+        } else {
+          throw new Error('Module ' + path + ' does not implement main() method.');
+        }
+      });
+    }));
+})
+.then(function() {
+  __karma__.start();
+}, function(error) {
+  console.error(error.stack || error);
+  __karma__.start();
+});
+
+function onlySpecFiles(path) {
+  // check for individual files, if not given, always matches to all
+  var patternMatched = __karma__.config.files ?
+    path.match(new RegExp(__karma__.config.files)) : true;
+
+  return patternMatched && /[\.|_]spec\.js$/.test(path);
+}
+
+// Normalize paths to module names.
+function file2moduleName(filePath) {
+  return filePath.replace(/\\/g, '/')
+    .replace(/^\/base\//, '')
+    .replace(/\.js/, '');
 }
