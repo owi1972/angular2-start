@@ -11,15 +11,11 @@ exports.config = {
 
   framework: 'jasmine',
 
-  allScriptsTimeout: 110000,
+  allScriptsTimeout: 60000,
 
-  jasmineNodeOpts: {
-    showTiming: true,
-    showColors: true,
-    isVerbose: false,
-    includeStackTrace: false,
-    defaultTimeoutInterval: 300000
-  },
+  // How long to wait for a page to load.
+  getPageTimeout: 60000,
+
   directConnect: true,
 
   capabilities: {
@@ -46,6 +42,7 @@ exports.config = {
   //
   // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
+    showTiming: true,
     // onComplete will be called just before the driver quits.
     onComplete: null,
     // If true, display spec names.
@@ -55,7 +52,7 @@ exports.config = {
     // If true, include stack traces in failures.
     includeStackTrace: true,
     // Default time to wait in ms before a test fails.
-    defaultTimeoutInterval: 5000
+    defaultTimeoutInterval: 60000
   },
 
   /**

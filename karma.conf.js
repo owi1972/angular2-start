@@ -1,4 +1,3 @@
-
 module.exports = function(config) {
   config.set({
 
@@ -13,30 +12,37 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [ ],
+    exclude: [
+      'node_modules/angular2/**/*spec.js'
+    ],
 
 
     // list of files / patterns to load in the browser
     files: [
-      // paths loaded by Karma
-      {pattern: 'node_modules/es6-shim/es6-shim.js', included: true, watched: true},
-      {pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/angular2-polyfills.js', included: true, watched: true},
-      {pattern: 'node_modules/systemjs/dist/system.src.js', included: true, watched: true},
-      {pattern: 'node_modules/rxjs/bundles/Rx.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/angular2.dev.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/router.dev.js', included: true, watched: true},
-      {pattern: 'karma-test-shim.js', included: true, watched: true},
+      'node_modules/zone.js/dist/zone-microtask.js',
+      'node_modules/zone.js/dist/long-stack-trace-zone.js',
+      'node_modules/zone.js/dist/jasmine-patch.js',
+      'node_modules/es6-module-loader/dist/es6-module-loader.js',
+      'node_modules/traceur/bin/traceur-runtime.js', // Required by PhantomJS2, otherwise it shouts ReferenceError: Can't find variable: require
+      'node_modules/traceur/bin/traceur.js',
+      'node_modules/systemjs/dist/system.src.js',
+      'node_modules/reflect-metadata/Reflect.js',
+      // beta.7 IE 11 polyfills from https://github.com/angular/angular/issues/7144
+      'node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
 
-      // paths loaded via module imports
-      {pattern: 'dist/**/*.js', included: false, watched: true},
+      { pattern: 'node_modules/angular2/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+      { pattern: 'dist/src/**/*.js', included: false, watched: true },
+      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
 
-      // paths to support debugging with source maps in dev tools
-      {pattern: 'src/**/*.ts', included: false, watched: false},
-      {pattern: 'dist/**/*.js.map', included: false, watched: false},
-      {pattern: 'node_modules/**/*.js.map', included: false, watched: false}
+      // // paths to support debugging with source maps in dev tools
+      // {pattern: 'src/**/*.ts', included: false, watched: false},
+      // {pattern: 'dist/**/*.js.map', included: false, watched: false},
+      // {pattern: 'node_modules/**/*.js.map', included: false, watched: false},
+
+      'karma-test-shim.js'
     ],
+
 
     // proxied base paths
     proxies: {
@@ -74,14 +80,15 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-coverage',
       'karma-chrome-launcher',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-spec-reporter'
     ],
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['spec', 'progress', 'coverage'],
 
 
     // Source files that you wanna generate coverage for.
