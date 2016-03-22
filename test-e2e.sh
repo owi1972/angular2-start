@@ -33,7 +33,8 @@ fi
 
 rc=$?
 
-killall java node
+npm stop
+killall java
 
 if [[ $rc != 0 ]]; then
   echo "protractor tests failed"

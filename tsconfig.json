@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
     "removeComments": true,
-    "declaration": true,
+    "sourceMap": true,
     "outDir": "./dist/src/"
   },
   "exclude": [
     "typings/main.d.ts",
     "typings/main",
     "node_modules"
-  ]
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
 }
