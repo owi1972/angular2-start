@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 describe('Results', () => {
 
@@ -8,7 +8,7 @@ describe('Results', () => {
       browser.driver.sleep(3000);
       done();
     }, () => {
-      //error skipped
+      // error skipped
       done();
     });
   });

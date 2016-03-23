@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 describe('App', () => {
 
@@ -7,7 +7,7 @@ describe('App', () => {
     $('router-outlet').isPresent().then(() => {
       done();
     }, () => {
-      //error skipped
+      // error skipped
       done();
     });
   });

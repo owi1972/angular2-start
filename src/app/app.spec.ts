@@ -1,9 +1,7 @@
 import {
   it,
   inject,
-  injectAsync,
-  beforeEachProviders,
-  TestComponentBuilder
+  beforeEachProviders
 } from 'angular2/testing';
 
 // Load the implementations that should be tested

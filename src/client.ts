@@ -11,4 +11,4 @@ bootstrap(App, [
   ...ROUTER_PROVIDERS,
   provide('config', { useValue: ENV.development })
 ])
-.then(prebootComplete)
+.then(prebootComplete);

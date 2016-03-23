@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 describe('Search', () => {
 
@@ -8,7 +8,7 @@ describe('Search', () => {
       browser.sleep(1000);
       done();
     }, () => {
-      //error skipped
+      // error skipped
       done();
     });
   });
