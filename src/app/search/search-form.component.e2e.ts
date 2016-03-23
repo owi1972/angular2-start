@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 var sendKeys = function (el, word) {
   let keys = word.split('');
@@ -6,7 +6,7 @@ var sendKeys = function (el, word) {
     el.sendKeys(keys[i]);
     browser.sleep(500);
   }
-}
+};
 
 describe('SearchFormComponent', () => {
 
@@ -16,7 +16,7 @@ describe('SearchFormComponent', () => {
       browser.sleep(1000);
       done();
     }, () => {
-      //error skipped
+      // error skipped
       done();
     });
   });
@@ -53,7 +53,7 @@ describe('SearchFormComponent', () => {
     btn.click().then(function() {
       return browser.driver.wait(function() {
         return browser.driver.getCurrentUrl().then(function(url) {
-          let h1 = element(by.css('app results h1'))
+          let h1 = element(by.css('app results h1'));
           expect(h1.getText()).toContain(result);
           return /results\?query=london/.test(url);
         });

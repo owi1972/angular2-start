@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
 import {Router}    from 'angular2/router';
 import {SearchForm}    from './search-form.model';
 
@@ -12,7 +11,7 @@ export class SearchFormComponent {
   submitted = false;
 
   constructor(private _router: Router) { };
-    
+
   onSubmit(query) {
     this.submitted = true;
     this._router.navigate( ['Results', { query: query }] );

@@ -1,24 +1,17 @@
 import {
   it,
   inject,
-  injectAsync,
   describe,
   beforeEachProviders,
-  TestComponentBuilder
 } from 'angular2/testing';
-import {Component, provide} from 'angular2/core';
+import {provide} from 'angular2/core';
 import {BaseRequestOptions, Http} from 'angular2/http';
 import {MockBackend} from 'angular2/http/testing';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 import {RouteRegistry} from 'angular2/src/router/route_registry';
-import {DirectiveResolver} from 'angular2/src/core/linker/directive_resolver';
 import {
   Router,
-  RouterOutlet,
-  RouterLink,
-  RouteParams,
-  RouteData,
   Location,
   ROUTER_PRIMARY_COMPONENT
 } from 'angular2/router';
@@ -26,7 +19,6 @@ import {
 
 // Load the implementations that should be tested
 import {App} from '../app';
-import {Search} from './search';
 import {SearchFormComponent} from './search-form.component';
 
 export function main() {
