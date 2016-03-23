@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
-import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
   selector: 'results',

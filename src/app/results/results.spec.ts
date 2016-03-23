@@ -7,9 +7,7 @@ import {RouteRegistry} from 'angular2/src/router/route_registry';
 import {
   it,
   inject,
-  injectAsync,
-  beforeEachProviders,
-  TestComponentBuilder
+  beforeEachProviders
 } from 'angular2/testing';
 import {MockBackend} from 'angular2/http/testing';
 import {SpyLocation} from 'angular2/src/mock/location_mock';
@@ -43,8 +41,8 @@ export function main() {
       provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
       provide(Router, { useClass: RootRouter }),
       provide(Results, {
-        useFactory: function(Http, RouteParams) {
-          return new Results(Http, RouteParams);
+        useFactory: function(http, routeParams) {
+          return new Results(http, routeParams);
         },
         deps: [Http, RouteParams]
       })
@@ -56,5 +54,3 @@ export function main() {
 
   });
 }
-
-
