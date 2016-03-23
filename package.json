@@ -64,8 +64,6 @@
   },
   "devDependencies": {
     "coveralls": "~2.11.8",
-    "del": "~2.2.0",
-    "es6-module-loader": "~0.17.11",
     "forever": "~0.15.1",
     "gaze-cli": "~0.2.0",
     "jasmine-core": "~2.4.1",
@@ -79,7 +77,6 @@
     "phantomjs-prebuilt": "~2.1.4",
     "protractor": "~3.1.1",
     "remap-istanbul": "~0.5.1",
-    "systemjs": "~0.19.24",
     "systemjs-builder": "~0.15.10",
     "traceur": "0.0.93",
     "tslint": "~3.5.0",
