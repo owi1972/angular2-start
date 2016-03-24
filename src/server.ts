@@ -12,6 +12,7 @@ import {ENV} from './env';
 
 let app = express();
 let root = path.join(path.resolve(__dirname, '..'));
+let nodeEnv = process.env.NODE_ENV || 'development';
 
 if (nodeEnv === 'production') {
   enableProdMode();

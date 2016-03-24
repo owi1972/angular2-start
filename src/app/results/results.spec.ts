@@ -22,35 +22,32 @@ import {
 import {App} from '../app';
 import {Results} from './results';
 
-export function main() {
+describe('Results', () => {
+  // provide our implementations or mocks to the dependency injector
+  beforeEachProviders(() => [
+    BaseRequestOptions,
+    MockBackend,
+    provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
+    provide(Http, {
+      useFactory: function(backend, defaultOptions) {
+        return new Http(backend, defaultOptions);
+      },
+      deps: [MockBackend, BaseRequestOptions]
+    }),
+    RouteRegistry,
+    provide(Location, { useClass: SpyLocation }),
+    provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
+    provide(Router, { useClass: RootRouter }),
+    provide(Results, {
+      useFactory: function(http, routeParams) {
+        return new Results(http, routeParams);
+      },
+      deps: [Http, RouteParams]
+    })
+  ]);
 
-  describe('Results', () => {
-    // provide our implementations or mocks to the dependency injector
-    beforeEachProviders(() => [
-      BaseRequestOptions,
-      MockBackend,
-      provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
-      provide(Http, {
-        useFactory: function(backend, defaultOptions) {
-          return new Http(backend, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
-      }),
-      RouteRegistry,
-      provide(Location, { useClass: SpyLocation }),
-      provide(ROUTER_PRIMARY_COMPONENT, { useValue: App }),
-      provide(Router, { useClass: RootRouter }),
-      provide(Results, {
-        useFactory: function(http, routeParams) {
-          return new Results(http, routeParams);
-        },
-        deps: [Http, RouteParams]
-      })
-    ]);
+  it('should have a name', inject([Results], (results) => {
+    expect(results.results).toEqual([]);
+  }));
 
-    it('should have a name', inject([Results], (results) => {
-      expect(results.results).toEqual([]);
-    }));
-
-  });
-}
+});

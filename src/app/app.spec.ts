@@ -7,17 +7,15 @@ import {
 // Load the implementations that should be tested
 import {App} from './app';
 
-export function main() {
 
-  describe('App', () => {
-    // provide our implementations or mocks to the dependency injector
-    beforeEachProviders(() => [
-      App
-    ]);
+describe('App', () => {
+  // provide our implementations or mocks to the dependency injector
+  beforeEachProviders(() => [
+    App
+  ]);
 
-    it('should have a name', inject([App], (app) => {
-      expect(app.name).toEqual('SOON_');
-    }));
+  it('should have a name', inject([App], (app) => {
+    expect(app.name).toEqual('SOON_');
+  }));
 
-  });
-}
+});

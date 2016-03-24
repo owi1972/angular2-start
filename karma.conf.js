@@ -1,9 +1,11 @@
 module.exports = function(config) {
+  var testWebpackConfig = require('./webpack.test.js');
+
   config.set({
 
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
-    basePath: '.',
+    basePath: '',
 
 
     // frameworks to use
@@ -11,44 +13,18 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
 
-    // list of files to exclude
-    exclude: [
-      'node_modules/angular2/**/*spec.js'
-    ],
-
-
     // list of files / patterns to load in the browser
-    files: [
-      'node_modules/zone.js/dist/zone-microtask.js',
-      'node_modules/zone.js/dist/long-stack-trace-zone.js',
-      'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/es6-module-loader/dist/es6-module-loader.js',
-      'node_modules/traceur/bin/traceur-runtime.js', // Required by PhantomJS2, otherwise it shouts ReferenceError: Can't find variable: require
-      'node_modules/traceur/bin/traceur.js',
-      'node_modules/systemjs/dist/system.src.js',
-      'node_modules/reflect-metadata/Reflect.js',
-      // beta.7 IE 11 polyfills from https://github.com/angular/angular/issues/7144
-      'node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
-
-      { pattern: 'node_modules/angular2/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-      { pattern: 'dist/src/**/*.js', included: false, watched: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
-
-      // // paths to support debugging with source maps in dev tools
-      // {pattern: 'src/**/*.ts', included: false, watched: false},
-      // {pattern: 'dist/**/*.js.map', included: false, watched: false},
-      // {pattern: 'node_modules/**/*.js.map', included: false, watched: false},
-
-      'karma-test-shim.js'
-    ],
+    // we are building the test environment in ./spec-bundle.js
+    files: [ { pattern: './spec-bundle.js', watched: false } ],
 
 
-    // proxied base paths
-    proxies: {
-      // required for component assests fetched by Angular's compiler
-      '/src/': '/base/src/'
-    },
+
+    // Webpack Config at ./webpack.test.js
+    webpack: testWebpackConfig,
+
+
+    // Webpack please don't spam the console when running in karma!
+    webpackServer: { noInfo: true },
 
 
     // web server port
@@ -59,7 +35,7 @@ module.exports = function(config) {
     colors: true,
 
 
-    // level of logging
+    // level of logging 
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
@@ -77,6 +53,8 @@ module.exports = function(config) {
 
     // Karma plugins loaded
     plugins: [
+      'karma-webpack',
+      'karma-sourcemap-loader',
       'karma-jasmine',
       'karma-coverage',
       'karma-chrome-launcher',
@@ -91,11 +69,9 @@ module.exports = function(config) {
     reporters: ['spec', 'progress', 'coverage'],
 
 
-    // Source files that you wanna generate coverage for.
-    // Do not include tests or libraries (these files will be instrumented by Istanbul)
-    preprocessors: {
-      'dist/**/!(*spec).js': ['coverage']
-    },
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: { './spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
 
 
     coverageReporter: {
