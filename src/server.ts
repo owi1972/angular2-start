@@ -3,7 +3,12 @@ import * as express from 'express';
 
 // Angular 2
 import 'angular2-universal-preview/polyfills';
-import {expressEngine, REQUEST_URL, HTTP_PROVIDERS, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
+import {
+  expressEngine,
+  REQUEST_URL,
+  HTTP_PROVIDERS,
+  NODE_LOCATION_PROVIDERS
+} from 'angular2-universal-preview';
 import {provide, enableProdMode} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 // Application
