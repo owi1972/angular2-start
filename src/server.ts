@@ -3,17 +3,15 @@ import * as express from 'express';
 
 // Angular 2
 import 'angular2-universal-preview/polyfills';
-import {expressEngine, REQUEST_URL, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
+import {expressEngine, REQUEST_URL, HTTP_PROVIDERS, NODE_LOCATION_PROVIDERS} from 'angular2-universal-preview';
 import {provide, enableProdMode} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
 // Application
 import {App} from './app/app';
 import {ENV} from './env';
 
-
 let app = express();
-let root = path.join(path.resolve(__dirname, '..', '..'));
-let nodeEnv = process.env.NODE_ENV || 'development';
+let root = path.join(path.resolve(__dirname, '..'));
 
 if (nodeEnv === 'production') {
   enableProdMode();
@@ -27,23 +25,22 @@ app.set('view engine', 'html');
 
 function ngApp(req, res) {
   let baseUrl = '/';
-  let url = req.originalUrl.replace(baseUrl, '') || '/';
+  let url = req.originalUrl || '/';
   res.render('index', {
     directives: [App],
     providers: [
       provide(APP_BASE_HREF, { useValue: baseUrl }),
       provide(REQUEST_URL, { useValue: url }),
+      provide('config', { useValue: ENV.development }),
+      HTTP_PROVIDERS,
       ROUTER_PROVIDERS,
-      NODE_LOCATION_PROVIDERS,
-      provide('config', { useValue: ENV[nodeEnv] })
+      NODE_LOCATION_PROVIDERS
     ],
     preboot: true
   });
 }
-
 // Serve static files
 app.use(express.static(root));
-
 // Routes
 app.use('/', ngApp);
 app.use('/search', ngApp);

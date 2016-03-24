@@ -1,37 +1,22 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Angular 2 Universal Starter</title>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <base href="/">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Angular 2 Start">
+    <meta name="keywords" content="Angular 2,Start">
+    <meta name="author" content="SOON_">
+    <title>Angular 2 Start</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <base href="/">
 
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body>
 
-</head>
-<body>
+    <app>
+      Loading...
+    </app>
 
-  <app>
-    Loading...
-  </app>
-  <!-- IE required polyfills, in this exact order -->
-
-  <script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-  <script src="/node_modules/es6-shim/es6-shim.js"></script>
-  <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
-  <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="/node_modules/systemjs/dist/system.js"></script>
-  <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script src="/node_modules/angular2/bundles/http.js"></script>
-  <script src="/node_modules/angular2/bundles/router.js"></script>
-  <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-
-  <script src="/dist/src/system.conf.js"></script>
-  <script>
-    System.import('./dist/src/client.js')
-      .catch(function (err) {
-        console.error(err);
-      });
-  </script>
-</body>
+    <script async src="/dist/client/bundle.js"></script>
+  </body>
 </html>

@@ -1,3 +1,4 @@
+import 'angular2-universal-preview/polyfills';
 import {provide} from 'angular2/core';
 import {prebootComplete} from 'angular2-universal-preview';
 

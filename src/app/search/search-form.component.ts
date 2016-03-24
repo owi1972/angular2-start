@@ -4,7 +4,7 @@ import {SearchForm}    from './search-form.model';
 
 @Component({
   selector: 'search-form',
-  templateUrl: 'src/app/search/search-form.component.html'
+  template: require('./search-form.component.html')
 })
 export class SearchFormComponent {
   model = new SearchForm(null);
