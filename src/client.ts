@@ -1,6 +1,6 @@
 import 'angular2-universal-preview/polyfills';
-import {provide} from 'angular2/core';
 import {prebootComplete} from 'angular2-universal-preview';
+import {provide} from 'angular2/core';
 
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';

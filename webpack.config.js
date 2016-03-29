@@ -1,4 +1,3 @@
-var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -31,9 +30,20 @@ var commonConfig = {
 
 var clientConfig = {
   target: 'web',
-  entry: './src/client',
+  entry: {
+    polyfills: './src/polyfills',
+    vendor: './src/vendor',
+    app: './src/client' 
+  },
   output: {
     path: path.join(__dirname, 'dist', 'client')
+  },
+  node: {
+    global: true,
+    __dirname: true,
+    __filename: true,
+    process: true,
+    Buffer: false
   }
 };
 
@@ -76,7 +86,7 @@ var defaultConfig = {
 
 
 
-
+var webpackMerge = require('webpack-merge');
 module.exports = [
   // Client
   webpackMerge({}, defaultConfig, commonConfig, clientConfig),
