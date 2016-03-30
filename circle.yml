@@ -42,20 +42,20 @@ deployment:
     branch: master
     commands:
       - npm run build
-      - docker build -t $REPO:$TAG .
-      - docker tag $REPO:$TAG $REPO:prod
-      - docker push $REPO:prod
+      # - docker build -t $REPO:$TAG .
+      # - docker tag $REPO:$TAG $REPO:prod
+      # - docker push $REPO:prod
   qa:
     branch: /release\/.*/
     commands:
       - npm run build
-      - docker build -t $REPO:$TAG .
-      - docker tag $REPO:$TAG $REPO:qa
-      - docker push $REPO:qa
+      # - docker build -t $REPO:$TAG .
+      # - docker tag $REPO:$TAG $REPO:qa
+      # - docker push $REPO:qa
   latest:
     branch: develop
     commands:
       - npm run build
-      - docker build -t $REPO:$TAG .
-      - docker tag $REPO:$TAG $REPO:latest
-      - docker push $REPO:latest
+      # - docker build -t $REPO:$TAG .
+      # - docker tag $REPO:$TAG $REPO:latest
+      # - docker push $REPO:latest
