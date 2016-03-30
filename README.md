@@ -6,7 +6,6 @@ tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine
 [Tslint][tslint], [Webpack][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
-[![Build Status](https://travis-ci.org/thisissoon/angular2-start.svg?branch=master)](https://travis-ci.org/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/u/angular2-start)
