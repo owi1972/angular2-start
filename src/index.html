@@ -12,13 +12,6 @@
 
   <base href="/">
 
-  <!-- TODO: move to less file -->
-  <style>
-    .no-js app {
-      display: none;
-    }
-  </style>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- www.favicon-generator.org -->
@@ -44,22 +37,22 @@
 <body>
 
   <!--[if lte IE 8]>
-    <p>Your browser is <strong>ancient</strong> and will not work with this site. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
+    <p class="alert alert-warning text-center">Your browser is <strong>ancient</strong> and may not work properly with this site. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
   <noscript>
-    <p>JavaScript is either disabled or not supported by your browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or enable JavaScript to improve your experience.</p>
+    <p class="alert alert-warning text-center">JavaScript is either disabled or not supported by your browser. Some features may not work. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or enable JavaScript to improve your experience.</p>
   </noscript>
+
+  <app>
+    Loading...
+  </app>
 
   <!--[if gt IE 8]><!-->
 
   <script>
     document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, "$1$2");
   </script>
-
-  <app>
-    Loading...
-  </app>
 
   <!-- Google Analytics -->
   <!-- Replace 'UA-XXXXX-Y' with Google Analytics ID -->
