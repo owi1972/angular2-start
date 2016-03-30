@@ -4,8 +4,7 @@ import {Http, HTTP_PROVIDERS} from 'angular2/http';
 
 @Component({
   selector: 'results',
-  styleUrls: ['src/app/results/results.css'],
-  templateUrl: 'src/app/results/results.html',
+  template: require('./results.html'),
   providers: [HTTP_PROVIDERS],
   directives: [
     ...ROUTER_DIRECTIVES

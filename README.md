@@ -1,9 +1,9 @@
 # Angular2 Start
 
 An Angular 2 starter project written in [Typescript][typescript] and featuring (Router, Forms, Directives, Unit
- tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], 
- [Travis][travis], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], 
- [Typings][typings], [Tslint][tslint], [SystemJS][systemjs].
+tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], 
+[CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings], 
+[Tslint][tslint], [Webpack][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Build Status](https://travis-ci.org/thisissoon/angular2-start.svg?branch=master)](https://travis-ci.org/thisissoon/angular2-start)
@@ -13,8 +13,9 @@ An Angular 2 starter project written in [Typescript][typescript] and featuring (
 
 If you're looking for Angular 1.x please use [angular-start][angularstart]  
 
-This project structure is based on the [Angular Universal Starter][universalstarter] application skeleton for 
-a typical [Angular2][angular] universal application.
+This project structure is based on the [Angular Universal Starter][universalstarter] and 
+[Angular Werbpack Start][webpackstarter] skeleton for a typical [Angular 2][angular] universal/webpack 
+application.
 
 The project is preconfigured to install the Angular framework and a bunch of development and testing tools for 
 instant web development gratification.
@@ -109,7 +110,7 @@ The build files will then be in the `dist/` directory.
 ## Directory Layout
 
 ```
-dist/                         --> compiled application files
+dist/                         --> bundled application files
 src/                          --> all of the files to be used in development
   assets/                     --> static assets folder such as images
     img/                      --> image files
@@ -127,10 +128,13 @@ src/                          --> all of the files to be used in development
 karma.conf.js                 --> config file for running unit tests with karma
 protractor.conf.js            --> config file for running e2e tests with Protractor
 protractor.saucelabs.conf.js  --> config file for running e2e tests with Protractor via saucelabs
-system.conf.js                --> config file for system.js
+spec-bundle.js                --> bundles files for unit tests
 tsconfig.json                 --> config file for typescript compiler 
 tslint.json                   --> config file for tslint 
 typings.json                  --> typings manager file
+webpack.config.js             --> config file for webpack
+webpack.test.js               --> test config file for webpack
+
 
 ```
 
@@ -191,18 +195,17 @@ For more information on Angular please check out [https://angular.io/][angular]
 [node]: http://nodejs.org
 [protractor]: https://angular.github.io/protractor/#/
 [jasmine]: http://pivotal.github.com/jasmine/
-[travis]: https://travis-ci.org/
 [karma]: https://karma-runner.github.io/
 [typescript]: http://www.typescriptlang.org/
 [saucelabs]: http://saucelabs.com/
-[travis]: https://travis-ci.org/
 [circleci]: https://circleci.com/
 [nodejs]: https://nodejs.org/en/
 [istanbul]: https://github.com/gotwarlost/istanbul
 [typings]: https://www.npmjs.com/package/typings
 [tslint]: https://palantir.github.io/tslint/
-[systemjs]:https://github.com/systemjs/systemjs
+[webpack]:https://webpack.github.io/
 [angularstart]: https://github.com/thisissoon/angular-start
 [universalstarter]: https://github.com/angular/universal-starter
+[webpackstarter]: https://angularclass.github.io/angular2-webpack-starter
 [angular]: https://angular.io/
 [nvm]: https://github.com/creationix/nvm

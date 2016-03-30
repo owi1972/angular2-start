@@ -15,18 +15,8 @@ import {Version} from './version/version';
     Results,
     Version
   ],
-  styleUrls: ['src/app/app.css'],
-  template: `
-  <p class="text-right">App version: <strong version></strong></p>
-  <router-outlet></router-outlet>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <footer class="footer"><p>Made by {{ name }}</p></footer>
-      </div>
-    </div>
-  </div>
-  `
+  styles: [require('./app.less')],
+  template: require('./app.html')
 })
 @RouteConfig([
   { path: '/', component: Search, name: 'Search', useAsDefault: true },
