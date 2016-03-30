@@ -9,7 +9,8 @@ if (!Object.hasOwnProperty('name')) {
       // result through a new accessor for repeated access.
       Object.defineProperty(this, 'name', {value: name});
       return name;
-    }
+    },
+    configurable: true
   });
 }
 
