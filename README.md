@@ -13,8 +13,9 @@ tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine
 
 If you're looking for Angular 1.x please use [angular-start][angularstart]  
 
-This project structure is based on the [Angular Universal Starter][universalstarter] application skeleton for 
-a typical [Angular2][angular] universal application.
+This project structure is based on the [Angular Universal Starter][universalstarter] and 
+[Angular Werbpack Start][webpackstarter] skeleton for a typical [Angular 2][angular] universal/webpack 
+application.
 
 The project is preconfigured to install the Angular framework and a bunch of development and testing tools for 
 instant web development gratification.
@@ -205,5 +206,6 @@ For more information on Angular please check out [https://angular.io/][angular]
 [webpack]:https://webpack.github.io/
 [angularstart]: https://github.com/thisissoon/angular-start
 [universalstarter]: https://github.com/angular/universal-starter
+[webpackstarter]: https://angularclass.github.io/angular2-webpack-starter
 [angular]: https://angular.io/
 [nvm]: https://github.com/creationix/nvm

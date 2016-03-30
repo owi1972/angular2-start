@@ -1,28 +1,11 @@
 var helpers = require('./helpers');
 
 /**
- * Webpack Plugins
- */
-var ProvidePlugin = require('webpack/lib/ProvidePlugin');
-var DefinePlugin = require('webpack/lib/DefinePlugin');
-
-/**
- * Webpack Constants
- */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
-
-/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = {
-
-  // Developer tool to enhance debugging
-  //
-  // See: http://webpack.github.io/docs/configuration.html#devtool
-  // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-  devtool: 'source-map',
 
   // Options affecting the resolving of modules.
   //
@@ -88,33 +71,7 @@ module.exports = {
 
     ]
   },
-
-  // Add additional plugins to the compiler.
-  //
-  // See: http://webpack.github.io/docs/configuration.html#plugins
-  plugins: [
-
-    // Plugin: DefinePlugin
-    // Description: Define free variables.
-    // Useful for having development builds with debug logging or adding global constants.
-    //
-    // Environment helpers
-    //
-    // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-    // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
-    new DefinePlugin({'ENV': JSON.stringify(ENV), 'HMR': false})
-
-  ],
-
-  // Static analysis linter for TypeScript advanced options configuration
-  // Description: An extensible linter for the TypeScript language.
-  //
-  // See: https://github.com/wbuchwalter/tslint-loader
-  tslint: {
-    emitErrors: false,
-    failOnHint: false,
-    resourcePath: 'src'
-  },
+  
 
   // Include polyfills or mocks for various node stuff
   // Description: Node configuration

@@ -1,7 +1,3 @@
-/**
- * @author: @AngularClass
- */
-
 var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
 var helpers = require('./helpers');
