@@ -53,6 +53,7 @@ describe('SearchFormComponent', () => {
     btn.click().then(function() {
       return browser.driver.wait(function() {
         return browser.driver.getCurrentUrl().then(function(url) {
+          browser.sleep(3000);
           let h1 = element(by.css('app results h1'));
           expect(h1.getText()).toContain(result);
           return /results\?query=london/.test(url);

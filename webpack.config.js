@@ -1,49 +1,56 @@
+/**
+ * @author: @AngularClass
+ */
+
+var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
+var helpers = require('./helpers');
 var path = require('path');
 
+
+/**
+ * Webpack configuration
+ */
 var commonConfig = {
+
   resolve: {
     extensions: ['', '.ts', '.js']
   },
+
   module: {
+    preLoaders: [
+      { test: /\.js$/, loader: 'source-map-loader', exclude: [ helpers.root('node_modules/rxjs') ] }
+    ],
     loaders: [
-      // TypeScript
-      { test: /\.ts$/, loader: 'ts-loader', exclude: [ /node_modules/, /\.(spec|e2e)\.ts$/] },
+      // Support for .ts files.
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
+
+      // Support for *.json files.
+      { test: /\.json$/,  loader: 'json-loader' },
+
+      // Support for CSS as raw text
+      { test: /\.css$/,   loader: 'raw-loader' },
 
       // Less
       { test: /\.less$/, loaders: ['raw-loader', 'less-loader'], exclude: [ /node_modules/ ]},
 
-      // HTML
-      { test: /\.html$/, loader: 'raw-loader', exclude: [ 'src/index.html', /node_modules/]},
+      // Support for .html as raw text
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
 
-      { test: /\.js$/, loader: 'source-map-loader', exclude: [
-        // these packages have problems with their sourcemaps
-        /node_modules\/rxjs/
-      ]}
     ]
   },
+
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(true)
   ]
+  
 };
-
 
 var clientConfig = {
   target: 'web',
-  entry: {
-    polyfills: './src/polyfills',
-    vendor: './src/vendor',
-    app: './src/client' 
-  },
+  entry: './src/client',
   output: {
     path: path.join(__dirname, 'dist', 'client')
-  },
-  node: {
-    global: true,
-    __dirname: true,
-    __filename: true,
-    process: true,
-    Buffer: false
   }
 };
 
@@ -84,9 +91,6 @@ var defaultConfig = {
   }
 }
 
-
-
-var webpackMerge = require('webpack-merge');
 module.exports = [
   // Client
   webpackMerge({}, defaultConfig, commonConfig, clientConfig),

@@ -48,57 +48,23 @@ module.exports = {
     //
     // See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
     preLoaders: [
-
-      // Tslint loader support for *.ts files
-      //
-      // See: https://github.com/wbuchwalter/tslint-loader
-      // {test: /\.ts$/, loader: 'tslint-loader', exclude: [helpers.root('node_modules')]},
-
-      // Source map loader support for *.js files
-      // Extracts SourceMaps for source files that as added as sourceMappingURL comment.
-      //
-      // See: https://github.com/webpack/source-map-loader
-      {test: /\.js$/, loader: "source-map-loader", exclude: [
-        // these packages have problems with their sourcemaps
-        helpers.root('node_modules/rxjs')
-      ]}
-
+      { test: /\.js$/, loader: 'source-map-loader', exclude: [ helpers.root('node_modules/rxjs') ] }
     ],
-
-    // An array of automatically applied loaders.
-    //
-    // IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
-    // This means they are not resolved relative to the configuration file.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#module-loaders
     loaders: [
+      // Support for .ts files.
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(e2e)\.ts$/ ] },
 
-      // Typescript loader support for .ts and Angular 2 async routes via .async.ts
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader',
-        exclude: [/\.e2e\.ts$/]
-      },
+      // Support for *.json files.
+      { test: /\.json$/,  loader: 'json-loader' },
 
-      // Json loader support for *.json files.
-      //
-      // See: https://github.com/webpack/json-loader
-      {test: /\.json$/, loader: 'json-loader', exclude: [helpers.root('src/index.html')]},
-
-      // Raw loader support for *.css files
-      // Returns file content as string
-      //
-      // See: https://github.com/webpack/raw-loader
-      {test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]},
+      // Support for CSS as raw text
+      { test: /\.css$/,   loader: 'raw-loader' },
 
       // Less
       { test: /\.less$/, loaders: ['raw-loader', 'less-loader'], exclude: [ /node_modules/ ]},
 
-      // Raw loader support for *.html
-      // Returns file content as string
-      //
-      // See: https://github.com/webpack/raw-loader
-      {test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')]}
+      // Support for .html as raw text
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
 
     ],
 
@@ -155,12 +121,11 @@ module.exports = {
   //
   // See: https://webpack.github.io/docs/configuration.html#node
   node: {
-    global: 'window',
-    process: false,
-    crypto: 'empty',
-    module: false,
-    clearImmediate: false,
-    setImmediate: false
+    global: true,
+    __dirname: true,
+    __filename: true,
+    process: true,
+    Buffer: true
   }
 
 };
