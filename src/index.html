@@ -36,17 +36,19 @@
 </head>
 <body>
 
-  <app>
-    Loading...
-  </app>
-
   <!--[if lte IE 8]>
-    <p>Your browser is <strong>ancient</strong> and will not work with this site. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p>Your browser is <strong>ancient</strong> and will not work with this site. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
   <noscript>
-    <p>JavaScript is either disabled or not supported by your browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or enable JavaScript to improve your experience.</p>
+    <p>JavaScript is either disabled or not supported by your browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> or enable JavaScript to improve your experience.</p>
   </noscript>
+
+  <!--[if gt IE 8]><!--> 
+
+  <app>
+    Loading...
+  </app>
 
   <!-- Google Analytics -->
   <!-- Replace 'UA-XXXXX-Y' with Google Analytics ID -->
@@ -62,6 +64,8 @@
   <!-- End Google Analytics -->
 
   <script async src="/dist/client/bundle.js"></script>
+
+  <!--<![endif]-->
 
 </body>
 </html>
