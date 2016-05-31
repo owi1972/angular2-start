@@ -1,29 +1,28 @@
 # Angular2 Start
 
 An Angular 2 starter project written in [Typescript][typescript] and featuring (Router, Forms, Directives, Unit
-tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], 
-[CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings], 
+tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs],
+[CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings],
 [Tslint][tslint], [Webpack][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
-[![Build Status](https://travis-ci.org/thisissoon/angular2-start.svg?branch=master)](https://travis-ci.org/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/u/angular2-start)
+<!--[![Sauce Test Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/u/angular2-start)-->
 
-If you're looking for Angular 1.x please use [angular-start][angularstart]  
+If you're looking for Angular 1.x please use [angular-start][angularstart]
 
-This project structure is based on the [Angular Universal Starter][universalstarter] and 
-[Angular Werbpack Start][webpackstarter] skeleton for a typical [Angular 2][angular] universal/webpack 
+This project structure is based on the [Angular Universal Starter][universalstarter] and
+[Angular Werbpack Start][webpackstarter] skeleton for a typical [Angular 2][angular] universal/webpack
 application.
 
-The project is preconfigured to install the Angular framework and a bunch of development and testing tools for 
+The project is preconfigured to install the Angular framework and a bunch of development and testing tools for
 instant web development gratification.
 
 
 ## Getting Started
 
-__Note__: make sure you have [node][nodejs] version >= 4 installed. We recommend using [node version manager][nvm] 
+__Note__: make sure you have [node][nodejs] version >= 4 installed. We recommend using [node version manager][nvm]
 to install nodejs and manage node versions.
 
 ### Clone the Angular Start repository
@@ -90,14 +89,14 @@ To rebuild the app after making changes you can run
 
 ```
 npm run watch
-``` 
+```
 
-This command will watch all source files and run tests every time a typescript file is updated and compile less 
+This command will watch all source files and run tests every time a typescript file is updated and compile less
 when a less file is updated.
 
 ### Running the build script
 
-To create a build to deploy for a production environment simply run: 
+To create a build to deploy for a production environment simply run:
 
 ```
 npm run build
@@ -129,8 +128,8 @@ karma.conf.js                 --> config file for running unit tests with karma
 protractor.conf.js            --> config file for running e2e tests with Protractor
 protractor.saucelabs.conf.js  --> config file for running e2e tests with Protractor via saucelabs
 spec-bundle.js                --> bundles files for unit tests
-tsconfig.json                 --> config file for typescript compiler 
-tslint.json                   --> config file for tslint 
+tsconfig.json                 --> config file for typescript compiler
+tslint.json                   --> config file for tslint
 typings.json                  --> typings manager file
 webpack.config.js             --> config file for webpack
 webpack.test.js               --> test config file for webpack
@@ -168,7 +167,7 @@ special features for Angular applications.
 
 Protractor simulates interaction with our web app and verifies that the application responds
 correctly. Therefore, our web server needs to be serving up the application, so that Protractor
-can interact with it. To run end to end tests we first need to install protractor with global 
+can interact with it. To run end to end tests we first need to install protractor with global
 permissions.
 
 ```
@@ -181,8 +180,8 @@ Then simply run:
 npm run e2e
 ```
 
-Behind the scenes this will also run `webdriver-manager update` and `webdriver-manager start`. This will download 
-and install the latest version of the stand-alone WebDriver tool and start the Selenium web server. This script 
+Behind the scenes this will also run `webdriver-manager update` and `webdriver-manager start`. This will download
+and install the latest version of the stand-alone WebDriver tool and start the Selenium web server. This script
 will execute the end-to-end tests against the application being hosted on the development server.
 
 
