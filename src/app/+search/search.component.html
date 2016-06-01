@@ -15,15 +15,15 @@
       <form (ngSubmit)="onSubmit(search)"
             #searchForm="ngForm"
             novalidate>
-        <pre>search.query = "{{ search.query }}"</pre>
+        <pre class="model-display">search.query = "{{ search.query }}"</pre>
 
         <div class="form-group">
-          <input type="text"
-                 id="query"
+          <input id="query"
+                 name="query"
+                 type="text"
                  class="form-control input-lg"
                  [(ngModel)]="search.query"
                  ngControl="query"
-                 #name="ngForm"
                  placeholder="Search location"
                  required
                  autofocus>

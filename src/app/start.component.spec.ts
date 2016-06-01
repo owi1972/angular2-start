@@ -18,6 +18,12 @@ describe('App: Start', () => {
     expect(app).toBeTruthy();
   }));
 
+  it('should have a name and url',
+      inject([StartAppComponent], (app: StartAppComponent) => {
+    expect(app.name).toEqual('SOON_');
+    expect(app.url).toEqual('http://thisissoon.com');
+  }));
+
   it('should navigate to search page',
       inject([StartAppComponent, Router], (app: StartAppComponent, router: Router) => {
     let spy = spyOn(router, 'navigate');

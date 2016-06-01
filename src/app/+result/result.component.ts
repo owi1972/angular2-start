@@ -17,7 +17,7 @@ import 'rxjs/add/operator/map';
 })
 export class ResultComponent implements OnActivate {
 
-  results = [];
+  results: Array<Location> = [];
 
   constructor(
     private http: Http

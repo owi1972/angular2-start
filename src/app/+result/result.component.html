@@ -13,7 +13,8 @@
         This is a second view in our angular app. This view displays the results of the search. Click here to return to our <a [routerLink]="['/']">search page</a>
       </p>
 
-      <pre *ngFor="let result of results; let i = index">{{ i + 1 }}: {{ result.formatted_address }}</pre>
+      <pre class="result-item"
+           *ngFor="let result of results; let i = index">{{ i + 1 }}: {{ result.formatted_address }}</pre>
       <p *ngIf="!results.length"
          class="alert alert-info"
          role="alert">

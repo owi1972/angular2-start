@@ -10,8 +10,8 @@ import { Search } from './shared/search.model';
   styleUrls: ['search.component.css']
 })
 export class SearchComponent {
-  search = new Search(null);
-  submitted = false;
+  search: Search = new Search(null);
+  submitted: Boolean = false;
 
   constructor(
     private router: Router

@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng server",
-    "test": "ng test --watch=false",
+    "test": "ng test -w=false",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "format": "clang-format -i -style=file --glob=src/**/*.ts",

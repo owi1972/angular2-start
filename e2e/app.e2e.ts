@@ -1,14 +1,15 @@
-import { Angular2StartPage } from './app.po';
+import { StartApp } from './app.po';
 
-describe('angular2-start App', function() {
-  let page: Angular2StartPage;
+describe('Start App', function() {
+  let app: StartApp;
 
   beforeEach(() => {
-    page = new Angular2StartPage();
-  })
+    app = new StartApp();
+    app.navigateTo('/');
+  });
 
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('angular2-start works!');
+  it('should display message containing SOON_', () => {
+    let result = 'SOON_';
+    expect(app.getMadeWithText()).toContain(result);
   });
 });
