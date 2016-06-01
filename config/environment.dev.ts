@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://maps.googleapis.com/maps/api/geocode/json'
 };

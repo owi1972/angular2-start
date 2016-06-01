@@ -14,9 +14,4 @@ describe('App: Angular2Start', () => {
       inject([StartAppComponent], (app: StartAppComponent) => {
     expect(app).toBeTruthy();
   }));
-
-  it('should have as title \'angular2-start works!\'',
-      inject([StartAppComponent], (app: StartAppComponent) => {
-    expect(app.title).toEqual('angular2-start works!');
-  }));
 });

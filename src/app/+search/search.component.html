@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-header">
+        <h1>Search</h1>
+      </div>
+      <p class="lead">This is the home page in our angular app. Fill in the form to search locations</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <form (ngSubmit)="onSubmit(search)"
+            #searchForm="ngForm"
+            novalidate>
+        <pre>search.query = "{{ search.query }}"</pre>
+
+        <div class="form-group">
+          <input type="text"
+                 id="query"
+                 class="form-control input-lg"
+                 [(ngModel)]="search.query"
+                 ngControl="query"
+                 #name="ngForm"
+                 placeholder="Search location"
+                 required
+                 autofocus>
+        </div>
+        <button type="submit"
+                class="btn btn-lg btn-default"
+                [disabled]="!searchForm.form.valid">
+          Submit
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+</div>
