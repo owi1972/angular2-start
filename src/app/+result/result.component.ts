@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, RouteSegment, OnActivate } from '@angular/router';
 import { Http, HTTP_PROVIDERS } from '@angular/http';
 

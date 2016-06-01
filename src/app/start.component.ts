@@ -16,7 +16,7 @@ import { ResultComponent } from './+result/result.component';
   {path: '/', component: SearchComponent},
   {path: '/result', component: ResultComponent}
 ])
-export class StartAppComponent{
+export class StartAppComponent implements OnInit {
 
   name: string = 'SOON_';
   url: string = 'http://thisissoon.com';

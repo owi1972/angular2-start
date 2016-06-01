@@ -1,3 +1,4 @@
+/* tslint:disable */
 export class Location {
   constructor(
     public address_components: Array<Object>,

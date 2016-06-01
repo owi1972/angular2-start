@@ -10,12 +10,10 @@ import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testin
 import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { MockBackend, MockConnection } from '@angular/http/testing';
+import { MockBackend } from '@angular/http/testing';
 import {
   Http,
   BaseRequestOptions,
-  Response,
-  ResponseOptions
 } from '@angular/http';
 
 import { ResultComponent } from './result.component';
@@ -48,15 +46,15 @@ describe('Component: Result', () => {
   it('should get Results', inject([ResultComponent, Http],
       (component: ResultComponent, http: Http) => {
     let query = 'foo';
-    let search = { search: 'address=foo&sensor=false' }
+    let search = { search: 'address=foo&sensor=false' };
     let fakeFn = () => {
       return {
         map: function(){
           return {
             subscribe: function(){}
-          }
+          };
         }
-      }
+      };
     };
     let spy = spyOn(http, 'get').and.callFake(fakeFn);
     component.getResults(query);

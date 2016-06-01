@@ -28,12 +28,12 @@ dependencies:
 test:
   override:
     - npm run lint
-    - npm run test:unit
-    - nvm use 4.4 && npm run test:unit # Node LTS (Mature)
-    - npm run test:e2e
+    - npm run test
+    - nvm use 4.4 && npm run test # Node LTS (Mature)
+    - npm run e2e
   post:
-    - nvm use 5.7
-    - coveralls < coverage/lcov.info
+    - nvm use 6.2
+    # - coveralls < coverage/lcov.info
 
 # Deployment
 
