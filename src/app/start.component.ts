@@ -16,7 +16,7 @@ import { ResultComponent } from './+result/result.component';
   {path: '/', component: SearchComponent},
   {path: '/result', component: ResultComponent}
 ])
-export class StartAppComponent  implements OnInit {
+export class StartAppComponent implements OnInit {
 
   constructor(private router: Router) {}
 

@@ -11,10 +11,17 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { SearchComponent } from './search.component';
 
+import { ROUTER_FAKE_PROVIDERS } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { Search } from './shared/search.model';
+
 describe('Component: Search', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [SearchComponent]);
+  beforeEachProviders(() => [
+    ROUTER_FAKE_PROVIDERS,
+    SearchComponent
+  ]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
@@ -24,6 +31,25 @@ describe('Component: Search', () => {
     expect(component).toBeTruthy();
   }));
 
+  it('should have default data', inject([SearchComponent],
+      (component: SearchComponent) => {
+      let search = new Search(null);
+      expect(component.search).toEqual(search);
+    }
+    ));
+
+  it('should navigate to results page on submit',
+    inject([SearchComponent, Router], (component: SearchComponent, router: Router) => {
+      let spy = spyOn(router, 'navigate');
+      let search = { query: 'london' };
+      expect(spy).not.toHaveBeenCalled();
+
+      component.onSubmit(search);
+      expect(spy).toHaveBeenCalledWith(['/result', search]);
+      expect(component.submitted).toBeTruthy();
+    }
+  ));
+
   it('should create the component', inject([], () => {
     return builder.createAsync(SearchComponentTestController)
       .then((fixture: ComponentFixture<any>) => {
@@ -32,6 +58,7 @@ describe('Component: Search', () => {
         expect(query.componentInstance).toBeTruthy();
       });
   }));
+
 });
 
 @Component({

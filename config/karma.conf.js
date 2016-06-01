@@ -4,6 +4,7 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
+      require('karma-spec-reporter'),
       require('karma-chrome-launcher')
     ],
     customLaunchers: {
@@ -30,8 +31,10 @@ module.exports = function (config) {
       // Vendor packages might include spec files. We don't want to use those.
       'dist/vendor/**/*.spec.js'
     ],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {},
-    reporters: ['progress'],
+    reporters: ['progress', 'spec'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

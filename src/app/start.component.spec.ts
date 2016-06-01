@@ -5,13 +5,23 @@ import {
   it,
   inject
 } from '@angular/core/testing';
-import { StartAppComponent } from '../app/start.component';
+import { StartAppComponent } from './start.component';
 
-beforeEachProviders(() => [StartAppComponent]);
+import { ROUTER_FAKE_PROVIDERS, } from '@angular/router/testing';
+import { Router } from '@angular/router';
 
-describe('App: Angular2Start', () => {
+beforeEachProviders(() => [ROUTER_FAKE_PROVIDERS, StartAppComponent]);
+
+describe('App: Start', () => {
   it('should create the app',
       inject([StartAppComponent], (app: StartAppComponent) => {
     expect(app).toBeTruthy();
+  }));
+
+  it('should navigate to search page',
+      inject([StartAppComponent, Router], (app: StartAppComponent, router: Router) => {
+    let spy = spyOn(router, 'navigate');
+    app.ngOnInit();
+    expect(spy).toHaveBeenCalled();
   }));
 });
