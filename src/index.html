@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,12 +7,30 @@
   <meta name="description" content="Angular 2 Start">
   <meta name="keywords" content="Angular 2,Start">
   <meta name="author" content="SOON_">
-
   <title>Angular 2 Start</title>
 
   <base href="/">
 
   <link rel="stylesheet" href="styles/main.css">
+
+  <!-- www.favicon-generator.org -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="img/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- Service worker support is disabled by default.
        Install the worker script and uncomment to enable.
@@ -29,6 +47,19 @@
 <body>
   <start-app>Loading...</start-app>
 
+  <!--[if lte IE 8]>
+    <p>Your browser is <strong>ancient</strong> and will not work with this site. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <noscript>
+    <p>JavaScript is either disabled or not supported by your browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or enable JavaScript to improve your experience.</p>
+  </noscript>
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, "$1$2");
+  </script>
+
+  <!--[if gte IE 8]><!-->
   <script src="vendor/es6-shim/es6-shim.js"></script>
   <script src="vendor/reflect-metadata/Reflect.js"></script>
   <script src="vendor/systemjs/dist/system.src.js"></script>
@@ -39,5 +70,14 @@
       System.import('main');
     }).catch(console.error.bind(console));
   </script>
+  <!--<![endif]-->
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+      ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
 </body>
 </html>
