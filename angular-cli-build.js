@@ -12,6 +12,9 @@ module.exports = function(defaults) {
       'reflect-metadata/*.js',
       'rxjs/**/*.js',
       '@angular/**/*.js'
-    ]
+    ],
+    lessCompiler: {
+      'paths': [__dirname + '/src/styles'] // this is the important configuration
+    }
   });
 };
