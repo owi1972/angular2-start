@@ -1,4 +1,4 @@
-import { StartApp } from './app.po';
+import { StartApp } from './page-objects/app.po';
 
 describe('Start App', function() {
   let app: StartApp;

@@ -1,6 +1,6 @@
-import { StartApp } from './app.po';
-import { SearchPage } from './search.po';
-import { ResultPage } from './result.po';
+import { StartApp } from './page-objects/app.po';
+import { SearchPage } from './page-objects/search.po';
+import { ResultPage } from './page-objects/result.po';
 
 
 describe('Result page', () => {

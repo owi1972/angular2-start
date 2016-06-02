@@ -5,12 +5,14 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng server",
-    "test": "ng test -w=false",
+    "test": "ng test",
+    "test:unit": "ng test -w=false",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "format": "clang-format -i -style=file --glob=src/**/*.ts",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "test:e2e": "bash ./test-e2e.sh"
   },
   "private": true,
   "dependencies": {
