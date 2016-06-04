@@ -19,9 +19,10 @@ const barrels: string[] = [
   '@angular/common',
   '@angular/compiler',
   '@angular/http',
-  '@angular/router',
+  '@angular/router-deprecated',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
+  '@angular/app-shell',
 
   // Thirdparty barrels.
   'rxjs',
@@ -30,7 +31,7 @@ const barrels: string[] = [
   'app',
   'app/shared',
   'app/+search',
-  'app/+result',
+  // 'app/+result',
   /** @cli-barrel */
 ];
 

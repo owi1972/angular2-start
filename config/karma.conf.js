@@ -31,18 +31,8 @@ module.exports = function (config) {
       // Vendor packages might include spec files. We don't want to use those.
       'dist/vendor/**/*.spec.js'
     ],
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {},
     reporters: ['spec','progress'],
-    specReporter: {
-      maxLogLines: 5,         // limit number of lines logged per test
-      suppressErrorSummary: true,  // do not print error summary
-      suppressFailed: false,  // do not print information about failed tests
-      suppressPassed: false,  // do not print information about passed tests
-      suppressSkipped: true,  // do not print information about skipped tests
-      showSpecTiming: false // print the time elapsed for each spec
-    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

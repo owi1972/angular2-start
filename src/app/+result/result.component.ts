@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES, RouteSegment, OnActivate } from '@angular/router';
+import { ROUTER_DIRECTIVES, RouteParams, OnActivate } from '@angular/router-deprecated';
 import { Http, HTTP_PROVIDERS } from '@angular/http';
 
 import { environment } from '../environment';
@@ -20,11 +20,12 @@ export class ResultComponent implements OnActivate {
   results: Array<Location> = [];
 
   constructor(
-    private http: Http
+    private http: Http,
+    private params: RouteParams
   ) {};
 
-  routerOnActivate(curr: RouteSegment) {
-    let query = curr.getParam('query');
+  routerOnActivate() {
+    let query = this.params.get('query');
     this.getResults(query);
   };
 

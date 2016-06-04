@@ -11,15 +11,14 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { SearchComponent } from './search.component';
 
-import { ROUTER_FAKE_PROVIDERS } from '@angular/router/testing';
-import { Router } from '@angular/router';
+import { ROUTER_PROVIDERS, Router } from '@angular/router-deprecated';
 import { Search } from './shared/search.model';
 
 describe('Component: Search', () => {
   let builder: TestComponentBuilder;
 
   beforeEachProviders(() => [
-    ROUTER_FAKE_PROVIDERS,
+    ROUTER_PROVIDERS,
     SearchComponent
   ]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {

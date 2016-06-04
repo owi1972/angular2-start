@@ -1,2 +1,2 @@
-export {environment} from './environment';
-export {StartAppComponent} from './start.component';
+export * from './environment';
+export * from './start.component';

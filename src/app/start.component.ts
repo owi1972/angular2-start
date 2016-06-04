@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router, Routes } from '@angular/router';
+import { Component } from '@angular/core';
+import { APP_SHELL_DIRECTIVES } from '@angular/app-shell';
+import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { SearchComponent } from './+search/search.component';
 import { ResultComponent } from './+result/result.component';
@@ -8,22 +9,25 @@ import { ResultComponent } from './+result/result.component';
 @Component({
   moduleId: module.id,
   selector: 'start-app',
-  templateUrl: 'start.component.html',
-  styleUrls: ['start.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  template: `
+  <p *shellRender class="text-center">Loading...<p>
+  <router-outlet *shellNoRender></router-outlet>
+  <p *shellNoRender class="made-with text-center">
+    Made with 💙 &amp; 🍺 by <a [href]="url" target="_blank">{{ name }}</a>
+  </p>
+  `,
+  styles: [],
+  directives: [
+    APP_SHELL_DIRECTIVES,
+    ROUTER_DIRECTIVES
+  ]
 })
-@Routes([
-  {path: '/', component: SearchComponent},
-  {path: '/result', component: ResultComponent}
+@RouteConfig([
+  {path: '/', name: 'Search', component: SearchComponent, useAsDefault: true},
+  {path: '/result', name:'Result', component: ResultComponent}
 ])
-export class StartAppComponent implements OnInit {
+export class StartAppComponent {
 
   name: string = 'SOON_';
   url: string = 'http://thisissoon.com';
-
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.router.navigate(['/']);
-  }
 }

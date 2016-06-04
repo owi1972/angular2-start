@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
 
 import { Search } from './shared/search.model';
 
@@ -7,7 +7,7 @@ import { Search } from './shared/search.model';
   moduleId: module.id,
   selector: 'app-search',
   templateUrl: 'search.component.html',
-  styleUrls: ['search.component.css']
+  styles: []
 })
 export class SearchComponent {
   search: Search = new Search(null);
@@ -19,6 +19,6 @@ export class SearchComponent {
 
   onSubmit(search: Search) {
     this.submitted = true;
-    this.router.navigate( ['/result', search] );
+    this.router.navigate( ['Result', search] );
   };
 }
