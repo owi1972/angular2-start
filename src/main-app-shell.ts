@@ -2,7 +2,7 @@ import { provide } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { APP_SHELL_BUILD_PROVIDERS } from '@angular/app-shell';
 import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { HTTP_PROVIDERS } from '@angular/http'
+import { HTTP_PROVIDERS } from '@angular/http';
 import { StartAppComponent } from './app/';
 
 import {

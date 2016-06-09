@@ -28,6 +28,7 @@ exports.config = {
     });
   },
   onPrepare: function() {
+    require('ts-node').register({ project: 'e2e' });
     jasmine.getEnv().addReporter(new SpecReporter());
   }
 };

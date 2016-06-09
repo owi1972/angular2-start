@@ -23,16 +23,25 @@ import 'rxjs/add/operator/map';
         </div>
 
         <p class="lead">
-          This is a second view in our angular app. This view displays the results of the search. Click here to return to our <a [routerLink]="['Search']">search page</a>
+          This is a second view in our angular app. This view displays the results of
+          the search. Click here to return to our <a [routerLink]="['Search']">search page</a>
         </p>
 
-        <pre class="result-item"
-            *ngFor="let result of results; let i = index">{{ i + 1 }}: {{ result.formatted_address }}</pre>
-        <p *ngIf="!results.length"
-          class="alert alert-info"
-          role="alert">
-          No results
+        <ul class="list-group" *ngIf="results.length">
+          <li class="list-group-item"
+              *ngFor="let result of results; let i = index">
+            {{ i + 1 }}: {{ result.formatted_address }}
+          </li>
+        </ul>
+
+        <p class="alert alert-info"
+           *ngIf="!results.length"
+           [ngSwitch]="loading"
+           role="alert">
+           <span *ngSwitchWhen="false">No results</span>
+           <span *ngSwitchWhen="true">Loading&#8230;</span>
         </p>
+
 
       </div>
     </div>
@@ -45,6 +54,7 @@ import 'rxjs/add/operator/map';
 export class ResultComponent implements OnActivate {
 
   results: Array<Location> = [];
+  loading: Boolean = true;
 
   constructor(
     private http: Http,
@@ -61,7 +71,10 @@ export class ResultComponent implements OnActivate {
       search: 'address=' + query + '&sensor=false'
     })
       .map(res => res.json())
-      .subscribe(data => this.results = data.results);
+      .subscribe((data) => {
+        this.results = data.results;
+        this.loading = false;
+      });
   };
 
 }

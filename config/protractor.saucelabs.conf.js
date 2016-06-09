@@ -49,14 +49,6 @@ exports.config = {
       'platform': 'Linux'
     },
     {
-      'browserName': 'MicrosoftEdge',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (MSEdge 13: Windows 10) Build: ' + buildNo,
-      'version': '13.10586',
-      'platform': 'Windows 10'
-    },
-    {
       'browserName': 'internet explorer',
       'tunnel-identifier': tunnelId,
       'build': buildNo,
@@ -71,14 +63,6 @@ exports.config = {
       'name':  pkg.name + ' (IE10: Windows 8) Build: ' + buildNo,
       'version': '10.0',
       'platform': 'Windows 8'
-    },
-    {
-      'browserName': 'internet explorer',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (IE9: Windows 7) Build: ' + buildNo,
-      'version': '9.0',
-      'platform': 'Windows 7'
     },
     {
       'browserName': 'safari',
@@ -128,18 +112,19 @@ exports.config = {
    * `rootEl`
    *
    */
-   useAllAngular2AppRoots: true,
+  useAllAngular2AppRoots: true,
 
 
-   beforeLaunch: function() {
-     require('ts-node').register({
-       project: 'e2e'
-     });
-   },
+  beforeLaunch: function() {
+    require('ts-node').register({
+      project: 'e2e'
+    });
+  },
 
 
-   onPrepare: function() {
-     jasmine.getEnv().addReporter(new SpecReporter());
-   }
+  onPrepare: function() {
+    require('ts-node').register({ project: 'e2e' });
+    jasmine.getEnv().addReporter(new SpecReporter());
+  }
 
 };

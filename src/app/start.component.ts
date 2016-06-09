@@ -9,7 +9,7 @@ import { ResultComponent } from './+result/result.component';
   moduleId: module.id,
   selector: 'start-app',
   template: `
-  <p *shellRender class="text-center">Loading...<p>
+  <p *shellRender class="text-center">Loading&#8230;<p>
   <router-outlet *shellNoRender></router-outlet>
   <p *shellNoRender class="made-with text-center">
     Made with 💙 &amp; 🍺 by <a [href]="url" target="_blank">{{ name }}</a>

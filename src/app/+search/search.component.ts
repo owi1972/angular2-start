@@ -14,7 +14,9 @@ import { Search } from './shared/search.model';
         <div class="page-header">
           <h1>Search</h1>
         </div>
-        <p class="lead">This is the home page in our angular app. Fill in the form to search locations</p>
+        <p class="lead">
+          This is the home page in our angular app. Fill in the form to search locations
+        </p>
       </div>
     </div>
 

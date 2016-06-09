@@ -10,7 +10,7 @@ import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testin
 import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
+import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from '@angular/router-deprecated';
 import { RootRouter } from '@angular/router-deprecated/src/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 

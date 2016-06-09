@@ -13,7 +13,7 @@ import { By } from '@angular/platform-browser';
 import { MockBackend } from '@angular/http/testing';
 import { Http, BaseRequestOptions } from '@angular/http';
 
-import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
+import { Router, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
 import { RootRouter } from '@angular/router-deprecated/src/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 

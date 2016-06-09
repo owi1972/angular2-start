@@ -6,6 +6,6 @@ export class ResultPage {
     return element(by.css('.alert'));
   };
   getResults() {
-    return element.all(by.css('.result-item'));
+    return element.all(by.css('.list-group-item'));
   };
 }
