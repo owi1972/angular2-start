@@ -9,7 +9,6 @@ if (environment.production) {
 }
 
 bootstrap(StartAppComponent, [
-  APP_SHELL_RUNTIME_PROVIDERS,
-  ROUTER_PROVIDERS
+  ...APP_SHELL_RUNTIME_PROVIDERS
 ]);
 

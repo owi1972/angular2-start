@@ -10,10 +10,37 @@ import 'rxjs/add/operator/map';
 @Component({
   moduleId: module.id,
   selector: 'app-result',
-  templateUrl: 'result.component.html',
-  styleUrls: ['result.component.css'],
-  directives: [ ROUTER_DIRECTIVES ],
-  providers: [ HTTP_PROVIDERS ]
+  template: `
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="page-header">
+          <h1>
+            Results
+            <small class="badge">{{ results.length || 0 }}</small>
+          </h1>
+        </div>
+
+        <p class="lead">
+          This is a second view in our angular app. This view displays the results of the search. Click here to return to our <a [routerLink]="['Search']">search page</a>
+        </p>
+
+        <pre class="result-item"
+            *ngFor="let result of results; let i = index">{{ i + 1 }}: {{ result.formatted_address }}</pre>
+        <p *ngIf="!results.length"
+          class="alert alert-info"
+          role="alert">
+          No results
+        </p>
+
+      </div>
+    </div>
+  </div>
+  `,
+  styles: [],
+  directives: [ ...ROUTER_DIRECTIVES ],
+  providers: [ ...HTTP_PROVIDERS ]
 })
 export class ResultComponent implements OnActivate {
 

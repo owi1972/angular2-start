@@ -4,22 +4,29 @@ import {
   describe,
   expect,
   it,
-  inject,
+  inject
 } from '@angular/core/testing';
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
-import { Component } from '@angular/core';
+import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { SearchComponent } from './search.component';
 
-import { ROUTER_PROVIDERS, Router } from '@angular/router-deprecated';
+import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
+import { RootRouter } from '@angular/router-deprecated/src/router';
+import { Location, APP_BASE_HREF } from '@angular/common';
+
+import { SearchComponent } from './search.component';
 import { Search } from './shared/search.model';
 
 describe('Component: Search', () => {
   let builder: TestComponentBuilder;
 
   beforeEachProviders(() => [
-    ROUTER_PROVIDERS,
-    SearchComponent
+    SearchComponent,
+    RouteRegistry,
+    Location,
+    provide(APP_BASE_HREF, { useValue: '/' }),
+    provide(Router, { useClass: RootRouter}),
+    provide(ROUTER_PRIMARY_COMPONENT, {useValue: SearchComponent})
   ]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
@@ -44,7 +51,7 @@ describe('Component: Search', () => {
       expect(spy).not.toHaveBeenCalled();
 
       component.onSubmit(search);
-      expect(spy).toHaveBeenCalledWith(['/result', search]);
+      expect(spy).toHaveBeenCalledWith(['Result', search]);
       expect(component.submitted).toBeTruthy();
     }
   ));
