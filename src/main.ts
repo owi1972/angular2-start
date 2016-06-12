@@ -1,13 +1,19 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
+import 'angular2-universal/polyfills';
+import {
+  bootstrap,
+  enableProdMode,
+  BROWSER_ROUTER_PROVIDERS,
+  BROWSER_HTTP_PROVIDERS
+} from 'angular2-universal';
+
 import { StartAppComponent, environment } from './app/';
-import { APP_SHELL_RUNTIME_PROVIDERS } from '@angular/app-shell';
 
 if (environment.production) {
   enableProdMode();
 }
 
 bootstrap(StartAppComponent, [
-  ...APP_SHELL_RUNTIME_PROVIDERS
+  ...BROWSER_ROUTER_PROVIDERS,
+  ...BROWSER_HTTP_PROVIDERS
 ]);
 

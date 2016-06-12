@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, RouteParams, OnActivate } from '@angular/router-deprecated';
-import { Http, HTTP_PROVIDERS } from '@angular/http';
+import { Http } from '@angular/http';
 
 import { environment } from '../environment';
 import { Location } from './shared/location.model';
@@ -48,8 +48,7 @@ import 'rxjs/add/operator/map';
   </div>
   `,
   styles: [],
-  directives: [ ...ROUTER_DIRECTIVES ],
-  providers: [ ...HTTP_PROVIDERS ]
+  directives: [ ...ROUTER_DIRECTIVES ]
 })
 export class ResultComponent implements OnActivate {
 

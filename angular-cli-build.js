@@ -11,7 +11,12 @@ module.exports = function(defaults) {
       'es6-shim/es6-shim.js',
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
-      '@angular/**/*.+(js|js.map)'
+      '@angular/**/*.+(js|js.map)',
+      'angular2-universal/**/*.+(js|js.map)',
+      'angular2-universal-polyfills/**/*.+(js|js.map)',
+      'es6-promise/dist/es6-promise.js',
+      'ie-shim/**/*.+(js|js.map)',
+      'crypto-js/**/*.+(js|js.map)'
     ],
     lessCompiler: {
       'paths': [__dirname + '/src/styles']
