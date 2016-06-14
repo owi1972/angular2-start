@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, RouteParams, OnActivate } from '@angular/router-deprecated';
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 
 import { environment } from '../environment';
 import { Location } from './shared/location.model';
@@ -57,17 +57,21 @@ export class ResultComponent implements OnActivate {
 
   constructor(
     private http: Http,
-    private params: RouteParams
+    private routeParams: RouteParams
   ) {};
 
   routerOnActivate() {
-    let query = this.params.get('query');
+    let query = this.routeParams.get('query');
     this.getResults(query);
   };
 
-  getResults(query: String) {
+  getResults(query: string) {
+    let searchParams = new URLSearchParams();
+    searchParams.set('address', query);
+    searchParams.set('sensor', 'false');
+
     this.http.get(environment.apiUrl, {
-      search: 'address=' + query + '&sensor=false'
+      search: searchParams
     })
       .map(res => res.json())
       .subscribe((data) => {
