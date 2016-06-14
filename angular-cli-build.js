@@ -9,14 +9,12 @@ module.exports = function(defaults) {
       'systemjs/dist/system.src.js',
       'zone.js/dist/**/*.+(js|js.map)',
       'es6-shim/es6-shim.js',
+      'es6-promise/dist/es6-promise.js',
       'reflect-metadata/**/*.+(js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'angular2-universal/**/*.+(js|js.map)',
-      'angular2-universal-polyfills/**/*.+(js|js.map)',
-      'es6-promise/dist/es6-promise.js',
-      'ie-shim/**/*.+(js|js.map)',
-      'crypto-js/**/*.+(js|js.map)'
+      'angular2-universal-polyfills/**/*.+(js|js.map)'
     ],
     lessCompiler: {
       'paths': [__dirname + '/src/styles']

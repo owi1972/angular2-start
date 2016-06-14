@@ -38,8 +38,8 @@ import 'rxjs/add/operator/map';
            *ngIf="!results.length"
            [ngSwitch]="loading"
            role="alert">
-           <span *ngSwitchWhen="false">No results</span>
-           <span *ngSwitchWhen="true">Loading&#8230;</span>
+          <span *ngSwitchWhen="false">No results</span>
+          <span *ngSwitchWhen="true">Loading&#8230;</span>
         </p>
 
 
@@ -75,9 +75,11 @@ export class ResultComponent implements OnActivate {
     })
       .map(res => res.json())
       .subscribe((data) => {
-        this.results = data.results;
-        this.loading = false;
-      });
+          this.results = data.results;
+          this.loading = false;
+        },
+        err => console.log(err)
+      );
   };
 
 }

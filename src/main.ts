@@ -1,4 +1,3 @@
-import 'angular2-universal/polyfills';
 import {
   bootstrap,
   enableProdMode,

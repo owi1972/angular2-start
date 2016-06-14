@@ -5,16 +5,7 @@
 const map: any = {
   'angular2-universal': 'vendor/angular2-universal/dist/browser/index',
   'angular2-universal/dist/common': 'vendor/angular2-universal/dist/common',
-  'angular2-universal/dist/common/tokens': 'vendor/angular2-universal/dist/common/tokens',
-  'angular2-universal/polyfills': 'vendor/angular2-universal/dist/polyfills',
-  'angular2-universal-polyfills': 'vendor/angular2-universal-polyfills/dist/polyfills-browser',
-  'es6-promise': 'vendor/es6-promise/dist/es6-promise.js',
-  'es6-shim': 'vendor/es6-shim/es6-shim.js',
-  'ie-shim': 'vendor/ie-shim/index.js',
-  'reflect-metadata': 'vendor/reflect-metadata/Reflect.js',
-  'zone.js/dist/zone.js': 'vendor/zone.js/dist/zone',
-  'zone.js/dist/long-stack-trace-zone': 'vendor/zone.js/dist/long-stack-trace-zone',
-  'crypto': 'vendor/crypto-js/index'
+  'angular2-universal/dist/common/tokens': 'vendor/angular2-universal/dist/common/tokens'
 };
 
 /** User packages configuration. */

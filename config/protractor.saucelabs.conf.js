@@ -64,14 +64,14 @@ exports.config = {
       'version': '10.0',
       'platform': 'Windows 8'
     },
-    // {
-    //   'browserName': 'safari',
-    //   'tunnel-identifier': tunnelId,
-    //   'build': buildNo,
-    //   'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + buildNo,
-    //   'version': '9.0',
-    //   'platform': 'OS X 10.11'
-    // }
+    {
+      'browserName': 'safari',
+      'tunnel-identifier': tunnelId,
+      'build': buildNo,
+      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + buildNo,
+      'version': '9.0',
+      'platform': 'OS X 10.11'
+    }
   ],
 
   // ----- More information for your tests ----
