@@ -11,7 +11,7 @@ import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { MockBackend } from '@angular/http/testing';
-import { Http, BaseRequestOptions } from '@angular/http';
+import { Http, BaseRequestOptions, URLSearchParams } from '@angular/http';
 
 import { Router, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
 import { RootRouter } from '@angular/router-deprecated/src/router';
@@ -52,7 +52,9 @@ describe('Component: Result', () => {
   it('should get Results', inject([ResultComponent, Http, RouteParams],
       (component: ResultComponent, http: Http, params: RouteParams) => {
     let query = 'foo';
-    let search = { search: 'address=foo&sensor=false' };
+    let searchParams = new URLSearchParams();
+    searchParams.set('address', query);
+    searchParams.set('sensor', 'false');
     let fakeFn = () => {
       return {
         map: function(){
@@ -64,7 +66,7 @@ describe('Component: Result', () => {
     };
     let spy = spyOn(http, 'get').and.callFake(fakeFn);
     component.getResults(query);
-    expect(spy).toHaveBeenCalledWith(environment.apiUrl, search);
+    expect(spy).toHaveBeenCalledWith(environment.apiUrl, { search: searchParams });
   }));
 
   it('should create the component', inject([], () => {
