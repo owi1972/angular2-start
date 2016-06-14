@@ -17,10 +17,10 @@ exports.config = {
 
   // The timeout for each script run on the browser. This should be longer
   // than the maximum time your application needs to stabilize between tasks.
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 30000,
 
   // How long to wait for a page to load.
-  getPageTimeout: 11000,
+  getPageTimeout: 30000,
 
   // ----- What tests to run -----
   //
