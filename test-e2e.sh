@@ -16,7 +16,7 @@ if [[ $CIRCLECI ]]; then
 fi
 
 # e2e testing script
-ng serve &
+npm start &
 sleep 15
 
 if [[ $CI ]]; then
@@ -27,12 +27,12 @@ if [[ $CI ]]; then
   protractor ./config/protractor.saucelabs.conf.js
 else
   echo "Running e2e tests in local mode"
-  ng e2e
+  protractor ./config/protractor.conf.js
 fi
 
 rc=$?
 curl -s -L http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer > /dev/null 2>&1
-killall angular-cli
+killall node
 
 if [[ $rc != 0 ]]; then
   echo "protractor tests failed"
