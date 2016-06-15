@@ -10,7 +10,7 @@ import { ResultComponent } from './+result/result.component';
   template: `
   <router-outlet></router-outlet>
   <p class="made-with text-center">
-    Made with 💙 &amp; 🍺 by <a [href]="url" target="_blank">{{ name }}</a>
+    Made by <a [href]="url" target="_blank">{{ name }}</a>
   </p>
   `,
   styles: [],
