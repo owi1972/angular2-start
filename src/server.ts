@@ -8,7 +8,7 @@ import * as bodyParser from 'body-parser';
 // Angular 2 Universal
 import { enableProdMode, expressEngine } from 'angular2-universal';
 
-import { ngApp } from './main-node';
+import { ngApp } from './main.node';
 import { environment } from './app/';
 
 const app = express();

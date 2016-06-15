@@ -1,2 +1,2 @@
-System.import('main')
+System.import('client')
   .catch(console.error.bind(console));

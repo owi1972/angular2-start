@@ -15,8 +15,8 @@
     "inlineSources": true
   },
   "files": [
-    "main.ts",
-    "main-node.ts",
+    "client.ts",
+    "server.ts",
     "typings.d.ts"
   ]
 }

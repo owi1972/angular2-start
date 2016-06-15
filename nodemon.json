@@ -3,11 +3,15 @@
   "ignore": [
     ".git",
     "tmp",
-    "node_modules/"
+    "dist",
+    "node_modules"
   ],
   "verbose": true,
   "execMap": {
-    "js": "ng build && node"
+    "js": "npm run build && node"
+  },
+  "events": {
+    "restart": "npm test"
   },
   "script": "./dist/server.js",
   "watch": [

@@ -5,11 +5,12 @@
   "angular-cli": {},
   "scripts": {
     "postinstall": "typings install",
-    "prestart": "ng build",
+    "prestart": "npm run build",
     "start": "forever start ./dist/server.js",
     "restart": "forever restart ./dist/server.js",
     "stop": "forever stop ./dist/server.js",
     "watch": "nodemon ./dist/server.js",
+    "build": "ng build",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test -w=false",
     "e2e": "bash ./test-e2e.sh"

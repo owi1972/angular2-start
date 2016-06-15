@@ -55,7 +55,7 @@
     {{#each scripts.polyfills}}<script src="{{.}}"></script>{{/each}}
     <script>
       System.import('system-config.js').then(function () {
-        System.import('main');
+        System.import('client');
       }).catch(console.error.bind(console));
     </script>
   {{/if}}

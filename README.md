@@ -3,7 +3,7 @@
 An Angular 2 starter project written in [Typescript][typescript] and featuring (Router, Forms, Directives, Unit
 tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs],
 [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings],
-[Tslint][tslint], [Webpack][webpack].
+[Tslint][tslint], [SystemJS][systemjs].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
@@ -13,11 +13,11 @@ tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine
 If you're looking for Angular 1.x please use [angular-start][angularstart]
 
 This project structure is based on the [Angular Universal Starter][universalstarter] and
-[Angular Werbpack Start][webpackstarter] skeleton for a typical [Angular 2][angular] universal/webpack
+[Angular CLI][angularcli] skeleton for a typical [Angular 2][angular] Universal/SystemJS
 application.
 
-The project is preconfigured to install the Angular framework and a bunch of development and testing tools for
-instant web development gratification.
+The project is preconfigured to install the Angular framework, Angular CLI and a bunch of
+development and testing tools for instant web development gratification.
 
 
 ## Getting Started
@@ -27,7 +27,7 @@ to install nodejs and manage node versions.
 
 ### Clone the Angular Start repository
 
-Clone the angular-start repository using [git][git]:
+Clone the angular2-start repository using [git][git]:
 
 ```
 cd path/to/parent/directory
@@ -48,17 +48,16 @@ We have two kinds of dependencies in this project: development tools and app fra
 The following tools will need to be installed globally so install them with the `-g` (global) tag:
 
 ```
-npm install -g typescript protractor
+npm install -g typescript protractor angular-cli
 ```
 
-We have preconfigured `npm` to automatically install typings for typescript after install so to install our
- dependencies simply run:
+We have preconfigured `npm` to automatically install typings for typescript after install so to install all dependencies run:
 
 ```
 npm install
 ```
 
-Behind the scenes this will also call `typings install`.  You should find that you have two new
+Behind the scenes this will also call `typings install`. You should find that you have two new
 folders in your project.
 
 * `node_modules` - contains the npm packages for the dev tools we need as well as our app framework libraries
@@ -66,10 +65,10 @@ folders in your project.
 
 ### Installing Libraries
 
-To install a new library such as bootstrap we can simply do:
+To install a new library such as bootstrap we can run:
 
 ```
-npm install --save bootstrap
+npm install bootstrap --save
 ```
 
 And this will download the bootstrap package using npm and also update `package.json` to include that package.
@@ -91,8 +90,7 @@ To rebuild the app after making changes you can run
 npm run watch
 ```
 
-This command will watch all source files and run tests every time a typescript file is updated and compile less
-when a less file is updated.
+This command will watch all source files and run tests every time a file is updated.
 
 ### Running the build script
 
@@ -109,30 +107,35 @@ The build files will then be in the `dist/` directory.
 ## Directory Layout
 
 ```
-dist/                         --> bundled application files
-src/                          --> all of the files to be used in development
-  assets/                     --> static assets folder such as images
-    img/                      --> image files
-  index.html                  --> app layout file (the main html template file of the app)
-  app/                        --> typescript files
-    {module}/                 --> angular module ts files
-      {module}.ts             --> angular module code
-      {module}.spec.ts        --> unit test for module
-      {module}.e2e.ts         --> e2e test for module
-      {module}.html           --> html code for module
-      {module}.less           --> less code for module
-  client.ts                   --> client app to be loaded by client in browser
-  env.ts                      --> contains environment variables
-  server.ts                   --> server app which runs in node and starts an express app
-karma.conf.js                 --> config file for running unit tests with karma
-protractor.conf.js            --> config file for running e2e tests with Protractor
-protractor.saucelabs.conf.js  --> config file for running e2e tests with Protractor via saucelabs
-spec-bundle.js                --> bundles files for unit tests
-tsconfig.json                 --> config file for typescript compiler
-tslint.json                   --> config file for tslint
-typings.json                  --> typings manager file
-webpack.config.js             --> config file for webpack
-webpack.test.js               --> test config file for webpack
+config/                             --> various config files
+  karma.conf.js                     --> config file for running unit tests with karma
+  protractor.conf.js                --> config file for running e2e tests with Protractor
+  protractor.saucelabs.conf.js      --> config file for running e2e tests with Protractor via saucelabs
+dist/                               --> built application files
+e2e/                                --> e2e spec files
+src/                                --> application source files
+  app/                              --> typescript files
+    {module}/                       --> angular module ts files
+      {module}.component.ts         --> web component
+      {module}.component.spec.ts    --> unit test for component
+      {module}.component.html       --> mark up code for component
+      {module}.css                  --> styles for component
+  img/                              --> image files
+  icons/                            --> icon files
+  styles/                           --> global styles in Less CSS syntax
+  index.html                        --> main index html file
+  environment.ts                    --> environment variables for app
+  client.ts                         --> bootstrap for client
+  server.ts                         --> bootstrap for server
+  main.node.ts                      --> node express server app that renders app on server
+  main.browser.ts                   --> client app to be loaded by client in browser
+angular-cli.json                    --> config for angular cli
+angular-cli-build.js                --> build script for angular cli
+nodemon.json                        --> watch server config
+package.json                        --> npm config
+tsconfig.json                       --> config for typescript compiler
+tslint.json                         --> config for tslint
+typings.json                        --> typings management file
 
 
 ```
@@ -146,10 +149,10 @@ There are two kinds of tests in the angular2-start application: Unit tests and E
 The angular2-start app comes preconfigured with unit tests. These are written in
 [Jasmine][jasmine], which we run with [Karma][karma].
 
-* the configuration is found in `karma.conf.js`
+* the configuration is found in `config/karma.conf.js`
 * the unit tests are found in the same directory as the modules they test and are suffixed with `.spec.ts`.
 
-The easiest way to run the unit tests is to do:
+The easiest way to run the unit tests is:
 
 ```
 npm test
@@ -163,7 +166,7 @@ are run with the [Protractor][protractor] End-to-End test runner.  It uses nativ
 special features for Angular applications.
 
 * the configuration is found at `protractor.conf.js`
-* the end-to-end tests are found in the same directory as the modules they test and are suffixed with `.e2e.ts`.
+* the end-to-end tests are found in the `e2e` directory and are suffixed with `.e2e.ts`.
 
 Protractor simulates interaction with our web app and verifies that the application responds
 correctly. Therefore, our web server needs to be serving up the application, so that Protractor
@@ -202,9 +205,9 @@ For more information on Angular please check out [https://angular.io/][angular]
 [istanbul]: https://github.com/gotwarlost/istanbul
 [typings]: https://www.npmjs.com/package/typings
 [tslint]: https://palantir.github.io/tslint/
-[webpack]:https://webpack.github.io/
+[systemjs]:https://github.com/systemjs/systemjs
 [angularstart]: https://github.com/thisissoon/angular-start
 [universalstarter]: https://github.com/angular/universal-starter
-[webpackstarter]: https://angularclass.github.io/angular2-webpack-starter
 [angular]: https://angular.io/
+[angularcli]:https://cli.angular.io/
 [nvm]: https://github.com/creationix/nvm
