@@ -7,7 +7,7 @@ import { ResultComponent } from './+result/result.component';
 @Component({
   moduleId: module.id,
   selector: 'start-app',
-  templateUrl: `
+  template: `
   <router-outlet></router-outlet>
   <p class="made-with text-center">
     Made by <a [href]="url" target="_blank">{{ name }}</a>

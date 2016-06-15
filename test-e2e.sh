@@ -16,7 +16,7 @@ if [[ $CIRCLECI ]]; then
 fi
 
 # e2e testing script
-npm start &
+npm start
 sleep 15
 
 if [[ $CI ]]; then
