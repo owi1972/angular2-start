@@ -1,27 +1,21 @@
+// the polyfills must be the first thing imported in node.js
+import 'angular2-universal-polyfills';
+
 import * as path from 'path';
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 
-// Angular 2
-import 'angular2-universal-preview/polyfills';
-import {
-  expressEngine,
-  REQUEST_URL,
-  HTTP_PROVIDERS,
-  NODE_LOCATION_PROVIDERS
-} from 'angular2-universal-preview';
+// Angular 2 Universal
+import { enableProdMode, expressEngine } from 'angular2-universal';
 
+import { ngApp } from './main.node';
+import { environment } from './app/';
 
-import {provide, enableProdMode} from 'angular2/core';
-import {APP_BASE_HREF, ROUTER_PROVIDERS} from 'angular2/router';
-// Application
-import {App} from './app/app';
-import {ENV} from './env';
+const app = express();
+const ROOT = path.join(path.resolve(__dirname));
 
-let app = express();
-let root = path.join(path.resolve(__dirname, '..'));
-let nodeEnv = process.env.NODE_ENV || 'development';
-
-if (nodeEnv === 'production') {
+// enable prod for faster renders
+if (environment.production) {
   enableProdMode();
 }
 
@@ -30,33 +24,25 @@ app.engine('.html', expressEngine);
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
+app.use(bodyParser.json());
 
-function ngApp(req, res) {
-  let baseUrl = '/';
-  let url = req.originalUrl || '/';
-  res.render('index', {
-    directives: [App],
-    providers: [
-      provide(APP_BASE_HREF, { useValue: baseUrl }),
-      provide(REQUEST_URL, { useValue: url }),
-      provide('config', { useValue: ENV.development }),
-      HTTP_PROVIDERS,
-      ROUTER_PROVIDERS,
-      NODE_LOCATION_PROVIDERS
-    ],
-    async: true,
-    preboot: true
-  });
-}
 // Serve static files
-app.use(express.static(root));
-// Routes
+app.use('/', express.static(ROOT, {index: false}));
+
+
+// Routes with html5pushstate
 app.use('/', ngApp);
-app.use('/search', ngApp);
-app.use('/results', ngApp);
+app.use('/result', ngApp);
+
+// use indexFile over ngApp only when there is too much load on the server
+// function indexFile(req, res) {
+//   // when there is too much load on the server just send
+//   // the index.html without prerendering for client-only
+//   res.sendFile('/index.html', {root: __dirname});
+// }
+
 
 // Server
 app.listen(3000, () => {
-  console.log('Listen on http://localhost:3000');
-  console.log('Environment: ' + nodeEnv);
+  console.log('Listening on: http://localhost:3000');
 });

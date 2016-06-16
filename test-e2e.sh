@@ -16,31 +16,28 @@ if [[ $CIRCLECI ]]; then
 fi
 
 # e2e testing script
-
-webdriver-manager update
-webdriver-manager start &
-npm start &
-
+npm start
 sleep 15
 
 if [[ $CI ]]; then
+  webdriver-manager update
+  webdriver-manager start &
+
   echo "Running e2e tests in CI mode"
-  protractor ./protractor.saucelabs.conf.js
+  protractor ./config/protractor.saucelabs.conf.js
 else
   echo "Running e2e tests in local mode"
-  protractor ./protractor.conf.js
+  protractor ./config/protractor.conf.js
 fi
 
 rc=$?
-
-npm stop
-killall java
+curl -s -L http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer > /dev/null 2>&1
+killall node
 
 if [[ $rc != 0 ]]; then
   echo "protractor tests failed"
   exit 1
-else 
+else
   echo "protractor tests passed"
   exit 0
 fi
-

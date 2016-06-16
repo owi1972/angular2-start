@@ -1,16 +1,14 @@
 {
-  "dependencies": {},
-  "devDependencies": {},
-  "ambientDependencies": {
-    "angular-protractor": "github:DefinitelyTyped/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#64b25f63f0ec821040a5d3e049a976865062ed9d",
-    "core-js": "registry:dt/core-js#0.0.0+20160317120654",
-    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#2cad4a3cff770c37b40496188c246b1a60e87e2d",
-    "hammerjs": "github:DefinitelyTyped/DefinitelyTyped/hammerjs/hammerjs.d.ts#74a4dfc1bc2dfadec47b8aae953b28546cb9c6b7",
-    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#4b36b94d5910aa8a4d20bdcd5bd1f9ae6ad18d3c",
-    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#2cad4a3cff770c37b40496188c246b1a60e87e2d",
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#8cf8164641be73e8f1e652c2a5b967c7210b6729",
-    "selenium-webdriver": "github:DefinitelyTyped/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#a83677ed13add14c2ab06c7325d182d0ba2784ea",
-    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#2cad4a3cff770c37b40496188c246b1a60e87e2d",
-    "webpack": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack.d.ts#95c02169ba8fa58ac1092422efbd2e3174a206f4"
+  "globalDependencies": {
+    "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "node": "registry:dt/node#4.0.0+20160412142033",
+    "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160317120654"
   }
 }

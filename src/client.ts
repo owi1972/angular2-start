@@ -1,16 +1,21 @@
-import './shims/shims_for_IE.js';
-import 'angular2-universal-preview/polyfills';
-import {prebootComplete} from 'angular2-universal-preview';
-import {provide} from 'angular2/core';
+import { enableProdMode } from '@angular/core';
+import { prebootComplete } from 'angular2-universal';
+import { environment } from './app/';
+import { ngApp } from './main.browser';
 
-import {bootstrap} from 'angular2/platform/browser';
-import {ROUTER_PROVIDERS} from 'angular2/router';
+if (environment.production) {
+  // enable prod for faster renders
+  enableProdMode();
+}
 
-import {App} from './app/app';
-import {ENV} from './env';
+function main() {
+  ngApp()
+    .then(prebootComplete);
+}
 
-bootstrap(App, [
-  ...ROUTER_PROVIDERS,
-  provide('config', { useValue: ENV.development })
-])
-.then(prebootComplete);
+// on document ready bootstrap Angular 2
+if (document.readyState === 'complete') {
+  main();
+} else {
+  document.addEventListener('DOMContentLoaded', main);
+}
