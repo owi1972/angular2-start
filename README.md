@@ -1,29 +1,22 @@
 # Angular2 Start
 
-An Angular 2 starter project written in [Typescript][typescript] and featuring (Router, Forms, Directives, Unit
-tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs],
-[CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings],
-[Tslint][tslint], [SystemJS][systemjs].
+An Angular 2 starter project written in [Typescript][typescript] and featuring (Router, Forms, Directives, Unit tests and E2E tests) [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Typescript][typescript], [Typings][typings], [Tslint][tslint] and [SystemJS][systemjs].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
 
-<!--[![Sauce Test Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/u/angular2-start)-->
+[![Build Status](https://saucelabs.com/open_sauce/build_matrix/angular2-start.svg)](https://saucelabs.com/beta/builds/94850a413053429f8e9a6554072b366b)
 
 If you're looking for Angular 1.x please use [angular-start][angularstart]
 
-This project structure is based on the [Angular Universal Starter][universalstarter] and
-[Angular CLI][angularcli] skeleton for a typical [Angular 2][angular] Universal/SystemJS
-application.
+This project structure is based on the [Angular Universal Starter][universalstarter] and [Angular CLI][angularcli] skeleton for a typical [Angular 2][angular] Universal/SystemJS application.
 
-The project is preconfigured to install the Angular framework, Angular CLI and a bunch of
-development and testing tools for instant web development gratification.
+The project is preconfigured to install the Angular framework, Angular CLI and a bunch of development and testing tools for instant web development gratification.
 
 
 ## Getting Started
 
-__Note__: make sure you have [node][nodejs] version >= 4 installed. We recommend using [node version manager][nvm]
-to install nodejs and manage node versions.
+__Note__: make sure you have [node][nodejs] version >= 4 installed. We recommend using [node version manager][nvm] to install nodejs and manage node versions.
 
 ### Clone the Angular Start repository
 
@@ -38,8 +31,7 @@ cd angular2-start
 
 ### Install Dependencies
 
-We have two kinds of dependencies in this project: development tools and app framework code. The development
- tools help us build and test the application.
+We have two kinds of dependencies in this project: development tools and app framework code. The development tools help us build and test the application.
 
 * We get the development tools we depend upon and our the app frameworks via `npm`, the [node package manager][npm].
 * We have configured a list of tasks using [npm][npm] scripts which can be found in `package.json`.
@@ -57,8 +49,7 @@ We have preconfigured `npm` to automatically install typings for typescript afte
 npm install
 ```
 
-Behind the scenes this will also call `typings install`. You should find that you have two new
-folders in your project.
+Behind the scenes this will also call `typings install`. You should find that you have two new folders in your project.
 
 * `node_modules` - contains the npm packages for the dev tools we need as well as our app framework libraries
 * `typings` - contains typings for typescript
@@ -146,8 +137,7 @@ There are two kinds of tests in the angular2-start application: Unit tests and E
 
 ### Running Unit Tests
 
-The angular2-start app comes preconfigured with unit tests. These are written in
-[Jasmine][jasmine], which we run with [Karma][karma].
+The angular2-start app comes preconfigured with unit tests. These are written in [Jasmine][jasmine], which we run with [Karma][karma].
 
 * the configuration is found in `config/karma.conf.js`
 * the unit tests are found in the same directory as the modules they test and are suffixed with `.spec.ts`.
@@ -161,17 +151,12 @@ npm test
 
 ### End to end testing
 
-The angular2-start app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
-are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has
-special features for Angular applications.
+The angular2-start app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests are run with the [Protractor][protractor] End-to-End test runner.  It uses native events and has special features for Angular applications.
 
 * the configuration is found at `protractor.conf.js`
 * the end-to-end tests are found in the `e2e` directory and are suffixed with `.e2e.ts`.
 
-Protractor simulates interaction with our web app and verifies that the application responds
-correctly. Therefore, our web server needs to be serving up the application, so that Protractor
-can interact with it. To run end to end tests we first need to install protractor with global
-permissions.
+Protractor simulates interaction with our web app and verifies that the application responds correctly. Therefore, our web server needs to be serving up the application, so that Protractor can interact with it. To run end to end tests we first need to install protractor with global permissions.
 
 ```
 npm install -g protractor
@@ -183,9 +168,7 @@ Then simply run:
 npm run e2e
 ```
 
-Behind the scenes this will also run `webdriver-manager update` and `webdriver-manager start`. This will download
-and install the latest version of the stand-alone WebDriver tool and start the Selenium web server. This script
-will execute the end-to-end tests against the application being hosted on the development server.
+Behind the scenes this will also run `webdriver-manager update` and `webdriver-manager start`. This will download and install the latest version of the stand-alone WebDriver tool and start the Selenium web server. This script will execute the end-to-end tests against the application being hosted on the development server.
 
 
 ## Contact

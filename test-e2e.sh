@@ -19,10 +19,10 @@ fi
 npm start
 sleep 15
 
-if [[ $CI ]]; then
   webdriver-manager update
   webdriver-manager start &
 
+if [[ $CI ]]; then
   echo "Running e2e tests in CI mode"
   protractor ./config/protractor.saucelabs.conf.js
 else
@@ -32,7 +32,7 @@ fi
 
 rc=$?
 curl -s -L http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer > /dev/null 2>&1
-killall node
+npm stop
 
 if [[ $rc != 0 ]]; then
   echo "protractor tests failed"

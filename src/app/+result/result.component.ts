@@ -77,8 +77,7 @@ export class ResultComponent implements OnActivate {
       .subscribe((data) => {
           this.results = data.results;
           this.loading = false;
-        },
-        err => console.log(err)
+        }
       );
   };
 

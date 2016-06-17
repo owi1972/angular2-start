@@ -8,10 +8,7 @@
   ],
   "verbose": true,
   "execMap": {
-    "js": "npm run build && node"
-  },
-  "events": {
-    "restart": "npm test"
+    "js": "npm run test && node"
   },
   "script": "./dist/server.js",
   "watch": [

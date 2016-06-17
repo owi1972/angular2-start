@@ -5,7 +5,8 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-spec-reporter'),
-      require('karma-chrome-launcher')
+      require('karma-chrome-launcher'),
+      require('karma-coverage')
     ],
     customLaunchers: {
       // chrome setup for travis CI using chromium
@@ -25,19 +26,32 @@ module.exports = function (config) {
       { pattern: 'config/karma-test-shim.js', included: true, watched: true },
 
       // Distribution folder.
-      { pattern: 'dist/**/*', included: false, watched: true }
+      { pattern: 'dist/**/*', included: false, watched: true },
+
+      { pattern: 'dist/!(vendor)/**/*.js.map', included: false, watched: false }
     ],
     exclude: [
       // Vendor packages might include spec files. We don't want to use those.
       'dist/vendor/**/*.spec.js'
     ],
-    preprocessors: {},
-    reporters: ['spec','progress'],
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'dist/!(vendor)/**/!(*spec).js': ['coverage']
+    },
+    reporters: ['spec', 'coverage'],
+    coverageReporter: {
+      dir : 'coverage/',
+      reporters: [
+        { type: 'json', subdir: '.', file: 'coverage-final.json' },
+      ]
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   });
 };

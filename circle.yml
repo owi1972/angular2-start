@@ -6,7 +6,7 @@
 
 machine:
   services:
-    - docker
+    # - docker
   node:
     version: 6.2
   environment:
@@ -18,9 +18,9 @@ machine:
 dependencies:
   pre:
     - nvm install 4.4
-    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
+    # - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
   override:
-    - npm install -g angular-cli protractor #coveralls
+    - npm install -g angular-cli protractor coveralls
     - npm install
 
 # Test Commands
@@ -32,7 +32,7 @@ test:
     - nvm use 6.2 && npm run test
     - npm run e2e
   post:
-    # - coveralls < coverage/lcov.info
+    - npm run coverage:coveralls
 
 # Deployment
 
