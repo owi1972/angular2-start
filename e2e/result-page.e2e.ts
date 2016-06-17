@@ -30,9 +30,9 @@ describe('Result page', () => {
           browser.sleep(1000);
           let items = page.getResults(),
               alert = page.getAlert(),
-              result = 4;
+              moreThanValue = 0;
 
-          expect(items.count()).toBe(result);
+          expect(items.count()).toBeGreaterThan(moreThanValue);
           expect(alert.isPresent()).toBeFalsy();
           return /result\?query=london/.test(url);
         });
