@@ -8,7 +8,7 @@ if [[ $CIRCLECI ]]; then
 
   # Lauch sauce connect and create folder when done
   cd sc-*-linux
-  nohup ./bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -f ~/sc_ready &
+  nohup ./bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -i $CIRCLE_BUILD_NUM -f ~/sc_ready &
 
   # Wait for tunnel to be ready
   while [ ! -e ~/sc_ready ]; do sleep 1; done
@@ -17,10 +17,8 @@ fi
 
 # e2e testing script
 npm start
-sleep 15
-
-  webdriver-manager update
-  webdriver-manager start &
+webdriver-manager update
+webdriver-manager start &
 
 if [[ $CI ]]; then
   echo "Running e2e tests in CI mode"
@@ -31,9 +29,12 @@ else
 fi
 
 rc=$?
+
+# shut down running services
 curl -s -L http://localhost:4444/selenium-server/driver?cmd=shutDownSeleniumServer > /dev/null 2>&1
 npm stop
 
+# exit with appropriate status code
 if [[ $rc != 0 ]]; then
   echo "protractor tests failed"
   exit 1
