@@ -14,10 +14,12 @@
     "build": "ng build",
     "postbuild": "tsc -p ./src",
     "lint": "tslint \"src/**/*.ts\"",
+    "coverage:coveralls": "coveralls < ./coverage/lcov.info",
     "coverage:serve": "http-server ./coverage/html -p 3001",
+    "coverage:stdout": "cat coverage/coverage.txt",
     "pretest": "rimraf ./coverage && npm run build",
     "test": "karma start ./config/karma.conf.js",
-    "posttest": "cat coverage/coverage.txt",
+    "posttest": "npm run coverage:stdout",
     "e2e": "bash ./test-e2e.sh"
   },
   "private": true,
