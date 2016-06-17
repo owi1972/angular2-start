@@ -51,22 +51,30 @@ describe('Component: Result', () => {
 
   it('should get Results', inject([ResultComponent, Http, RouteParams],
       (component: ResultComponent, http: Http, params: RouteParams) => {
+
     let query = 'foo';
     let searchParams = new URLSearchParams();
     searchParams.set('address', query);
     searchParams.set('sensor', 'false');
-    let fakeFn = () => {
-      return {
-        map: function(){
-          return {
-            subscribe: function(){}
-          };
-        }
-      };
+    let observable =  {
+      map: (fn) => { fn({ json: () => {}}); return observable; },
+      subscribe: ( fn1, fn2 ) => {
+        fn1({ results: [] });
+        fn2({ results: [] });
+        return observable;
+      }
     };
-    let spy = spyOn(http, 'get').and.callFake(fakeFn);
+    let spy = spyOn(http, 'get').and.returnValue(observable);
     component.getResults(query);
     expect(spy).toHaveBeenCalledWith(environment.apiUrl, { search: searchParams });
+
+  }));
+
+  it('should call getResults on "onActivate" hook', inject([ResultComponent],
+      (component: ResultComponent) => {
+    let spy = spyOn(component, 'getResults');
+    component.routerOnActivate();
+    expect(spy).toHaveBeenCalled();
   }));
 
   it('should create the component', inject([], () => {
