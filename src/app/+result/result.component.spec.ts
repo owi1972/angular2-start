@@ -58,9 +58,8 @@ describe('Component: Result', () => {
     searchParams.set('sensor', 'false');
     let observable =  {
       map: (fn) => { fn({ json: () => {}}); return observable; },
-      subscribe: ( fn1, fn2 ) => {
+      subscribe: fn1 => {
         fn1({ results: [] });
-        fn2({ results: [] });
         return observable;
       }
     };

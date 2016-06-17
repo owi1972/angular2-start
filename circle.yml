@@ -20,7 +20,7 @@ dependencies:
     - nvm install 4.4
     # - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
   override:
-    - npm install -g angular-cli protractor
+    - npm install -g angular-cli protractor coveralls
     - npm install
 
 # Test Commands
