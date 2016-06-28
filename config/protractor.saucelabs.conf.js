@@ -2,9 +2,7 @@
 
 /*global jasmine */
 var SpecReporter = require('jasmine-spec-reporter'),
-    pkg = require('../package.json'),
-    buildNo = process.env.TRAVIS_JOB_NUMBER || process.env.CIRCLE_BUILD_NUM,
-    tunnelId = process.env.TRAVIS_JOB_NUMBER || undefined;
+    pkg = require('../package.json');
 
 exports.config = {
 
@@ -13,14 +11,16 @@ exports.config = {
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
 
+  sauceBuild: process.env.CIRCLE_BUILD_NUM,
+
   directConnect: false,
 
   // The timeout for each script run on the browser. This should be longer
   // than the maximum time your application needs to stabilize between tasks.
-  allScriptsTimeout: 30000,
+  allScriptsTimeout: 60000,
 
   // How long to wait for a page to load.
-  getPageTimeout: 30000,
+  getPageTimeout: 60000,
 
   // ----- What tests to run -----
   //
@@ -34,43 +34,66 @@ exports.config = {
   multiCapabilities: [
     {
       'browserName': 'firefox',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (Firefox 45: Linux) Build: ' + buildNo,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (Firefox 45: Linux) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'version': '45.0',
       'platform': 'Linux'
     },
     {
       'browserName': 'chrome',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + buildNo,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'version': '48.0',
       'platform': 'Linux'
     },
     {
       'browserName': 'internet explorer',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (IE11: Windows 10) Build: ' + buildNo,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (IE11: Windows 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'version': '11.0',
       'platform': 'Windows 10'
     },
     {
       'browserName': 'internet explorer',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + buildNo,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'version': '10.0',
       'platform': 'Windows 8'
     },
     {
       'browserName': 'safari',
-      'tunnel-identifier': tunnelId,
-      'build': buildNo,
-      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + buildNo,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'version': '9.0',
       'platform': 'OS X 10.11'
+    },
+    {
+      'browserName': 'Safari',
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (Safari: i0S 9.3) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'deviceName': 'iPhone 6',
+      'platformName': 'iOS',
+      'platformVersion': '9.3',
+      'appiumVersion': '1.5.3',
+      'deviceOrientation': 'portrait'
+    },
+    {
+      'browserName': 'Browser',
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (Android: 5.1) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'deviceName': 'Android Emulator',
+      'deviceType': 'phone',
+      'platformName': 'Android',
+      'platformVersion': '5.1',
+      'appiumVersion': '1.5.3',
+      'deviceOrientation': 'portrait'
     }
   ],
 
@@ -100,7 +123,7 @@ exports.config = {
     // If true, include stack traces in failures.
     includeStackTrace: true,
     // Default time to wait in ms before a test fails.
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 60000,
 
     print: function() {}
   },
