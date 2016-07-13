@@ -40,7 +40,7 @@ We have two kinds of dependencies in this project: development tools and app fra
 The following tools will need to be installed globally so install them with the `-g` (global) tag:
 
 ```
-npm install -g typescript protractor angular-cli
+npm install -g typescript protractor angular-cli forever
 ```
 
 We have preconfigured `npm` to automatically install typings for typescript after install so to install all dependencies run:
@@ -81,7 +81,9 @@ To rebuild the app after making changes you can run
 npm run watch
 ```
 
-This command will watch all source files and run tests every time a file is updated.
+This command will watch all source files and run relevent task when particular files are updated e.g. compiling typescript whenever a typescript file is updated
+
+This will also allow you to browse all the files in the repo on a static server located on [http://localhost:3001](http://localhost:3001). This is useful for viewing the prototype or coverage folders.
 
 ### Running the build script
 
@@ -102,6 +104,7 @@ config/                             --> various config files
   karma.conf.js                     --> config file for running unit tests with karma
   protractor.conf.js                --> config file for running e2e tests with Protractor
   protractor.saucelabs.conf.js      --> config file for running e2e tests with Protractor via saucelabs
+scripts/                            --> scripts for node tasks
 dist/                               --> built application files
 e2e/                                --> e2e spec files
 src/                                --> application source files
@@ -109,17 +112,16 @@ src/                                --> application source files
     {module}/                       --> angular module ts files
       {module}.component.ts         --> web component
       {module}.component.spec.ts    --> unit test for component
-      {module}.component.html       --> mark up code for component
-      {module}.css                  --> styles for component
   img/                              --> image files
   icons/                            --> icon files
-  styles/                           --> global styles in Less CSS syntax
+  less/                             --> global styles in Less CSS syntax
   index.html                        --> main index html file
   environment.ts                    --> environment variables for app
   client.ts                         --> bootstrap for client
   server.ts                         --> bootstrap for server
   main.node.ts                      --> node express server app that renders app on server
   main.browser.ts                   --> client app to be loaded by client in browser
+prototype/                          --> folder for prototyping html and styles
 angular-cli.json                    --> config for angular cli
 angular-cli-build.js                --> build script for angular cli
 nodemon.json                        --> watch server config

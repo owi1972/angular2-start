@@ -11,27 +11,12 @@
 
   <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="manifest" href="/manifest.webapp">
-  {{#each mobile.icons}}
-    <link rel="{{rel}}" {{#if sizes}}sizes="{{sizes}}" {{/if}}href="{{href}}">
-  {{/each}}
 
-  <link rel="stylesheet" href="styles/main.css">
-
-  {{#if environment.production}}
-  <script type="text/javascript">
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').catch(function(err) {
-        console.log('Error installing service worker: ', err);
-      });
-    }
-  </script>
-  {{/if}}
-
+  <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
@@ -49,22 +34,27 @@
     document.documentElement.className = document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, "$1$2");
   </script>
 
-  {{#if environment.production}}
-    <script src="/app-concat.js" async></script>
-  {{else}}
-    {{#each scripts.polyfills}}<script src="{{.}}"></script>{{/each}}
-    <script>
-      System.import('system-config.js').then(function () {
-        System.import('client');
-      }).catch(console.error.bind(console));
-    </script>
-  {{/if}}
+  <script src="vendor/es6-shim/es6-shim.js"></script>
+  <script src="vendor/reflect-metadata/Reflect.js"></script>
+  <script src="vendor/systemjs/dist/system.src.js"></script>
+  <script src="vendor/zone.js/dist/zone.js"></script>
+  <script>
+    System.import('system-config.js').then(function () {
+      System.import('client');
+    }).catch(console.error.bind(console));
+  </script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
   <script>
     window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
     ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+  </script>
+
+  <!-- TODO: Remove this in production Livereload script -->
+  <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+    ':35729/livereload.js?snipver=1"></' + 'script>')
   </script>
 
 </body>

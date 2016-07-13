@@ -20,7 +20,7 @@ dependencies:
     - nvm install 4.4
     # - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
   override:
-    - npm install -g angular-cli protractor coveralls
+    - npm install -g angular-cli protractor forever coveralls
     - npm install
 
 # Test Commands
@@ -36,25 +36,25 @@ test:
 
 # Deployment
 
-deployment:
-  prod:
-    branch: master
-    commands:
-      - npm run build
-      # - docker build -t $REPO:$TAG .
-      # - docker tag $REPO:$TAG $REPO:prod
-      # - docker push $REPO:prod
-  qa:
-    branch: /release\/.*/
-    commands:
-      - npm run build
-      # - docker build -t $REPO:$TAG .
-      # - docker tag $REPO:$TAG $REPO:qa
-      # - docker push $REPO:qa
-  latest:
-    branch: develop
-    commands:
-      - npm run build
-      # - docker build -t $REPO:$TAG .
-      # - docker tag $REPO:$TAG $REPO:latest
-      # - docker push $REPO:latest
+# deployment:
+#   prod:
+#     branch: master
+#     commands:
+#       - npm run build
+#       - docker build -t $REPO:$TAG .
+#       - docker tag $REPO:$TAG $REPO:prod
+#       - docker push $REPO:prod
+#   qa:
+#     branch: /release\/.*/
+#     commands:
+#       - npm run build
+#       - docker build -t $REPO:$TAG .
+#       - docker tag $REPO:$TAG $REPO:qa
+#       - docker push $REPO:qa
+#   latest:
+#     branch: develop
+#     commands:
+#       - npm run build
+#       - docker build -t $REPO:$TAG .
+#       - docker tag $REPO:$TAG $REPO:latest
+#       - docker push $REPO:latest

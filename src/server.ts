@@ -4,6 +4,7 @@ import 'angular2-universal-polyfills';
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+const livereload = require('connect-livereload');
 
 // Angular 2 Universal
 import { enableProdMode, expressEngine } from 'angular2-universal';
@@ -17,6 +18,16 @@ const ROOT = path.join(path.resolve(__dirname));
 // enable prod for faster renders
 if (environment.production) {
   enableProdMode();
+} else {
+  app.use(livereload({
+    port: 35729,
+    include: [
+      /\/*.css/,
+      /\/*.js/,
+      /\/*.html/,
+      /\/*.json/
+    ]
+  }));
 }
 
 // Express View
