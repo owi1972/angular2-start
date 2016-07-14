@@ -12,6 +12,7 @@
     "restart": "forever restart ./dist/server.js",
     "stop": "forever stop ./dist/server.js",
 
+    "prewatch": "npm run clean:dist && npm run copy && npm run less",
     "watch": "concurrently \"npm run watch:less\" \"npm run watch:ts\" \"npm run watch:static\" \"npm run server\" \"nodemon ./dist/server.js\"",
     "watch:less": "less-watch-compiler ./src/less ./dist/css main.less",
     "watch:ts": "tsc -w -p ./src",
@@ -47,6 +48,7 @@
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
     "@angular/http": "2.0.0-rc.4",
     "@angular/platform-browser": "2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",

@@ -38,8 +38,8 @@ import 'rxjs/add/operator/map';
            *ngIf="!results.length"
            [ngSwitch]="loading"
            role="alert">
-          <span *ngSwitchWhen="false">No results</span>
-          <span *ngSwitchWhen="true">Loading&#8230;</span>
+          <span *ngSwitchCase="false">No results</span>
+          <span *ngSwitchCase="true">Loading&#8230;</span>
         </p>
 
 
