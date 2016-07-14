@@ -26,7 +26,7 @@
     "copy:static": "node ./scripts/copy-static.js",
     "copy:vendor": "node ./scripts/copy-vendor.js",
 
-    "less": "lessc ./src/less/main.less ./dist/css/main.css",
+    "less": "lessc -x ./src/less/main.less ./dist/css/main.css",
 
     "prebuild": "npm run clean:dist && npm run less",
     "build": "tsc -p ./src",

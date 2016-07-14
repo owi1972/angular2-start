@@ -6,7 +6,7 @@ import {
   NODE_HTTP_PROVIDERS,
   ExpressEngineConfig
 } from 'angular2-universal';
-import { provideRouter } from '@angular/router';
+
 import { APP_BASE_HREF } from '@angular/common';
 
 // Application

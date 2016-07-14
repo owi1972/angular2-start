@@ -43,6 +43,7 @@ app.use('/', express.static(ROOT, {index: false}));
 
 // Routes with html5pushstate
 app.use('/', ngApp);
+app.use('/search', ngApp);
 app.use('/result', ngApp);
 
 // use indexFile over ngApp only when there is too much load on the server

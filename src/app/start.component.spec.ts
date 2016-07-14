@@ -6,11 +6,10 @@ import {
   inject
 } from '@angular/core/testing';
 import { StartAppComponent } from './start.component';
-
-import { provideRouter } from '@angular/router';
+import { APP_ROUTER_PROVIDERS } from './start.routes';
 
 beforeEachProviders(() => [
-  provideRouter(routes),
+  ...APP_ROUTER_PROVIDERS,
   StartAppComponent
 ]);
 

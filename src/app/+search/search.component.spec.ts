@@ -10,7 +10,7 @@ import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testin
 import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { Router, provideRouter, PRIMARY_OUTLET, ActivatedRoute } from '@angular/router';
+import { Router, PRIMARY_OUTLET, ActivatedRoute } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
 import { APP_ROUTER_PROVIDERS } from '../start.routes';
