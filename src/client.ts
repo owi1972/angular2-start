@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { prebootComplete } from 'angular2-universal';
-import { environment } from './app/';
+import { environment } from './app';
 import { ngApp } from './main.browser';
 
 if (environment.production) {

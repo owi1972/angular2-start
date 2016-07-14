@@ -10,23 +10,30 @@ import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testin
 import { Component, provide } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from '@angular/router-deprecated';
-import { RootRouter } from '@angular/router-deprecated/src/router';
+import { Router, provideRouter, PRIMARY_OUTLET, ActivatedRoute } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
+import { APP_ROUTER_PROVIDERS } from '../start.routes';
 import { SearchComponent } from './search.component';
 import { Search } from './shared/search.model';
 
 describe('Component: Search', () => {
   let builder: TestComponentBuilder;
 
+  class MockRouter {
+    createUrlTree() {}
+    navigate() {}
+  }
+  class MockActivatedRoute { }
+
   beforeEachProviders(() => [
     SearchComponent,
-    RouteRegistry,
     Location,
+    APP_ROUTER_PROVIDERS,
     provide(APP_BASE_HREF, { useValue: '/' }),
-    provide(Router, { useClass: RootRouter}),
-    provide(ROUTER_PRIMARY_COMPONENT, {useValue: SearchComponent})
+    provide(Router, { useClass: MockRouter }),
+    provide(ActivatedRoute, { useClass: MockActivatedRoute }),
+    provide(PRIMARY_OUTLET, {useValue: SearchComponent})
   ]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
@@ -51,7 +58,7 @@ describe('Component: Search', () => {
       expect(spy).not.toHaveBeenCalled();
 
       component.onSubmit(search);
-      expect(spy).toHaveBeenCalledWith(['Result', search]);
+      expect(spy).toHaveBeenCalledWith(['/result', search]);
       expect(component.submitted).toBeTruthy();
     }
   ));

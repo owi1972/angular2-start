@@ -7,10 +7,10 @@ import {
 } from '@angular/core/testing';
 import { StartAppComponent } from './start.component';
 
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { provideRouter } from '@angular/router';
 
 beforeEachProviders(() => [
-  ...ROUTER_PROVIDERS,
+  provideRouter(routes),
   StartAppComponent
 ]);
 

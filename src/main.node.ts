@@ -2,15 +2,15 @@
 import {
   REQUEST_URL,
   ORIGIN_URL,
-  BASE_URL,
-  NODE_ROUTER_PROVIDERS,
+  NODE_LOCATION_PROVIDERS,
   NODE_HTTP_PROVIDERS,
   ExpressEngineConfig
 } from 'angular2-universal';
+import { provideRouter } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 // Application
-import { StartAppComponent } from './app/';
-
+import { StartAppComponent, APP_ROUTER_PROVIDERS } from './app';
 
 export function ngApp(req, res) {
   let baseUrl = '/';
@@ -22,12 +22,13 @@ export function ngApp(req, res) {
     ],
     platformProviders: [
       { provide: ORIGIN_URL, useValue: 'http://localhost:3000' },
-      { provide: BASE_URL, useValue: baseUrl }
+      { provide: APP_BASE_HREF, useValue: baseUrl }
     ],
     providers: [
       { provide: REQUEST_URL, useValue: url },
-      NODE_ROUTER_PROVIDERS,
-      NODE_HTTP_PROVIDERS
+      APP_ROUTER_PROVIDERS,
+      NODE_HTTP_PROVIDERS,
+      NODE_LOCATION_PROVIDERS
     ],
     async: true,
     preboot: false // { appRoot: 'start-app' } your top level app component selector

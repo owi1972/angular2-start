@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES, provideRouter } from '@angular/router';
 
+import { routes } from './start.routes';
 import { SearchComponent } from './+search/search.component';
 import { ResultComponent } from './+result/result.component';
 
@@ -18,10 +19,6 @@ import { ResultComponent } from './+result/result.component';
     ...ROUTER_DIRECTIVES
   ]
 })
-@RouteConfig([
-  {path: '/', name: 'Search', component: SearchComponent, useAsDefault: true},
-  {path: '/result', name: 'Result', component: ResultComponent}
-])
 export class StartAppComponent {
   name: string = 'SOON_';
   url: string = 'http://thisissoon.com';
