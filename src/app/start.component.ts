@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES, provideRouter } from '@angular/router';
-
-import { SearchComponent } from './+search';
-import { ResultComponent } from './+result';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   moduleId: module.id,

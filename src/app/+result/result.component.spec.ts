@@ -12,7 +12,7 @@ import { By } from '@angular/platform-browser';
 
 import { MockBackend } from '@angular/http/testing';
 import { Http, BaseRequestOptions, URLSearchParams } from '@angular/http';
-import { Router, ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
+import { ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
 import { Observable } from 'rxjs/Observable';
@@ -49,9 +49,11 @@ describe('Component: Result', () => {
     provide(ActivatedRoute, { useClass: MockActivatedRoute }),
     provide(PRIMARY_OUTLET, { useValue: StartAppComponent })
   ]);
-  beforeEach(inject([TestComponentBuilder, ActivatedRoute], function (tcb: TestComponentBuilder, ar: MockActivatedRoute) {
-    builder = tcb;
-  }));
+  beforeEach(inject([TestComponentBuilder, ActivatedRoute],
+    (tcb: TestComponentBuilder, ar: MockActivatedRoute) => {
+      builder = tcb;
+    })
+  );
 
   it('should inject the component', inject([ResultComponent],
       (component: ResultComponent) => {
