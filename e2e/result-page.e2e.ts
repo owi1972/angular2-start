@@ -34,7 +34,7 @@ describe('Result page', () => {
 
           expect(items.count()).toBeGreaterThan(moreThanValue);
           expect(alert.isPresent()).toBeFalsy();
-          return /result\;query=london/.test(url);
+          return /result;query=london/.test(url);
         });
       }, 10000);
     });
