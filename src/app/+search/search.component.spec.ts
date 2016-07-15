@@ -75,7 +75,7 @@ describe('Component: Search', () => {
 });
 
 @Component({
-  selector: 'test',
+  selector: 'test-cmp',
   template: `
     <app-search></app-search>
   `,

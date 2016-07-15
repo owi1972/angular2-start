@@ -98,7 +98,7 @@ describe('Component: Result', () => {
 });
 
 @Component({
-  selector: 'test',
+  selector: 'test-cmp',
   template: `
     <app-result></app-result>
   `,
