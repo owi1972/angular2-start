@@ -6,7 +6,9 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-spec-reporter'),
       require('karma-chrome-launcher'),
-      require('karma-coverage')
+      require('karma-coverage'),
+      require('karma-phantomjs-launcher'),
+      require('karma-remap-istanbul')
     ],
     customLaunchers: {
       // chrome setup for travis CI using chromium
@@ -40,18 +42,29 @@ module.exports = function (config) {
       // (these files will be instrumented by Istanbul)
       'dist/!(vendor)/**/!(*spec).js': ['coverage']
     },
-    reporters: ['spec', 'coverage'],
+    reporters: ['spec', 'coverage', 'karma-remap-istanbul'],
     coverageReporter: {
-      dir : 'coverage/',
+      dir : 'coverage',
       reporters: [
         { type: 'json', subdir: '.', file: 'coverage-final.json' },
       ]
+    },
+    remapIstanbulReporter: {
+      src: 'coverage/coverage-final.json',
+      reports: {
+        lcovonly: 'coverage/lcov.info',
+        html: 'coverage/html',
+        text: 'coverage/coverage.txt'
+      }
     },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: [
+      'PhantomJS'
+      // 'Chrome'
+    ],
     singleRun: true
   });
 };

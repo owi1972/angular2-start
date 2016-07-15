@@ -3,16 +3,16 @@
   "ignore": [
     ".git",
     "tmp",
-    "dist",
+    "src",
     "node_modules"
   ],
   "verbose": true,
   "execMap": {
-    "js": "npm run test && node"
+    "js": "node"
   },
   "script": "./dist/server.js",
   "watch": [
-    "src/"
+    "dist"
   ],
-  "ext": "ts js json css html"
+  "ext": "js json css html"
 }
