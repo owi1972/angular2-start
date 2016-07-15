@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 import { Search } from './shared/search.model';
 
@@ -63,6 +63,6 @@ export class SearchComponent {
 
   onSubmit(search: Search) {
     this.submitted = true;
-    this.router.navigate( ['Result', search] );
+    this.router.navigate( ['/result', search] );
   };
 }

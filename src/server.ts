@@ -4,16 +4,16 @@ import 'angular2-universal-polyfills';
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-const livereload = require('connect-livereload');
 
 // Angular 2 Universal
 import { enableProdMode, expressEngine } from 'angular2-universal';
 
 import { ngApp } from './main.node';
-import { environment } from './app/';
+import { environment } from './app';
 
 const app = express();
 const ROOT = path.join(path.resolve(__dirname));
+const livereload = require('connect-livereload');
 
 // enable prod for faster renders
 if (environment.production) {
@@ -43,6 +43,7 @@ app.use('/', express.static(ROOT, {index: false}));
 
 // Routes with html5pushstate
 app.use('/', ngApp);
+app.use('/search', ngApp);
 app.use('/result', ngApp);
 
 // use indexFile over ngApp only when there is too much load on the server

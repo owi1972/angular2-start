@@ -16,4 +16,7 @@ var copy = require('copy'),
       srcBase: 'node_modules'
     };
 
-copy(files, dest, options);
+copy(files, dest, options, function(err, files) {
+  if (err) throw err;
+  // `files` is an array of the files that were copied
+});

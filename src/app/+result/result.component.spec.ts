@@ -12,11 +12,12 @@ import { By } from '@angular/platform-browser';
 
 import { MockBackend } from '@angular/http/testing';
 import { Http, BaseRequestOptions, URLSearchParams } from '@angular/http';
-
-import { Router, ROUTER_PRIMARY_COMPONENT, RouteParams } from '@angular/router-deprecated';
-import { RootRouter } from '@angular/router-deprecated/src/router';
+import { ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
+import { Observable } from 'rxjs/Observable';
+
+import { StartAppComponent } from '../start.component';
 import { ResultComponent } from './result.component';
 import { environment } from '../environment';
 
@@ -24,11 +25,19 @@ import { environment } from '../environment';
 describe('Component: Result', () => {
   let builder: TestComponentBuilder;
 
+  class MockActivatedRoute extends ActivatedRoute {
+    constructor() {
+      super();
+      this.params = new Observable(observer => {
+        observer.next({query: 'foo'});
+      });
+    }
+  }
+
   beforeEachProviders(() => [
     ResultComponent,
     MockBackend,
     BaseRequestOptions,
-    provide(RouteParams, { useValue: new RouteParams({ query: 'foo' }) }),
     provide(Http, {
       useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
         return new Http(backend, defaultOptions);
@@ -37,20 +46,22 @@ describe('Component: Result', () => {
     }),
     Location,
     provide(APP_BASE_HREF, { useValue: '/' }),
-    provide(Router, { useClass: RootRouter}),
-    provide(ROUTER_PRIMARY_COMPONENT, {useValue: ResultComponent})
+    provide(ActivatedRoute, { useClass: MockActivatedRoute }),
+    provide(PRIMARY_OUTLET, { useValue: StartAppComponent })
   ]);
-  beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
-    builder = tcb;
-  }));
+  beforeEach(inject([TestComponentBuilder, ActivatedRoute],
+    (tcb: TestComponentBuilder, ar: MockActivatedRoute) => {
+      builder = tcb;
+    })
+  );
 
   it('should inject the component', inject([ResultComponent],
       (component: ResultComponent) => {
     expect(component).toBeTruthy();
   }));
 
-  it('should get Results', inject([ResultComponent, Http, RouteParams],
-      (component: ResultComponent, http: Http, params: RouteParams) => {
+  it('should get Results', inject([ResultComponent, Http, ActivatedRoute],
+      (component: ResultComponent, http: Http, params: ActivatedRoute) => {
 
     let query = 'foo';
     let searchParams = new URLSearchParams();
@@ -69,10 +80,10 @@ describe('Component: Result', () => {
 
   }));
 
-  it('should call getResults on "onActivate" hook', inject([ResultComponent],
+  it('should call getResults on "onInit" hook', inject([ResultComponent],
       (component: ResultComponent) => {
     let spy = spyOn(component, 'getResults');
-    component.routerOnActivate();
+    component.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
 
@@ -87,7 +98,7 @@ describe('Component: Result', () => {
 });
 
 @Component({
-  selector: 'test',
+  selector: 'test-cmp',
   template: `
     <app-result></app-result>
   `,
