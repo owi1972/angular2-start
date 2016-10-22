@@ -127,6 +127,17 @@ module.exports = function (options) {
           loaders: ['to-string-loader', 'css-loader']
         },
 
+        /*
+         * sass loader plugin
+         *
+         * https://github.com/jtangelder/sass-loader
+         *
+         */
+        {
+          test: /\.scss$/,
+          loaders: ['style-loader', 'css-loader', 'sass-loader']
+        },
+
         /* Raw loader support for *.html
          * Returns file content as string
          *

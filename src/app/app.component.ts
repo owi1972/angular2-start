@@ -16,27 +16,24 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
+    <nav class="nav nav-inline">
+      <span class="nav-item">
+        <a class="nav-link" [routerLink]=" ['./'] ">
           Index
         </a>
       </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
+      <span class="nav-item">
+        <a class="nav-link" [routerLink]=" ['./home'] ">
           Home
         </a>
       </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
+      <span class="nav-item">
+        <a class="nav-link" [routerLink]=" ['./detail'] ">
           Detail
         </a>
       </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
+      <span class="nav-item">
+        <a class="nav-link" [routerLink]=" ['./about'] ">
           About
         </a>
       </span>
