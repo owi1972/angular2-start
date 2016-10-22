@@ -8,8 +8,8 @@
 # THANKS
 
   <name>
-  PatrickJS -- @gdi2290
-  AngularClass -- @AngularClass
+  SOON_ -- @soonlondon
+  Ed Opare-Aryee -- @edwardoparearyee
 
 # TECHNOLOGY COLOPHON
 
