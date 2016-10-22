@@ -1,95 +1,37 @@
 {
   "name": "angular2-start",
   "version": "0.0.0",
+  "description": "A example angular 2 project",
+  "keywords": [
+    "Angular",
+    "Angular 2",
+    "seed",
+    "starter",
+    "boilerplate"
+  ],
+  "homepage": "https://github.com/thisissoon/angular2-start",
+  "bugs": {
+    "url" : "https://github.com/thisissoon/angular2-start/issues",
+    "email" : "dorks@thisissoon.com"
+  },
   "license": "MIT",
-  "private": true,
-  "angular-cli": {},
+  "contributors": [
+    "SOON_ <dorks@thisissoon.com>",
+    "Ed Opare-Aryee <ed@thisissoon.com>"
+  ],
+  "main": "./src/app/app.component.ts",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/thisissoon/angular2-start.git"
+  },
+  "private": false,
   "scripts": {
-    "postinstall": "typings install",
 
-    "prestart": "npm run build",
-    "start": "forever start ./dist/server.js",
-    "restart": "forever restart ./dist/server.js",
-    "stop": "forever stop ./dist/server.js",
-
-    "prewatch": "npm run clean:dist && npm run copy && npm run less",
-    "watch": "concurrently \"npm run watch:less\" \"npm run watch:ts\" \"npm run watch:static\" \"npm run server\" \"nodemon ./dist/server.js\"",
-    "watch:less": "less-watch-compiler ./src/less ./dist/css main.less",
-    "watch:ts": "tsc -w -p ./src",
-    "watch:static": "watch \"npm run copy:static\" ./src --filter=\"./scripts/watch-static-filter.js\"",
-
-    "server": "lr-http-server . -b -p 3001 -w \"dist/**/*.css,dist/**/*.js,dist/**/*.html,dist/**/*.json,prototype/**/*\"",
-
-    "clean:dist": "rimraf ./dist",
-    "clean:coverage": "rimraf ./coverage",
-
-    "copy": "npm run copy:static && npm run copy:vendor",
-    "copy:static": "node ./scripts/copy-static.js",
-    "copy:vendor": "node ./scripts/copy-vendor.js",
-
-    "less": "lessc ./src/less/main.less ./dist/css/main.css",
-
-    "prebuild": "npm run clean:dist && npm run less",
-    "build": "tsc -p ./src",
-    "postbuild": "npm run copy",
-
-    "lint": "tslint \"src/**/*.ts\"",
-
-    "pretest": "npm run clean:coverage && npm run build",
-    "test": "karma start ./config/karma.conf.js",
-    "posttest": "npm run coverage:stdout",
-
-    "e2e": "bash ./test-e2e.sh",
-
-    "coverage:coveralls": "coveralls < ./coverage/lcov.info",
-    "coverage:stdout": "cat ./coverage/coverage.txt"
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/forms": "0.2.0",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/platform-server": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-alpha.8",
-    "angular-cli": "1.0.0-beta.5",
-    "angular2-universal": "~0.104.5",
-    "body-parser": "1.15.1",
-    "bootstrap": "3.3.6",
-    "express": "4.14.0",
-    "methods": "1.1.2",
-    "parse5": "1.5.0",
-    "preboot": "2.1.2",
-    "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.26"
+
   },
   "devDependencies": {
-    "codelyzer": "~0.0.25",
-    "concurrently": "~2.2.0",
-    "connect-livereload": "~0.5.4",
-    "copy": "~0.2.3",
-    "jasmine-core": "~2.4.1",
-    "jasmine-spec-reporter": "~2.5.0",
-    "karma": "~1.1.1",
-    "karma-chrome-launcher": "~1.0.1",
-    "karma-coverage": "~1.0.0",
-    "karma-jasmine": "~1.0.2",
-    "karma-phantomjs-launcher": "~1.0.1",
-    "karma-remap-istanbul": "github:thisissoon/karma-remap-istanbul",
-    "karma-spec-reporter": "~0.0.26",
-    "less": "~2.7.1",
-    "less-watch-compiler": "~1.2.3",
-    "lr-http-server": "~0.1.1",
-    "nodemon": "~1.9.2",
-    "protractor": "~4.0.0",
-    "remap-istanbul": "~0.6.4",
-    "rimraf": "~2.5.3",
-    "ts-node": "~0.9.3",
-    "tslint": "~3.13.0",
-    "typescript": "~1.8.10",
-    "typings": "~1.3.1",
-    "watch": "~0.19.1"
+
   }
 }
