@@ -16,7 +16,7 @@ export class HomeComponent {
 
   public localState = { value: '' };
 
-  private tasks: Task[] = [];
+  private tasks: Task[] = [{ title: 'My task 1', done: false }];
 
   constructor(public appState: AppState) {}
 
