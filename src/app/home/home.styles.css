@@ -12,6 +12,26 @@
   min-height: 38px;
 }
 
-li {
+.heading,
+.form-todos,
+.list-todos {
+  margin-bottom: 20px;
+}
+
+.list-todos > li {
   margin-bottom: 10px;
+}
+
+.btn-delete {
+  opacity: 0;
+  transition: all .2s;
+}
+
+.list-todos > li:hover .btn-delete {
+  opacity: 1;
+}
+
+.jumbotron {
+  background-color: #e3f2fd;
+  color: #55595c;
 }

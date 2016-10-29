@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AppState } from '../app.service';
-
-interface Task {
+interface Todo {
   title: string;
   done: boolean;
 }
@@ -13,28 +11,16 @@ interface Task {
   templateUrl: './home.template.html'
 })
 export class HomeComponent {
+  todos: Todo[] = [];
+  title: '';
 
-  public localState = { value: '' };
-
-  private tasks: Task[] = [{ title: 'My task 1', done: false }];
-
-  constructor(public appState: AppState) {}
-
-  addTask(title: string) {
-    let task: Task = {
-      title: title,
-      done: false
-    };
-    this.tasks.push(task);
+  add(title: string) {
+    let todo: Todo = { title: title, done: false };
+    this.todos.push(todo);
+    this.title = '';
   }
 
-  deleteTask(index: number) {
-    this.tasks.splice(index, 1);
-  }
-
-  submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = value;
+  delete(i: number) {
+    this.todos.splice(i, 1);
   }
 }

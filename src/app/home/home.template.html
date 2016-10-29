@@ -1,5 +1,5 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h1 class="display-3">Welcome to our todo list app</h1>
     <p class="lead">Below you can add and keep a track of tasks you wish to do</p>
   </div>
@@ -7,69 +7,59 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-md-6">
 
-      <h2>
+      <h2 class="heading">
         Todos
-        <small class="text-muted">{{ tasks.length || 0 }}</small>
+        <small class="text-muted">{{ todos.length || 0 }}</small>
       </h2>
 
-    </div>
-
-    <div class="col-xs-6 text-md-right">
-
-      <form class="form-inline">
+      <form
+        class="form-inline form-todo"
+        (ngSubmit)="add(title)"
+        autocomplete="off">
         <div class="form-group">
           <input
             type="text"
-            class="form-control"
-            id="title"
             name="title"
+            class="form-control"
             [(ngModel)]="title"
-            aria-describedby="titleHelp"
-            placeholder="Enter task name">
+            placeholder="Add todo"
+            autofocus>
         </div>
         <button
           type="submit"
-          class="btn btn-primary"
-          (click)="addTask(title)">
-          Add task
+          class="btn btn-primary">
+          Add
         </button>
       </form>
 
-    </div>
-  </div>
-</div>
+      <ul class="list-todos list-unstyled">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-
-      <ul class="list-unstyled">
-        <li *ngFor="let task of tasks; let i = index">
+        <li *ngFor="let todo of todos; let i = index">
 
           <div class="row">
 
-            <div class="col-xs-6">
-              <p class="title">{{ task.title }}</p>
-            </div>
-
-            <div class="col-xs-3">
+            <div class="col-xs-1">
               <div class="checkbox-done">
                 <input
                   id="done"
-                  class=""
+                  name="done"
                   type="checkbox"
-                  value=""
-                  [(ngModel)]="task.done">
-                <label for="done" class="sr-only sr-only-focusable">Done</label>
+                  [(ngModel)]="todo.done">
+                <label for="done" class="sr-only sr-only-focusable">Mark as complete</label>
               </div>
+            </div>
+
+            <div class="col-xs-8">
+              <p class="title" *ngIf="!todo.done">{{ todo.title }}</p>
+              <s class="title text-muted" *ngIf="todo.done">{{ todo.title }}</s>
             </div>
 
             <div class="col-xs-3">
               <button
-                class="btn btn-danger"
-                (click)="deleteTask(i)">
+                class="btn btn-danger btn-delete"
+                (click)="delete(i)">
                 Delete
               </button>
             </div>
@@ -79,6 +69,9 @@
         </li>
       </ul>
 
+
+
     </div>
   </div>
 </div>
+
