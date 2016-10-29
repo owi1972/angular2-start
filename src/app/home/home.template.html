@@ -25,7 +25,8 @@
             class="form-control"
             [(ngModel)]="title"
             placeholder="Add todo"
-            autofocus>
+            autofocus
+            required>
         </div>
         <button
           type="submit"
@@ -46,14 +47,15 @@
                   id="done"
                   name="done"
                   type="checkbox"
-                  [(ngModel)]="todo.done">
+                  [(ngModel)]="todo.done"
+                  (ngModelChange)="edit(i, todo)">
                 <label for="done" class="sr-only sr-only-focusable">Mark as complete</label>
               </div>
             </div>
 
-            <div class="col-xs-8">
-              <p class="title" *ngIf="!todo.done">{{ todo.title }}</p>
-              <s class="title text-muted" *ngIf="todo.done">{{ todo.title }}</s>
+            <div class="col-xs-8" [ngSwitch]="todo.done">
+              <p class="title" *ngSwitchDefault>{{ todo.title }}</p>
+              <s class="title text-muted" *ngSwitchCase="true">{{ todo.title }}</s>
             </div>
 
             <div class="col-xs-3">
@@ -68,8 +70,6 @@
 
         </li>
       </ul>
-
-
 
     </div>
   </div>

@@ -11,13 +11,23 @@ import { Component } from '@angular/core';
       SOON_
     </a>
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">
-          Home <span class="sr-only">(current)</span>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Home
+          <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about">About</a>
+        <a
+          class="nav-link"
+          [routerLink]="['about']"
+          [routerLinkActive]="['active']">
+          About
+        </a>
       </li>
     </ul>
   </nav>
