@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class StoreService {
 
-  protected storeName = 'appData';
+  storeName = 'appData';
 
   private set store(value: any) {
     localStorage.setItem(this.storeName, JSON.stringify(value));
@@ -22,14 +22,14 @@ export class StoreService {
   public set(key: string, value: any): any {
     let store = this.store;
     store[key] = value;
-    this.store = store
+    this.store = store;
     return this;
   };
 
   public delete(key: string): any {
     let store = this.store;
     if (store[key]) {
-      delete store[key]
+      delete store[key];
     }
     this.store = store;
     return this;

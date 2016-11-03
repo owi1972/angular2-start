@@ -10,9 +10,9 @@ import {
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { Title } from './title.service';
+import { StoreService } from './store.service';
 
-describe('Title', () => {
+describe('StoreService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       BaseRequestOptions,
@@ -24,20 +24,26 @@ describe('Title', () => {
         },
         deps: [MockBackend, BaseRequestOptions]
       },
-      Title
-    ]}));
-
-  it('should have http', inject([ Title ], (title: Title) => {
-    expect(!!title.http).toEqual(true);
+      StoreService
+    ]
   }));
 
-  it('should get data from the server', inject([ Title ], (title: Title) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
-    title.getData();
-    expect(console.log).toHaveBeenCalled();
-    expect(title.getData()).toEqual({ value: 'AngularClass' });
+  it('should have store name', inject([ StoreService ], (store: StoreService) => {
+    expect(store.storeName).toEqual('appData');
+  }));
+
+  it('should get data from storage', inject([ StoreService ], (store: StoreService) => {
+    let spy = spyOn(localStorage, 'getItem').and.callFake(() => {
+      return JSON.stringify({ foo: 'bar' });
+    });
+    let result = store.get('foo');
+
+    expect(spy).toHaveBeenCalledWith(store.storeName);
+    expect(result).toEqual('bar');
   }));
 
 });

@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Todo } from './todo.model';
 import { StoreService } from '../store';
-
-interface Todo {
-  title: string;
-  done: boolean;
-}
 
 @Component({
   selector: 'home',
@@ -13,13 +9,14 @@ interface Todo {
   templateUrl: './home.template.html'
 })
 export class HomeComponent implements OnInit {
-  _todos: Todo[];
-  title: string;
+  _todos: Todo[] = [];
+  title: string = '';
+  storeName: string = 'todos';
 
-  constructor(protected store: StoreService) {}
+  constructor(public store: StoreService) {}
 
   ngOnInit() {
-    this._todos = this.store.get('todos');
+    this._todos = this.store.get(this.storeName);
   }
 
   get todos(): Todo[] {
@@ -28,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   set todos(value) {
     this._todos = value;
-    this.store.set('todos', value);
+    this.store.set(this.storeName, value);
   }
 
   add(title: string) {

@@ -11,11 +11,16 @@ import {
 import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
-import { AppState } from '../app.service';
 import { HomeComponent } from './home.component';
-import { Title } from './title';
+import { Todo } from './todo.model';
+import { StoreService } from '../store';
 
-describe('Home', () => {
+describe('HomeComponent', () => {
+  let todos: Todo[] = [
+    { title: 'task1', done: true },
+    { title: 'task2', done: false },
+    { title: 'task3', done: false }
+  ];
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
@@ -28,26 +33,29 @@ describe('Home', () => {
         },
         deps: [MockBackend, BaseRequestOptions]
       },
-      AppState,
-      Title,
+      {
+        provide: StoreService,
+        useClass: class {
+          get(key: string) { return todos; }
+          set(key: string) { }
+        }
+      },
       HomeComponent
     ]
   }));
 
   it('should have default data', inject([ HomeComponent ], (home: HomeComponent) => {
-    expect(home.localState).toEqual({ value: '' });
-  }));
-
-  it('should have a title', inject([ HomeComponent ], (home: HomeComponent) => {
-    expect(!!home.title).toEqual(true);
+    expect(home._todos).toEqual([]);
+    expect(home.title).toEqual('');
   }));
 
   it('should log ngOnInit', inject([ HomeComponent ], (home: HomeComponent) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
+    let spy = spyOn(home.store, 'get').and.callThrough();
+    expect(spy).not.toHaveBeenCalled();
 
     home.ngOnInit();
-    expect(console.log).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(home.storeName);
+    expect(home._todos).toEqual(todos);
   }));
 
 });
