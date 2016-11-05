@@ -6,7 +6,7 @@ import { decorateModuleRef } from './app/environment';
 import { bootloader } from '@angularclass/hmr';
 
 // Bootstrap 4
-import "scss/main.scss";
+import 'scss/main.scss';
 
 /*
  * App Module

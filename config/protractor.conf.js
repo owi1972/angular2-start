@@ -4,6 +4,7 @@
 
 require('ts-node/register');
 var helpers = require('./helpers');
+var SpecReporter = require('jasmine-spec-reporter');
 
 exports.config = {
   baseUrl: 'http://localhost:3000/',
@@ -29,14 +30,12 @@ exports.config = {
   directConnect: true,
 
   capabilities: {
-    'browserName': 'chrome',
-    'chromeOptions': {
-      'args': ['show-fps-counter=true']
-    }
+    'browserName': 'chrome'
   },
 
   onPrepare: function() {
     browser.ignoreSynchronization = true;
+    jasmine.getEnv().addReporter(new SpecReporter());
   },
 
   /**

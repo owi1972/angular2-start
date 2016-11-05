@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container-fluid">
-    <h1 class="display-3">Welcome to our todo list app</h1>
+    <h1 class="display-4">Welcome to our todo list app</h1>
     <p class="lead">Below you can add and keep a track of tasks you wish to do</p>
   </div>
 </div>
@@ -11,7 +11,7 @@
 
       <h2 class="heading">
         Todos
-        <small class="text-muted">{{ todos.length || 0 }}</small>
+        <small class="text-muted text-todos-length">{{ todos.length || 0 }}</small>
       </h2>
 
       <form
@@ -22,29 +22,33 @@
           <input
             type="text"
             name="title"
-            class="form-control"
+            class="form-control form-control-title"
             [(ngModel)]="title"
             placeholder="Add todo"
             autofocus
             required>
         </div>
-        <button
-          type="submit"
-          class="btn btn-primary">
-          Add
-        </button>
+        <div class="form-group">
+          <button
+            type="submit"
+            class="btn btn-primary btn-add">
+            Add
+          </button>
+        </div>
       </form>
 
       <ul class="list-todos list-unstyled">
 
-        <li *ngFor="let todo of todos; let i = index">
+        <li
+          *ngFor="let todo of todos; let i = index"
+          class="list-todos-item">
 
           <div class="row">
 
-            <div class="col-xs-1">
+            <div class="col-xs-2 col-sm-1">
               <div class="checkbox-done">
                 <input
-                  id="done"
+                  class="input-done"
                   name="done"
                   type="checkbox"
                   [(ngModel)]="todo.done"
@@ -53,12 +57,12 @@
               </div>
             </div>
 
-            <div class="col-xs-8" [ngSwitch]="todo.done">
+            <div class="col-xs-6 col-sm-8" [ngSwitch]="todo.done">
               <p class="title" *ngSwitchDefault>{{ todo.title }}</p>
               <s class="title text-muted" *ngSwitchCase="true">{{ todo.title }}</s>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-4 col-sm-3 text-xs-right">
               <button
                 class="btn btn-danger btn-delete"
                 (click)="delete(i)">
