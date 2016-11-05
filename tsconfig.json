@@ -11,6 +11,7 @@
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
+
     },
     "lib": [
       "dom",
@@ -37,5 +38,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
