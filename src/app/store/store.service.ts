@@ -11,7 +11,7 @@ export class StoreService {
 
   private get store(): any {
     let store = localStorage.getItem(this.storeName);
-    return JSON.parse(store) || {};
+    return typeof store === 'string' ? JSON.parse(store) : {};
   }
 
   public get(key: string): any {
