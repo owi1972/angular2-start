@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-4">
 
       <h2 class="heading">
         Todos
@@ -15,7 +15,7 @@
       </h2>
 
       <form
-        class="form-inline form-todo"
+        class="form-inline form-todos"
         (ngSubmit)="add(title)"
         autocomplete="off">
         <div class="form-group">
@@ -45,7 +45,7 @@
 
           <div class="row">
 
-            <div class="col-xs-2 col-sm-1">
+            <div class="col-xs-8 col-sm-9" [ngSwitch]="todo.done">
               <div class="checkbox-done">
                 <input
                   class="input-done"
@@ -55,18 +55,17 @@
                   (ngModelChange)="edit(i, todo)">
                 <label for="done" class="sr-only sr-only-focusable">Mark as complete</label>
               </div>
-            </div>
-
-            <div class="col-xs-6 col-sm-8" [ngSwitch]="todo.done">
               <p class="title" *ngSwitchDefault>{{ todo.title }}</p>
               <s class="title text-muted" *ngSwitchCase="true">{{ todo.title }}</s>
             </div>
 
             <div class="col-xs-4 col-sm-3 text-xs-right">
               <button
-                class="btn btn-danger btn-delete"
-                (click)="delete(i)">
-                Delete
+                type="button"
+                class="close btn-delete"
+                (click)="delete(i)"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
               </button>
             </div>
 
