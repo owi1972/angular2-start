@@ -135,7 +135,20 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          loaders: ['style-loader', 'css-loader', 'sass-loader']
+          loaders: ['style-loader', 'css-loader', 'sass-loader'],
+          include: [helpers.root('src/scss')],
+        },
+
+        /*
+         * sass loader plugin
+         *
+         * https://github.com/jtangelder/sass-loader
+         *
+         */
+        {
+          test: /\.scss$/,
+          loaders: ['to-string-loader', 'css-loader', 'sass-loader'],
+          include: [helpers.root('src/app')],
         },
 
         /* Raw loader support for *.html
