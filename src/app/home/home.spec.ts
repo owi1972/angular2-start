@@ -7,6 +7,7 @@ import { StoreService } from '../store/store.service';
 
 let todos: Todo[];
 let spyStoreGet;
+
 describe('HomeComponent', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => TestBed.configureTestingModule({

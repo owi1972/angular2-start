@@ -1,15 +1,15 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
+
 import { HomeComponent } from './home';
 
-import { DataResolver } from './app.resolver';
 
-
+// async components must be named routes for WebpackAsyncRoute
 export const ROUTES: Routes = [
-  { path: '',  component: HomeComponent },
+  { path: '', component: HomeComponent },
   {
     path: 'about', loadChildren: () => System.import('./+about').then((comp: any) => {
       return comp.default;
     })
   },
-  { path: '**',    redirectTo: '' }
+  { path: '**', redirectTo: '' }
 ];
