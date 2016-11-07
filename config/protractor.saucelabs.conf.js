@@ -1,6 +1,8 @@
 'use strict';
 
 /*global jasmine */
+require('ts-node/register');
+var helpers = require('./helpers');
 var SpecReporter = require('jasmine-spec-reporter'),
     pkg = require('../package.json');
 
@@ -13,20 +15,14 @@ exports.config = {
 
   sauceBuild: process.env.CIRCLE_BUILD_NUM,
 
-  directConnect: false,
-
-  // The timeout for each script run on the browser. This should be longer
-  // than the maximum time your application needs to stabilize between tasks.
-  allScriptsTimeout: 60000,
+  allScriptsTimeout: 110000,
 
   // How long to wait for a page to load.
   getPageTimeout: 60000,
 
-  // ----- What tests to run -----
-  //
-  // Spec patterns are relative to the location of this config.
   specs: [
-    '../e2e/**/*.e2e.ts'
+    helpers.root('src/**/**.e2e.ts'),
+    helpers.root('src/**/*.e2e.ts')
   ],
 
   // Saucelabs capabilities reference
@@ -36,17 +32,17 @@ exports.config = {
       'browserName': 'firefox',
       'build': process.env.CIRCLE_BUILD_NUM,
       'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
-      'name':  pkg.name + ' (Firefox 45: Linux) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'version': '45.0',
-      'platform': 'Linux'
+      'name':  pkg.name + ' (Firefox 49.0: Windows 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'version': '49.0',
+      'platform': 'Windows 10'
     },
     {
       'browserName': 'chrome',
       'build': process.env.CIRCLE_BUILD_NUM,
       'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
-      'name':  pkg.name + ' (Chrome 48: Linux) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'version': '48.0',
-      'platform': 'Linux'
+      'name':  pkg.name + ' (Chrome 48: Windows 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'version': '54.0',
+      'platform': 'Windows 10'
     },
     {
       'browserName': 'internet explorer',
@@ -68,19 +64,19 @@ exports.config = {
       'browserName': 'safari',
       'build': process.env.CIRCLE_BUILD_NUM,
       'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
-      'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'version': '9.0',
+      'name':  pkg.name + ' (Safari 10: OS X 10.11) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'version': '10.0',
       'platform': 'OS X 10.11'
     },
     {
       'browserName': 'Safari',
       'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
       'build': process.env.CIRCLE_BUILD_NUM,
-      'name':  pkg.name + ' (Safari: i0S 9.3) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'deviceName': 'iPhone 6',
+      'name':  pkg.name + ' (Safari: i0S 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'deviceName': 'iPhone 7 Simulator',
       'platformName': 'iOS',
-      'platformVersion': '9.3',
-      'appiumVersion': '1.5.3',
+      'platformVersion': '10.0',
+      'appiumVersion': '1.6.0',
       'deviceOrientation': 'portrait'
     },
     {
@@ -89,7 +85,6 @@ exports.config = {
       'build': process.env.CIRCLE_BUILD_NUM,
       'name':  pkg.name + ' (Android: 5.1) Build: ' + process.env.CIRCLE_BUILD_NUM,
       'deviceName': 'Android Emulator',
-      'deviceType': 'phone',
       'platformName': 'Android',
       'platformVersion': '5.1',
       'appiumVersion': '1.5.3',
@@ -97,36 +92,19 @@ exports.config = {
     }
   ],
 
-  // ----- More information for your tests ----
-  //
-  // A base URL for your application under test. Calls to protractor.get()
-  // with relative paths will be prepended with this.
   baseUrl: 'http://localhost:3000/',
 
-  // ----- The test framework -----
-  //
-  // Jasmine is fully supported as a test and assertion framework.
-  // Mocha has limited beta support. You will need to include your own
-  // assertion framework if working with mocha.
-  framework: 'jasmine',
+  framework: 'jasmine2',
 
-  // ----- Options to be passed to minijasminenode -----
-  //
-  // See the full list at https://github.com/juliemr/minijasminenode
   jasmineNodeOpts: {
-    // onComplete will be called just before the driver quits.
-    onComplete: null,
-    // If true, display spec names.
-    isVerbose: true,
-    // If true, print colors to the terminal.
+    showTiming: true,
     showColors: true,
-    // If true, include stack traces in failures.
-    includeStackTrace: true,
-    // Default time to wait in ms before a test fails.
-    defaultTimeoutInterval: 60000,
-
-    print: function() {}
+    isVerbose: false,
+    includeStackTrace: false,
+    defaultTimeoutInterval: 400000
   },
+
+  directConnect: false,
 
   /**
    * Angular 2 configuration
@@ -138,15 +116,8 @@ exports.config = {
   useAllAngular2AppRoots: true,
 
 
-  beforeLaunch: function() {
-    require('ts-node').register({
-      project: 'e2e'
-    });
-  },
-
-
   onPrepare: function() {
-    require('ts-node').register({ project: 'e2e' });
+    browser.ignoreSynchronization = true;
     jasmine.getEnv().addReporter(new SpecReporter());
   }
 

@@ -1,3 +1,2 @@
-export * from './environment';
-export * from './start.component';
-export * from './start.routes';
+// App
+export * from './app.module';
