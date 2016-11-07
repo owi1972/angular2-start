@@ -6,6 +6,7 @@ import { decorateModuleRef } from './app/environment';
 import { bootloader } from '@angularclass/hmr';
 
 // Bootstrap 4
+// TODO: Find better place to import global styles;
 import 'scss/main.scss';
 
 /*
