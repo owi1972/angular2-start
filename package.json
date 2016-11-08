@@ -76,7 +76,6 @@
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-
     "watch:u": "webpack --watch --config config/webpack.universal.js",
     "prebuild:u": "rimraf dist",
     "build:u": "webpack --config config/webpack.universal.js",
@@ -138,6 +137,7 @@
     "@types/source-map": "^0.1.27",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.34",
+    "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.1",
     "codelyzer": "~1.0.0-beta.2",
