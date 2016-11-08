@@ -13,7 +13,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge({
+const METADATA = {
   title: 'Angular 2 Start',
   description: 'An example angular 2 project',
   baseUrl: '/',
@@ -22,7 +22,7 @@ const METADATA = webpackMerge({
   port: PORT,
   ENV: ENV,
   HMR: HMR
-});
+};
 
 var commonPlugins = [
   new webpack.ContextReplacementPlugin(
@@ -65,6 +65,8 @@ var commonPlugins = [
   //   threshold: 10240,
   //   minRatio: 0.8
   // })
+
+
 ];
 
 var commonConfig = {
@@ -80,7 +82,7 @@ var commonConfig = {
     loaders: [
       // TypeScript
       { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader'] },
-      { test: /\.html$/, loader: 'raw-loader' },
+      { test: /\.html$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
       { test: /\.css$/, loader: 'raw-loader' },
       { test: /\.json$/, loader: 'json-loader' },
       {
@@ -91,14 +93,54 @@ var commonConfig = {
     ]
   },
   plugins: [
-    // Use commonPlugins.
+
   ]
 
 };
 
 // Client.
 var clientPlugins = [
+  /**
+    * Plugin: HtmlWebpackPlugin
+    * Description: Simplifies creation of HTML files to serve your webpack bundles.
+    * This is especially useful for webpack bundles that include a hash in the filename
+    * which changes every compilation.
+    *
+    * See: https://github.com/ampedandwired/html-webpack-plugin
+    */
+  new HtmlWebpackPlugin({
+    template: 'src/index.html',
+    title: METADATA.title,
+    chunksSortMode: 'dependency',
+    metadata: METADATA,
+    inject: 'head'
+  }),
 
+   /**
+    * Plugin: HtmlElementsPlugin
+    * Description: Generate html tags based on javascript maps.
+    *
+    * If a publicPath is set in the webpack output configuration, it will be automatically added to
+    * href attributes, you can disable that by adding a "=href": false property.
+    * You can also enable it to other attribute by settings "=attName": true.
+    *
+    * The configuration supplied is map between a location (key) and an element definition object (value)
+    * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
+    *
+    * Example:
+    *  Adding this plugin configuration
+    *  new HtmlElementsPlugin({
+    *    headTags: { ... }
+    *  })
+    *
+    *  Means we can use it in the template like this:
+    *  <%= webpackConfig.htmlElements.headTags %>
+    *
+    * Dependencies: HtmlWebpackPlugin
+    */
+  new HtmlElementsPlugin({
+    headTags: require('./head-config.common')
+  })
 ];
 
 var clientConfig = {
