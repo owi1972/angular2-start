@@ -33,9 +33,12 @@ describe('Home', () => {
   let home = new HomePage();
 
   beforeEach(() => {
-    browser.executeScript('window.localStorage.clear();');
     browser.get('/');
   });
+
+  afterEach(() => {
+    browser.executeScript('window.localStorage.clear();');
+  })
 
 
   it('should have a h1', () => {
