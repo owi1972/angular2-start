@@ -5,7 +5,7 @@ import { StoreService } from '../store';
 
 @Component({
   selector: 'home',
-  styleUrls: [ './home.styles.css' ],
+  styleUrls: [ './home.styles.scss' ],
   templateUrl: './home.template.html'
 })
 export class HomeComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app',
@@ -35,6 +35,7 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   </main>
   `,
-  styles: [`.navbar { border-radius: 0 }`]
+  styles: [require('../scss/main.scss')],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {}

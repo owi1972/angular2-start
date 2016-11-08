@@ -1,8 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
 var clone = require('js.clone');
-var webpackMerge = require('webpack-merge');
+
 const helpers = require('./helpers');
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /**
@@ -12,12 +13,16 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = {
+const METADATA = webpackMerge({
+  title: 'Angular 2 Start',
+  description: 'An example angular 2 project',
+  baseUrl: '/',
+  isDevServer: helpers.isWebpackDevServer(),
   host: HOST,
   port: PORT,
   ENV: ENV,
   HMR: HMR
-};
+});
 
 var commonPlugins = [
   new webpack.ContextReplacementPlugin(
@@ -78,17 +83,12 @@ var commonConfig = {
       { test: /\.html$/, loader: 'raw-loader' },
       { test: /\.css$/, loader: 'raw-loader' },
       { test: /\.json$/, loader: 'json-loader' },
-      // {
-      //   test: /\.scss$/,
-      //   loader: 'style!css!sass',
-      //   include: [helpers.root('src/scss')],
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   loader: 'to-string!css!sass',
-      //   include: [helpers.root('src/app')],
-      // },
-    ],
+      {
+        test: /\.scss$/,
+        include: [helpers.root('src')],
+        loaders: ['raw-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
     // Use commonPlugins.
