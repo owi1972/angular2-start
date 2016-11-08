@@ -105,7 +105,7 @@ var clientPlugins = [
 
 var clientConfig = {
   target: 'web',
-  entry: helpers.root('src/client'),
+  entry: helpers.root('src/main.universal.browser'),
   output: {
     path: helpers.root('dist/client')
   },
@@ -126,7 +126,7 @@ var serverPlugins = [
 
 var serverConfig = {
   target: 'node',
-  entry: helpers.root('src/server'), // use the entry file of the node server if everything is ts rather than es5
+  entry: helpers.root('src/main.universal.node'), // use the entry file of the node server if everything is ts rather than es5
   output: {
     path: helpers.root('dist/server'),
     libraryTarget: 'commonjs2'
