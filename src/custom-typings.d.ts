@@ -51,6 +51,12 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
 
+// for legacy tslint etc to understand
+declare module 'modern-lru' {
+  let x: any;
+  export = x;
+}
+
 interface SystemJS {
   import: (path?: string) => Promise<any>;
 }

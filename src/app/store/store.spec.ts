@@ -10,7 +10,7 @@ import {
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { StoreService } from './store.service';
+import { BrowserStoreService } from './store.browser.service';
 
 describe('StoreService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('StoreService', () => {
         },
         deps: [MockBackend, BaseRequestOptions]
       },
-      StoreService
+      BrowserStoreService
     ]
   }));
 
@@ -32,11 +32,11 @@ describe('StoreService', () => {
     localStorage.clear();
   });
 
-  it('should have store name', inject([ StoreService ], (store: StoreService) => {
+  it('should have store name', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     expect(store.storeName).toEqual('appData');
   }));
 
-  it('should get data from storage', inject([ StoreService ], (store: StoreService) => {
+  it('should get data from storage', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     let spy = spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify({ foo: 'bar' });
     });
@@ -46,7 +46,7 @@ describe('StoreService', () => {
     expect(result).toEqual('bar');
   }));
 
-  it('should return undefined', inject([ StoreService ], (store: StoreService) => {
+  it('should return undefined', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     let spy = spyOn(localStorage, 'getItem').and.callFake(() => {
       return undefined;
     });
@@ -54,7 +54,7 @@ describe('StoreService', () => {
     expect(result).toBeUndefined();
   }));
 
-  it('should set data to storage', inject([ StoreService ], (store: StoreService) => {
+  it('should set data to storage', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
     let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify({ foo: 'bar' });
@@ -64,7 +64,7 @@ describe('StoreService', () => {
     expect(spySet).toHaveBeenCalledWith(store.storeName, result);
   }));
 
-  it('should delete data from storage', inject([ StoreService ], (store: StoreService) => {
+  it('should delete data from storage', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
     let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify({ foo: 'bar', foo2: 'bar2' });
@@ -74,7 +74,7 @@ describe('StoreService', () => {
     expect(spySet).toHaveBeenCalledWith(store.storeName, result);
   }));
 
-  it('should delete nothing', inject([ StoreService ], (store: StoreService) => {
+  it('should delete nothing', inject([ BrowserStoreService ], (store: BrowserStoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
     let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify({ foo: 'bar', foo2: 'bar2' });

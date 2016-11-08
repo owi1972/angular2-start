@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'about',
   templateUrl: './about.template.html',
-  styleUrls: [ './about.styles.scss' ]
+  styleUrls: [ './about.styles.css' ]
 })
 export class AboutComponent implements OnInit {
   public about: any;
