@@ -14,6 +14,8 @@
       "dom"
     ],
     "types": [
+      "hammerjs",
+      "jasmine",
       "body-parser",
       "compression",
       "cookie-parser",
@@ -21,13 +23,23 @@
       "express-serve-static-core",
       "mime",
       "node",
+      "protractor",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack",
       "serve-static",
       "hammerjs"
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": {
