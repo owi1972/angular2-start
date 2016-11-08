@@ -19,7 +19,7 @@
     "SOON_ <dorks@thisissoon.com>",
     "Ed Opare-Aryee <ed@thisissoon.com>"
   ],
-  "main": "./src/app/app.component.ts",
+  "main": "./app/main.universal.node.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/thisissoon/angular2-start.git"
@@ -76,18 +76,19 @@
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-    "watch:u": "webpack --watch --config config/webpack.universal.js",
-    "prebuild:u": "rimraf dist",
-    "build:u": "webpack --config config/webpack.universal.js",
-    "build:prod:u": "webpack --config config/webpack.universal.js --progress -p",
-    "prestart:u": "npm run build:u",
-    "server:u": "nodemon dist/server/index.js",
-    "debug:server:u": "node-nightly --inspect --debug-brk dist/server/index.js",
-    "start:u": "npm run server:u",
-    "debug:start:u": "npm run build:u && npm run debug:server:u",
-    "predebug:u": "npm run build:u",
-    "debug:build:u": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
-    "debug:u": "node --debug-brk dist/server/index.js"
+
+    "watch:universal": "webpack --watch --config config/webpack.universal.js",
+    "prebuild:universal": "rimraf dist",
+    "build:universal": "webpack --config config/webpack.universal.js",
+    "build:prod:universal": "webpack --config config/webpack.universal.js --progress -p",
+    "prestart:universal": "npm run build:u",
+    "server:universal": "nodemon dist/server/index.js",
+    "debug:server:universal": "node-nightly --inspect --debug-brk dist/server/index.js",
+    "start:universal": "npm run server:universal",
+    "debug:start:universal": "npm run build:u && npm run debug:server:u",
+    "predebug:universal": "npm run build:u",
+    "debug:build:universal": "node-nightly --inspect --debug-brk node_modules/webpack/bin/webpack.js",
+    "debug:universal": "node --debug-brk dist/server/index.js"
   },
   "dependencies": {
     "@angular/common": "2.1.0",
