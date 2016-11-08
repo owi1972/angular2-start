@@ -8,17 +8,13 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  * Platform and Environment providers/directives/pipes
  */
 import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { StoreService } from './store';
-import { TitleService } from './title';
 
 // Application wide providers
 const APP_PROVIDERS = [
-  StoreService,
   AppState
 ];
 
@@ -34,13 +30,14 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    RouterModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES, { useHash: false })
+
+    AppRoutingModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Todo } from './todo.model';
-import { StoreService } from '../store';
+import { StoreService } from '../store/store.service';
 
 @Component({
   selector: 'home',
