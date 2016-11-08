@@ -2,7 +2,7 @@
  * Angular bootstraping
  */
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { decorateModuleRef } from './app/environment';
+import { decorateModuleRef } from './app/environment.browser';
 import { bootloader } from '@angularclass/hmr';
 
 /*
