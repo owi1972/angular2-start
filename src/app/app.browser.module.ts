@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef, Inject, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 // for AoT we need to manually split universal packages
 import { UniversalModule, isBrowser, isNode } from 'angular2-universal/browser';
@@ -10,11 +10,12 @@ import { UniversalModule, isBrowser, isNode } from 'angular2-universal/browser';
  * Platform and Environment providers/directives/pipes
  */
 import { BROWSER_ENV_PROVIDERS } from './environment.browser';
-import { ROUTES } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+import { HomeModule } from './home';
+import { AboutModule } from './about';
 import { StoreService, BrowserStoreService } from './store/';
 import { TitleService } from './title';
 import { CacheService } from './shared/cache.service';
@@ -50,14 +51,17 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [ // import Angular's modules
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
     BrowserModule,
+    RouterModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES, { useHash: false })
+
+    HomeModule,
+    AboutModule,
+    AppRoutingModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ...BROWSER_ENV_PROVIDERS,

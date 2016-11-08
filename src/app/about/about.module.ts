@@ -1,17 +1,14 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
 import { AboutComponent } from './about.component';
 import { ABOUT_RESOLVER_PROVIDERS } from './about.resolver';
-import { ROUTES } from './about.routes';
+import { AboutRoutingModule } from './about-routing.module';
 
 const ABOUT_PROVIDERS = [
   ...ABOUT_RESOLVER_PROVIDERS,
 ];
-
-console.log('`About` bundle loaded asynchronously');
 
 @NgModule({
   declarations: [
@@ -19,14 +16,12 @@ console.log('`About` bundle loaded asynchronously');
     AboutComponent
   ],
   imports: [
-    CommonModule,
     HttpModule,
-    RouterModule.forChild(ROUTES)
+    CommonModule,
+    AboutRoutingModule
   ],
   providers: [
     ABOUT_PROVIDERS
   ]
 })
-export default class AboutModule {
-  static routes = ROUTES;
-}
+export class AboutModule {}

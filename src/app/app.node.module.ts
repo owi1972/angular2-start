@@ -1,21 +1,22 @@
 import { NgModule, Inject, Optional, SkipSelf, ApplicationRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 // for AoT we need to manually split universal packages
 import { UniversalModule, isBrowser, isNode } from 'angular2-universal/node';
+
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import { NODE_ENV_PROVIDERS } from './environment.node';
-import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './home';
+import { AboutModule } from './about';
 import { StoreService, NodeStoreService } from './store';
-import { TitleService } from './title';
 import { CacheService } from './shared/cache.service';
 
 import * as LRU from 'modern-lru';
@@ -39,13 +40,15 @@ const APP_PROVIDERS = [
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
+    RouterModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES, { useHash: false })
+    AppRoutingModule,
+    HomeModule,
+    AboutModule
   ],
   providers: [
     ...NODE_ENV_PROVIDERS,
