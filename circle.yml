@@ -29,7 +29,7 @@ test:
   override:
     - npm run lint
     - nvm use 6.9 && npm run test # Node LTS (Mature)
-    - nvm use 7.0 && npm run test
+    - nvm use 7 && npm run test
     - npm run e2e:ci
   post:
     - npm run coverage
