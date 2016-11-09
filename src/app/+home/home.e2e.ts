@@ -38,8 +38,7 @@ describe('Home', () => {
 
   afterEach(() => {
     browser.executeScript('window.localStorage.clear();');
-  })
-
+  });
 
   it('should have a h1', () => {
     let subject = home.getH1();
