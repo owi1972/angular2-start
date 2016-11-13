@@ -26,6 +26,8 @@ const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   title: 'Angular 2 Start',
   description: 'A example angular 2 project',
+  keywords: 'Angular,Angular 2,seed,starter,boilerplate',
+  author: 'SOON_',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -247,7 +249,8 @@ module.exports = function (options) {
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
-        inject: 'head'
+        inject: 'head',
+        isProd: isProd
       }),
 
       /*
