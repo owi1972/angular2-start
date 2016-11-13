@@ -1,35 +1,4 @@
-.title,
-.checkbox-done {
-  display: inline-block;
-}
-
-.title {
-  align-items: center;
-  margin-bottom: 0;
-  min-height: 38px;
-}
-
-.checkbox-done {
-  align-items: center;
-  flex-direction: row;
-  min-height: 38px;
-}
-
 .heading,
-.form-todos,
-.list-todos {
+.form-todos {
   margin-bottom: 20px;
-}
-
-.list-todos > li {
-  margin-bottom: 10px;
-}
-
-.btn-delete {
-  opacity: 0;
-  transition: opacity .2s ease-in-out;
-}
-
-.list-todos-item:hover .btn-delete {
-  opacity: .7;
 }
