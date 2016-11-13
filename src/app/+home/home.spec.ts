@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 
 // Load the implementations that should be tested
 import { HomeComponent } from './home.component';
-import { Todo } from './todo.model';
+import { Todo } from '../todos/todo.model';
 import { StoreService } from '../store/store.service';
 
 let todos: Todo[];

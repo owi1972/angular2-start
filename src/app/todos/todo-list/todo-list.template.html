@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs col-md-6">
+
+      <ul class="list-todos list-group">
+        <li
+          *ngFor="let item of items; let i = index"
+          [ngClass]="{
+            'disabled': item.done
+          }"
+          class="list-todos-item list-group-item list-group-item-action">
+
+          <todo
+            [item]="item"
+            [id]="i"
+            (onEdit)="edit(item)"
+            (onDelete)="delete(id)">
+          </todo>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

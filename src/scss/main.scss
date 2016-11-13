@@ -42,20 +42,20 @@
 @import "xs/jumbotron";
 
 
-// Import scss from tablet size devices and larger
+// Import less from tablet size devices and larger
 // eg. device width >= 768px
-@include media-breakpoint-up(md, $grid-breakpoints) {
+@media (min-width: #{ map-get($grid-breakpoints, md) }) {
 
 }
 
-// Import scss files for desktop sized devices and larger
+// Import less files for desktop sized devices and larger
 // eg. device width >= 992px
-@include media-breakpoint-up(lg, $grid-breakpoints) {
+@media (min-width: #{ map-get($grid-breakpoints, lg) }) {
 
 }
 
-// Import scss files for large desktop devices
+// Import less files for large desktop devices
 // eg. device width >= 1200px
-@include media-breakpoint-up(xl, $grid-breakpoints) {
+@media (min-width: #{ map-get($grid-breakpoints, xl) }) {
 
 }

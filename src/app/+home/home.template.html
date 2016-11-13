@@ -5,43 +5,4 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-md-4">
-
-      <h2 class="heading">
-        Todos
-        <small class="text-muted text-todos-length">
-          {{ todos.length || 0 }}
-        </small>
-      </h2>
-
-      <form
-        class="form-inline form-todos"
-        (ngSubmit)="add(title)"
-        autocomplete="off">
-        <div class="form-group">
-          <input
-            type="text"
-            name="title"
-            class="form-control form-control-title"
-            [(ngModel)]="title"
-            placeholder="Add todo"
-            autofocus
-            required>
-        </div>
-        <div class="form-group">
-          <button
-            type="submit"
-            class="btn btn-primary btn-add">
-            Add
-          </button>
-        </div>
-      </form>
-
-      <todo-list [items]="todos"></todo-list>
-
-    </div>
-  </div>
-</div>
-
+<todos></todos>

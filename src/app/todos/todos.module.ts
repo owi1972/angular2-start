@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { TodoListComponent } from './todo-list.component';
+import { TodosComponent } from './todos.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   imports: [
@@ -10,10 +12,12 @@ import { TodoListComponent } from './todo-list.component';
     FormsModule
   ],
   exports: [
-    TodoListComponent
+    TodosComponent
   ],
   declarations: [
-    TodoListComponent
+    TodosComponent,
+    TodoListComponent,
+    TodoComponent
   ]
 })
 export class TodosModule {}
