@@ -56,26 +56,15 @@ describe('TodosComponent', () => {
     expect(comp.todos[3]).toEqual(<Todo>{ title: 'task 4', done: false });
   }));
 
-  it('should edit item in todos list', inject([ TodosComponent ], (comp: TodosComponent) => {
+  it('should save todos', inject([ TodosComponent ], (comp: TodosComponent) => {
+    let todoList = [
+      { title: 'task1', done: false },
+      { title: 'task2', done: true }
+    ];
 
-    let todo: Todo = { title: 'Task 1 Edited', done: false };
-    expect(comp.todos[0]).not.toEqual(todo);
-
-    comp.edit(0, todo);
-    expect(comp.todos.length).toEqual(3);
-    expect(comp.todos[0]).toEqual(todo);
-  }));
-
-  it('should delete item in todos list', inject([ TodosComponent ], (comp: TodosComponent) => {
-
-    let todo = todos[0];
-
-    expect(comp.todos.length).toEqual(3);
-    expect(comp.todos[0]).toEqual(todo);
-
-    comp.delete(0);
+    comp.save(todoList);
     expect(comp.todos.length).toEqual(2);
-    expect(comp.todos[0]).not.toEqual(todo);
+    expect(comp.todos[0]).toEqual(<Todo>{ title: 'task1', done: false });
   }));
 
 });

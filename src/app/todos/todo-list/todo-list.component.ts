@@ -10,7 +10,7 @@ import { Todo } from '../todo/todo.model';
 })
 export class TodoListComponent {
   @Input() public items: Todo[];
-  @Output() onUpdate = new EventEmitter<Todo[]>()
+  @Output() onUpdate = new EventEmitter<Todo[]>();
 
   edit(item: { id: number, todo: Todo }) {
     this.items[item.id] = item.todo;
