@@ -53,6 +53,7 @@
     "preclean:start": "npm run clean",
     "pree2e": "npm run webdriver:update -- --standalone",
     "preversion": "npm test",
+    "prestart": "npm run clean:dist",
     "protractor": "protractor",
     "rimraf": "rimraf",
     "server:all": "http-server . -p 3001",

@@ -36,10 +36,6 @@ describe('Home', () => {
     browser.get('/');
   });
 
-  afterEach(() => {
-    browser.executeScript('window.localStorage.clear();');
-  });
-
   it('should have a h1', () => {
     let subject = home.getH1();
     let result  = 'Welcome to our todo list app';
@@ -69,10 +65,10 @@ describe('Home', () => {
   it('should mark item as done', () => {
     let input = home.getTitleInput();
     let submitBtn = home.getAddButton();
-    input.sendKeys('task 1');
+    input.sendKeys('task 2');
     submitBtn.click();
     let subject: any = home.getTodosLength();
-    let result: any  = '1';
+    let result: any  = '2';
     expect(subject).toEqual(result);
 
     let done = home.getDoneInputs();
@@ -85,18 +81,18 @@ describe('Home', () => {
   it('should delete item from list', () => {
     let input = home.getTitleInput();
     let submitBtn = home.getAddButton();
-    input.sendKeys('task 1');
+    input.sendKeys('task 3');
     submitBtn.click();
 
     let subject = home.getTodos();
-    let result = 1;
+    let result = 3;
     expect(subject.count()).toEqual(result);
 
     let deleteBtn = home.getDeleteButtons().first();
     deleteBtn.click();
 
     subject = home.getTodos();
-    result = 0;
+    result = 2;
     expect(subject.count()).toEqual(result);
   });
 

@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(public store: StoreService) {}
 
   ngOnInit() {
-    this._todos = this.store.get(this.storeName);
+    this._todos = this.store.get(this.storeName) || [];
   }
 
   get todos(): Todo[] {
