@@ -45,7 +45,7 @@
 
           <div class="row">
 
-            <div class="col-xs-8 col-sm-9" [ngSwitch]="todo.done">
+            <div class="col-xs-8 col-md-9" [ngSwitch]="todo.done">
               <div class="checkbox-done">
                 <input
                   class="input-done"
@@ -59,7 +59,7 @@
               <s class="title text-muted" *ngSwitchCase="true">{{ todo.title }}</s>
             </div>
 
-            <div class="col-xs-4 col-sm-3 text-xs-right">
+            <div class="col-xs-4 col-md-3 text-xs-right">
               <button
                 type="button"
                 class="close btn-delete"
