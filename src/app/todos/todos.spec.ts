@@ -50,10 +50,11 @@ describe('TodosComponent', () => {
 
   it('should add item to todos list', inject([ TodosComponent ], (comp: TodosComponent) => {
     expect(comp.todos.length).toEqual(3);
+    let todo: Todo = { title: 'task 4', important: false, done: false };
 
-    comp.add('task 4');
+    comp.add(todo);
     expect(comp.todos.length).toEqual(4);
-    expect(comp.todos[3]).toEqual(<Todo>{ title: 'task 4', done: false });
+    expect(comp.todos[3]).toEqual(todo);
   }));
 
   it('should save todos', inject([ TodosComponent ], (comp: TodosComponent) => {

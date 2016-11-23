@@ -1,7 +1,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 import {
   HttpModule, Http,
-  BaseRequestOptions, BaseResponseOptions,
+  BaseRequestOptions,
   ResponseOptions, Response,
   ConnectionBackend
 } from '@angular/http';
@@ -63,7 +63,7 @@ describe('AboutResolver', () => {
     ]}));
 
   it('should resolve data', inject([ AboutResolver, MockBackend, Http ],
-  (about: AboutResolver, backend: MockBackend, http: Http) => {
+  (about: AboutResolver, backend: MockBackend) => {
     backend.connections.subscribe((connection: MockConnection) => {
       let mockResponseBody = resolveData;
       let response = new ResponseOptions({ body: JSON.stringify(mockResponseBody) });
@@ -75,7 +75,7 @@ describe('AboutResolver', () => {
   }));
 
   it('should NOT resolve data', inject([ AboutResolver, MockBackend, Http ],
-  (about: AboutResolver, backend: MockBackend, http: Http) => {
+  (about: AboutResolver, backend: MockBackend) => {
     let error;
     backend.connections.subscribe((connection: MockConnection) => {
       let err: Error = new Error('something went wrong');

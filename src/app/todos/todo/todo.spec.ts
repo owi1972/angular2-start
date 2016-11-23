@@ -2,7 +2,6 @@ import { inject, TestBed } from '@angular/core/testing';
 
 // Load the implementations that should be tested
 import { TodoComponent } from './todo.component';
-import { Todo } from './todo.model';
 
 describe('TodoComponent', () => {
   // provide our implementations or mocks to the dependency injector

@@ -10,6 +10,7 @@ import { Todo } from './todo/todo.model';
 export class TodosComponent implements OnInit {
   public items: Todo[] = [];
   title: string = '';
+  important: boolean = false;
   storeName: string = 'todos';
 
   constructor(public store: StoreService) {}
@@ -27,8 +28,8 @@ export class TodosComponent implements OnInit {
     this.store.set(this.storeName, value);
   }
 
-  add(title: string) {
-    let item: Todo = { title: title, done: false };
+  add(todo: Todo) {
+    let item: Todo = todo;
     let items = this.todos;
     items.push(item);
     this.title = '';

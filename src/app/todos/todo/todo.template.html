@@ -1,6 +1,9 @@
 <div class="todo row flex-items-xs-middle">
 
-  <div class="col-xs-10" [ngSwitch]="item.done">
+  <div
+    class="col-xs-10"
+    [ngSwitch]="item.done"
+    [x-large]="item.important">
     <div class="checkbox-done">
       <input
         class="input-done"
