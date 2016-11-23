@@ -52,14 +52,14 @@ exports.config = {
       'version': '11.0',
       'platform': 'Windows 10'
     },
-    {
-      'browserName': 'internet explorer',
-      'build': process.env.CIRCLE_BUILD_NUM,
-      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
-      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'version': '10.0',
-      'platform': 'Windows 8'
-    },
+    // {
+    //   'browserName': 'internet explorer',
+    //   'build': process.env.CIRCLE_BUILD_NUM,
+    //   'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+    //   'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.CIRCLE_BUILD_NUM,
+    //   'version': '10.0',
+    //   'platform': 'Windows 8'
+    // },
     {
       'browserName': 'safari',
       'build': process.env.CIRCLE_BUILD_NUM,
