@@ -18,7 +18,7 @@ export class AppState {
   }
   // never allow mutation
   set state(value) {
-    throw new Error('do not mutate the `.state` directly');
+    throw new Error(`Tried to set state to ${value} do not mutate the ".state" directly`);
   }
 
 

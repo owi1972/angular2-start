@@ -3,12 +3,12 @@ export class HomePage {
     return element(by.css('h1')).getText();
   };
 
-  getTodosLength() {
+  getTodosLengthText() {
     return element(by.css('.text-todos-length')).getText();
   }
 
   getTodos() {
-    return element.all(by.css('.list-todos-item'));
+    return element.all(by.css('todo'));
   }
 
   getTitleInput() {
@@ -17,6 +17,10 @@ export class HomePage {
 
   getAddButton() {
     return element(by.css('.btn-add'));
+  }
+
+  getAddImportantButton() {
+    return element(by.css('.btn-add-important'));
   }
 
   getDoneInputs() {
@@ -47,7 +51,7 @@ describe('Home', () => {
   });
 
   it('should have list length', () => {
-    let subject = home.getTodosLength();
+    let subject = home.getTodosLengthText();
     let result  = '0';
     expect(subject).toEqual(result);
   });
@@ -57,7 +61,7 @@ describe('Home', () => {
     let submitBtn = home.getAddButton();
     input.sendKeys('task 1');
     submitBtn.click();
-    let subject: any = home.getTodosLength();
+    let subject: any = home.getTodosLengthText();
     let result: any  = '1';
     expect(subject).toEqual(result);
 
@@ -66,12 +70,26 @@ describe('Home', () => {
     expect(subject.count()).toEqual(result);
   });
 
+  it('should add item to list as important', () => {
+    let input = home.getTitleInput();
+    let submitBtn = home.getAddImportantButton();
+    input.sendKeys('task 1');
+    submitBtn.click();
+    let subject: any = home.getTodosLengthText();
+    let result: any  = '1';
+    expect(subject).toEqual(result);
+
+    subject = home.getTodos().first().getCssValue('font-size');
+    result = '24px';
+    expect(subject).toEqual(result);
+  });
+
   it('should mark item as done', () => {
     let input = home.getTitleInput();
     let submitBtn = home.getAddButton();
     input.sendKeys('task 1');
     submitBtn.click();
-    let subject: any = home.getTodosLength();
+    let subject: any = home.getTodosLengthText();
     let result: any  = '1';
     expect(subject).toEqual(result);
 

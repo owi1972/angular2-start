@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+.checkbox-done {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.list-todos {
+  margin-bottom: 20px;
+}
+
+.btn-delete {
+  opacity: .7;
+}
+
+@include media-breakpoint-up(lg, $grid-breakpoints) {
+  .btn-delete {
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+
+    .todo:hover & {
+      opacity: .7;
+    }
+  }
+}

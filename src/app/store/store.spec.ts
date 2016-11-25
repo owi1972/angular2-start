@@ -1,11 +1,6 @@
+import { inject, TestBed } from '@angular/core/testing';
 import {
-  inject,
-  TestBed
-} from '@angular/core/testing';
-import { Component } from '@angular/core';
-import {
-  BaseRequestOptions,
-  ConnectionBackend,
+  BaseRequestOptions, ConnectionBackend,
   Http
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
@@ -47,7 +42,8 @@ describe('StoreService', () => {
   }));
 
   it('should return undefined', inject([ StoreService ], (store: StoreService) => {
-    let spy = spyOn(localStorage, 'getItem').and.callFake(() => {
+    let spy = spyOn(localStorage, 'getItem');
+    spy.and.callFake(() => {
       return undefined;
     });
     let result = store.get('foo');
@@ -56,7 +52,8 @@ describe('StoreService', () => {
 
   it('should set data to storage', inject([ StoreService ], (store: StoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
-    let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
+    let spyGet = spyOn(localStorage, 'getItem');
+    spyGet.and.callFake(() => {
       return JSON.stringify({ foo: 'bar' });
     });
     let result = JSON.stringify({ foo: 'bar', foo2: 'bar2' });
@@ -66,7 +63,8 @@ describe('StoreService', () => {
 
   it('should delete data from storage', inject([ StoreService ], (store: StoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
-    let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
+    let spyGet = spyOn(localStorage, 'getItem');
+    spyGet.and.callFake(() => {
       return JSON.stringify({ foo: 'bar', foo2: 'bar2' });
     });
     let result = JSON.stringify({ foo2: 'bar2' });
@@ -76,7 +74,8 @@ describe('StoreService', () => {
 
   it('should delete nothing', inject([ StoreService ], (store: StoreService) => {
     let spySet = spyOn(localStorage, 'setItem');
-    let spyGet = spyOn(localStorage, 'getItem').and.callFake(() => {
+    let spyGet = spyOn(localStorage, 'getItem');
+    spyGet.and.callFake(() => {
       return JSON.stringify({ foo: 'bar', foo2: 'bar2' });
     });
     let result = JSON.stringify({ foo: 'bar', foo2: 'bar2' });
