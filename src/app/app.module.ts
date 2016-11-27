@@ -11,6 +11,7 @@ import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppState, InternalStateType } from './app.service';
+import { NavModule } from './nav';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -35,6 +36,7 @@ type StoreType = {
     BrowserModule,
     RouterModule,
 
+    NavModule,
     AppRoutingModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
