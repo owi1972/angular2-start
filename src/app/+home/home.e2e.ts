@@ -1,3 +1,5 @@
+import { browser, element, by } from 'protractor';
+
 export class HomePage {
   getH1() {
     return element(by.css('h1')).getText();

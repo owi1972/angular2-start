@@ -7,26 +7,26 @@
 
 
 
-* **What is the current behavior?**
+* **What is the current behaviour?**
 
 
 
-* **If the current behavior is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem** via
+* **If the current behaviour is a bug, please provide the steps to reproduce and if possible a minimal demo of the problem** via
 https://plnkr.co or similar (you can use this template as a starting point: http://plnkr.co/edit/tpl:AvJOMERrnz94ekVua0u5).
 
 
 
-* **What is the expected behavior?**
+* **What is the expected behaviour?**
 
 
 
-* **What is the motivation / use case for changing the behavior?**
+* **What is the motivation / use case for changing the behaviour?**
 
 
 
 * **Please tell us about your environment:**
 
-- Angular version: 2.0.0-beta.X
+- Angular version: 2.x.x
 - Browser: [all | Chrome XX | Firefox XX | IE XX | Safari XX | Mobile Chrome XX | Android X.X Web Browser | iOS XX Safari | iOS XX UIWebView | iOS XX WKWebView ]
 
 

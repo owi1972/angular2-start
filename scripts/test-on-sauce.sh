@@ -17,9 +17,10 @@ fi
 
 # e2e testing script
 echo "Running e2e tests in CI mode"
-npm start &
-sleep 15
-npm run e2e:saucelabs
+npm run build:prod
+npm run server:prod:ci &
+sleep 3
+npm run e2e:ci
 
 rc=$?
 
