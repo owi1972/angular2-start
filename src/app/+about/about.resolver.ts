@@ -1,4 +1,4 @@
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -10,7 +10,7 @@ export class AboutResolver implements Resolve<any> {
 
   constructor(protected http: Http) {}
 
-  resolve(route?: ActivatedRouteSnapshot, state?: RouterStateSnapshot) {
+  resolve() {
     return this.http.get('/assets/data/about.json')
       .map(res => res.json())
       .catch(err => { return Observable.throw(err); });

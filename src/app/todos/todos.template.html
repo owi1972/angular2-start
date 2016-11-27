@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs col-md-6 col-xl-4">
+
+      <h2 class="heading">
+        Todos
+        <small class="text-muted text-todos-length">
+          {{ todos.length || 0 }}
+        </small>
+      </h2>
+
+      <form class="form-todos" autocomplete="off">
+        <div class="row">
+
+          <div class="col-xs-12">
+            <div class="form-group">
+              <input
+                type="text"
+                name="title"
+                class="form-control form-control-title"
+                [(ngModel)]="title"
+                placeholder="Add todo"
+                autofocus
+                required>
+            </div>
+          </div>
+
+          <div class="col-xs-4">
+
+            <button
+              (click)="add({ title: title, done: false, important: false })"
+              type="button"
+              class="btn btn-primary btn-block btn-add">
+              Add
+            </button>
+
+          </div>
+
+          <div class="col-xs-8">
+
+            <button
+              (click)="add({ title: title, done: false, important: true })"
+              type="button"
+              class="btn btn-warning btn-block btn-add-important">
+              Add as important
+            </button>
+
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<todo-list [items]="todos" (onUpdate)="save(todos)"></todo-list>

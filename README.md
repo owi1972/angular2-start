@@ -1,6 +1,6 @@
 # Angular2 Start
 
-An Angular 2 starter project written in [Typescript 2][typescript] and featuring (Router, Forms, Services, Async/Lazy Routes, Directives (coming soon...), Unit tests and E2E tests), [Bootstrap 4][bootstrap], [SASS][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
+An Angular 2 starter project written in [Typescript 2][typescript] and featuring (Router, Forms, Services, Async/Lazy Routes, Directives, Unit tests and E2E tests), [Bootstrap 4][bootstrap], [SASS][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
