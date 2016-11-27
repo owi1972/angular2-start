@@ -11,8 +11,8 @@ exports.config = {
 
   // use `npm run e2e`
   specs: [
-    helpers.root('src/**/**.e2e.ts'),
-    helpers.root('src/**/*.e2e.ts')
+    helpers.root('src/**/**.e2e-spec.ts'),
+    helpers.root('src/**/*.e2e-spec.ts')
   ],
   exclude: [],
 

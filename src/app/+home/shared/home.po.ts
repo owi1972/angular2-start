@@ -10,7 +10,7 @@ export class HomePage {
   }
 
   getTodos() {
-    return element.all(by.css('todo'));
+    return element.all(by.css('app-todo'));
   }
 
   getTitleInput() {
