@@ -8,7 +8,7 @@ const STORE_PROVIDERS = [
 
 @NgModule({
   providers: [
-    STORE_PROVIDERS
+    ...STORE_PROVIDERS
   ]
 })
-export class StoreModule {}
+export class StoreModule { }

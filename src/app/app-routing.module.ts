@@ -12,4 +12,4 @@ const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules })
   ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

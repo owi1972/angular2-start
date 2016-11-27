@@ -11,7 +11,6 @@
 
   <title><%= htmlWebpackPlugin.options.title %></title>
 
-
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
   <%= webpackConfig.htmlElements.headTags %>
@@ -20,14 +19,13 @@
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
 
-
 </head>
 
 <body>
 
-  <app>
+  <app-root>
     Loading...
-  </app>
+  </app-root>
 
   <% if (htmlWebpackPlugin.options.isProd) { %>
   <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
@@ -45,7 +43,6 @@
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-
 
 </body>
 </html>

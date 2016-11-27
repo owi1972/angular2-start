@@ -9,7 +9,7 @@ export class XLargeDirective {
   private cssPropValue: string = 'x-large';
   private cssPropName: string = 'fontSize';
 
-  constructor(private element: ElementRef, private renderer: Renderer) {}
+  constructor(private element: ElementRef, private renderer: Renderer) { }
 
   @Input('x-large') set xLarge(setStyle: boolean) {
     let style: string = setStyle ? this.cssPropValue : null;

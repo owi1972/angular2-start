@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class AboutResolver implements Resolve<any> {
 
-  constructor(protected http: Http) {}
+  constructor(protected http: Http) { }
 
   resolve() {
     return this.http.get('/assets/data/about.json')

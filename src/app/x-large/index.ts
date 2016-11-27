@@ -1,1 +1,1 @@
-export * from 'x-large.module';
+export * from './x-large.module';

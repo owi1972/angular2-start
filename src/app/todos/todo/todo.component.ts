@@ -5,9 +5,9 @@ import {
 import { Todo } from './todo.model';
 
 @Component({
-  selector: 'todo',
-  templateUrl: 'todo.template.html',
-  styleUrls: ['todo.styles.scss']
+  selector: 'app-todo',
+  templateUrl: './todo.component.html',
+  styleUrls: [ './todo.component.scss' ]
 })
 export class TodoComponent {
   @Input() public item: Todo;
@@ -15,11 +15,11 @@ export class TodoComponent {
   @Output() onEdit = new EventEmitter<any>();
   @Output() onDelete = new EventEmitter<number>();
 
-  edit() {
+  edit(): void {
     this.onEdit.emit({ id: this.id, todo: this.item });
   }
 
-  delete() {
+  delete(): void {
     this.onDelete.emit(this.id);
   }
 }

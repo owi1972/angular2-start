@@ -10,13 +10,13 @@
           }"
           class="list-todos-item list-group-item list-group-item-action">
 
-          <todo
+          <app-todo
             [item]="item"
             [id]="i"
             (onEdit)="edit(item)"
             (onDelete)="delete(id)"
             [x-large]="item.important">
-          </todo>
+          </app-todo>
 
         </li>
       </ul>

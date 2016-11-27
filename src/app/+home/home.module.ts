@@ -19,4 +19,4 @@ console.log('`Home` bundle loaded asynchronously');
     HomeComponent
   ]
 })
-export class HomeModule {}
+export class HomeModule { }

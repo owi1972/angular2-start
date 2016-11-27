@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about.component';
-import { AboutResolver } from './about.resolver';
+import { AboutResolver } from './about-resolve.service';
 
 const ROUTES: Routes = [
   {
