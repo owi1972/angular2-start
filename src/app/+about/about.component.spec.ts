@@ -12,7 +12,7 @@ import 'rxjs/add/observable/of';
 
 // Load the implementations that should be tested
 import { AboutComponent } from './about.component';
-import { AboutResolver } from './about.resolver';
+import { AboutResolver } from './about-resolve.service';
 
 let resolveData = {
   about: {

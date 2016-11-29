@@ -3,9 +3,9 @@ import { StoreService } from '../store/store.service';
 import { Todo } from './todo/todo.model';
 
 @Component({
-  selector: 'todos',
-  templateUrl: 'todos.template.html',
-  styleUrls: ['todos.styles.scss']
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: [ './todos.component.scss' ]
 })
 export class TodosComponent implements OnInit {
   public items: Todo[] = [];
@@ -13,9 +13,9 @@ export class TodosComponent implements OnInit {
   important: boolean = false;
   storeName: string = 'todos';
 
-  constructor(public store: StoreService) {}
+  constructor(public store: StoreService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.items = this.store.get(this.storeName);
   }
 
@@ -28,7 +28,7 @@ export class TodosComponent implements OnInit {
     this.store.set(this.storeName, value);
   }
 
-  add(todo: Todo) {
+  add(todo: Todo): void {
     let item: Todo = todo;
     let items = this.todos;
     items.push(item);
@@ -36,7 +36,7 @@ export class TodosComponent implements OnInit {
     this.todos = items;
   }
 
-  save(todos: Todo[]) {
+  save(todos: Todo[]): void {
     this.todos = todos;
   }
 

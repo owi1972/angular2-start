@@ -1,40 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app',
+  selector: 'app-root',
   template: `
-  <nav class="navbar navbar navbar-dark bg-primary">
-    <a
-      class="navbar-brand"
-      href="http://thisissoon.com/"
-      target="_blank">
-      SOON_
-    </a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['/']"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{ exact: true }">
-          Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="['about']"
-          [routerLinkActive]="['active']">
-          About
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <app-nav></app-nav>
   <main>
     <router-outlet></router-outlet>
   </main>
   `,
-  styles: [`.navbar { border-radius: 0 }`]
+  styleUrls: [ '../scss/main.scss' ],
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {}
+export class AppComponent { }

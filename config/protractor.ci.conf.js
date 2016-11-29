@@ -21,8 +21,8 @@ exports.config = {
   getPageTimeout: 60000,
 
   specs: [
-    helpers.root('src/**/**.e2e.ts'),
-    helpers.root('src/**/*.e2e.ts')
+    helpers.root('src/**/**.e2e-spec.ts'),
+    helpers.root('src/**/*.e2e-spec.ts')
   ],
 
   // Saucelabs capabilities reference
