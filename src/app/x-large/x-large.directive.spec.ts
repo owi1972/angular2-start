@@ -23,7 +23,7 @@ describe('x-large directive', () => {
       });
     });
 
-    it('should sent font-size to x-large', fakeAsync(() => {
+    it('should set font-size to x-large', fakeAsync(() => {
       TestBed.compileComponents().then(() => {
         const fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
@@ -52,7 +52,7 @@ describe('x-large directive', () => {
       });
     });
 
-    it('should NOT sent font-size to x-large', fakeAsync(() => {
+    it('should NOT set font-size to x-large', fakeAsync(() => {
       TestBed.compileComponents().then(() => {
         const fixture = TestBed.createComponent(TestComponent);
         fixture.detectChanges();
