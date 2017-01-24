@@ -182,7 +182,7 @@ npm run watch:test
 ### run end-to-end tests
 ```bash
 # this will start a test server and launch Protractor
-npm run e2e
+npm run test:e2e
 ```
 
 ### run webdriver (for end-to-end)

@@ -17,7 +17,7 @@ fi
 
 # e2e testing script
 echo "Running e2e tests in CI mode"
-ci:circle
+npm run ci:circle
 
 rc=$?
 

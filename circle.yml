@@ -10,14 +10,13 @@ machine:
   node:
     version: 7
   environment:
-    REPO: registry.soon.build/angular2-start
+    REPO: soon/angular2-start
     TAG: $(sed 's/master/latest/;s/\//\-/' <<<$CIRCLE_BRANCH)
 
 # Dependencies
 
 dependencies:
   pre:
-    - nvm install 6.9
     # - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
   override:
     - npm install -g protractor coveralls
@@ -27,9 +26,7 @@ dependencies:
 
 test:
   override:
-    - npm run lint
-    - nvm use 6.9 && npm run test # Node LTS (Mature)
-    - nvm use 7 && npm run test
+    - npm run test
     - npm run saucelabs
   post:
     - npm run coverage

@@ -4,7 +4,7 @@
 
 require('ts-node/register');
 var helpers = require('./helpers');
-var SpecReporter = require('jasmine-spec-reporter');
+var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
   baseUrl: 'http://localhost:3000/',

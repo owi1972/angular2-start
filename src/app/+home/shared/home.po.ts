@@ -6,7 +6,7 @@ export class HomePage {
   };
 
   public getTodosLengthText() {
-    return element(by.css('.text-todos-length')).getText();
+    return element(by.css('.text-todos-length')).getText().then((res) => { return res.trim(); });
   }
 
   public getTodos() {
