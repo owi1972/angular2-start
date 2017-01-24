@@ -12,14 +12,14 @@ import { Todo } from './todo.model';
 export class TodoComponent {
   @Input() public item: Todo;
   @Input() public id: number;
-  @Output() onEdit = new EventEmitter<any>();
-  @Output() onDelete = new EventEmitter<number>();
+  @Output() public onEdit = new EventEmitter<any>();
+  @Output() public onDelete = new EventEmitter<number>();
 
-  edit(): void {
+  public edit(): void {
     this.onEdit.emit({ id: this.id, todo: this.item });
   }
 
-  delete(): void {
+  public delete(): void {
     this.onDelete.emit(this.id);
   }
 }

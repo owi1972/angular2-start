@@ -14,7 +14,7 @@
             [item]="item"
             [id]="i"
             (onEdit)="edit(item)"
-            (onDelete)="delete(id)"
+            (onDelete)="delete($event)"
             [x-large]="item.important">
           </app-todo>
 

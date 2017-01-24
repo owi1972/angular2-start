@@ -1,35 +1,35 @@
 import { element, by } from 'protractor';
 
 export class HomePage {
-  getH1() {
+  public getH1() {
     return element(by.css('h1')).getText();
   };
 
-  getTodosLengthText() {
+  public getTodosLengthText() {
     return element(by.css('.text-todos-length')).getText();
   }
 
-  getTodos() {
+  public getTodos() {
     return element.all(by.css('app-todo'));
   }
 
-  getTitleInput() {
+  public getTitleInput() {
     return element(by.css('.form-control-title'));
   }
 
-  getAddButton() {
+  public getAddButton() {
     return element(by.css('.btn-add'));
   }
 
-  getAddImportantButton() {
+  public getAddImportantButton() {
     return element(by.css('.btn-add-important'));
   }
 
-  getDoneInputs() {
+  public getDoneInputs() {
     return element.all(by.css('.input-done'));
   }
 
-  getDeleteButtons() {
+  public getDeleteButtons() {
     return element.all(by.css('.btn-delete'));
   }
 }

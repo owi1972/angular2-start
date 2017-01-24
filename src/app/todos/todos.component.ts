@@ -9,26 +9,26 @@ import { Todo } from './todo/todo.model';
 })
 export class TodosComponent implements OnInit {
   public items: Todo[] = [];
-  title: string = '';
-  important: boolean = false;
-  storeName: string = 'todos';
+  public title: string = '';
+  public important: boolean = false;
+  public storeName: string = 'todos';
 
   constructor(public store: StoreService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.items = this.store.get(this.storeName);
   }
 
-  get todos(): Todo[] {
+  public get todos(): Todo[] {
     return this.items || [];
   }
 
-  set todos(value) {
+  public set todos(value) {
     this.items = value;
     this.store.set(this.storeName, value);
   }
 
-  add(todo: Todo): void {
+  public add(todo: Todo): void {
     let item: Todo = todo;
     let items = this.todos;
     items.push(item);
@@ -36,7 +36,7 @@ export class TodosComponent implements OnInit {
     this.todos = items;
   }
 
-  save(todos: Todo[]): void {
+  public save(todos: Todo[]): void {
     this.todos = todos;
   }
 

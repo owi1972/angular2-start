@@ -65,7 +65,7 @@ describe('TodosComponent', () => {
 
     comp.save(todoList);
     expect(comp.todos.length).toEqual(2);
-    expect(comp.todos[0]).toEqual(<Todo>{ title: 'task1', done: false });
+    expect(comp.todos[0]).toEqual(<Todo> { title: 'task1', done: false });
   }));
 
 });

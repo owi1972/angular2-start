@@ -54,7 +54,7 @@ describe('AboutResolver', () => {
       MockBackend,
       {
         provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+        useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backend, defaultOptions);
         },
         deps: [MockBackend, BaseRequestOptions]
@@ -70,7 +70,7 @@ describe('AboutResolver', () => {
       connection.mockRespond(new Response(response));
     });
     let result;
-    about.resolve().subscribe(res => result = res);
+    about.resolve().subscribe((res) => result = res);
     expect(result).toEqual(resolveData);
   }));
 
@@ -87,6 +87,5 @@ describe('AboutResolver', () => {
     );
     expect(error).toEqual('something went wrong');
   }));
-
 
 });
