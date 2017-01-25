@@ -5,7 +5,7 @@ An [Angular 2][angular] starter project written in [Typescript 2][typescript] an
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
 
-[![Build Status](https://saucelabs.com/open_sauce/build_matrix/angular2-start.svg)](https://saucelabs.com/beta/builds/94850a413053429f8e9a6554072b366b)
+[![Build Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/beta/builds/7d4321eed40e4d44942db3944619e6fd)
 
 If you're looking for Angular 1.x please use [angular-start][angularstart]
 
