@@ -14,7 +14,7 @@ describe('StoreService', () => {
       MockBackend,
       {
         provide: Http,
-        useFactory: function(backend: ConnectionBackend, defaultOptions: BaseRequestOptions) {
+        useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
           return new Http(backend, defaultOptions);
         },
         deps: [MockBackend, BaseRequestOptions]

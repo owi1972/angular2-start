@@ -4,7 +4,7 @@
 
 require('ts-node/register');
 var helpers = require('./helpers');
-var SpecReporter = require('jasmine-spec-reporter');
+var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 exports.config = {
   baseUrl: 'http://localhost:3000/',
@@ -25,7 +25,8 @@ exports.config = {
     showColors: true,
     isVerbose: false,
     includeStackTrace: false,
-    defaultTimeoutInterval: 400000
+    defaultTimeoutInterval: 400000,
+    print: () => {}
   },
   directConnect: true,
 

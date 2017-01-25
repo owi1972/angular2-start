@@ -3,7 +3,7 @@
 /*global jasmine */
 require('ts-node/register');
 var helpers = require('./helpers');
-var SpecReporter = require('jasmine-spec-reporter'),
+var SpecReporter = require('jasmine-spec-reporter').SpecReporter,
     pkg = require('../package.json');
 
 exports.config = {
@@ -33,7 +33,7 @@ exports.config = {
       'build': process.env.CIRCLE_BUILD_NUM,
       'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
       'name':  pkg.name + ' (Firefox 49.0: Windows 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
-      'version': '49.0',
+      'version': '47.0',
       'platform': 'Windows 10'
     },
     {
@@ -52,14 +52,22 @@ exports.config = {
       'version': '11.0',
       'platform': 'Windows 10'
     },
-    // {
-    //   'browserName': 'internet explorer',
-    //   'build': process.env.CIRCLE_BUILD_NUM,
-    //   'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
-    //   'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.CIRCLE_BUILD_NUM,
-    //   'version': '10.0',
-    //   'platform': 'Windows 8'
-    // },
+    {
+      'browserName': 'internet explorer',
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (IE10: Windows 8) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'version': '10.0',
+      'platform': 'Windows 8'
+    },
+    {
+      'browserName': 'MicrosoftEdge',
+      'build': process.env.CIRCLE_BUILD_NUM,
+      'tunnel-identifier': process.env.CIRCLE_BUILD_NUM,
+      'name':  pkg.name + ' (MS Edge 14: Windows 10) Build: ' + process.env.CIRCLE_BUILD_NUM,
+      'version': '14.14393',
+      'platform': 'Windows 10'
+    },
     {
       'browserName': 'safari',
       'build': process.env.CIRCLE_BUILD_NUM,
@@ -101,10 +109,16 @@ exports.config = {
     showColors: true,
     isVerbose: false,
     includeStackTrace: false,
-    defaultTimeoutInterval: 400000
+    defaultTimeoutInterval: 400000,
+    print: () => {}
   },
 
   directConnect: false,
+
+  onPrepare: function() {
+    browser.ignoreSynchronization = true;
+    jasmine.getEnv().addReporter(new SpecReporter());
+  },
 
   /**
    * Angular 2 configuration
@@ -113,12 +127,5 @@ exports.config = {
    * `rootEl`
    *
    */
-  useAllAngular2AppRoots: true,
-
-
-  onPrepare: function() {
-    browser.ignoreSynchronization = true;
-    jasmine.getEnv().addReporter(new SpecReporter());
-  }
-
+  useAllAngular2AppRoots: true
 };

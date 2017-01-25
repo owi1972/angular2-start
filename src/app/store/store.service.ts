@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class StoreService {
 
-  storeName = 'appData';
+  public storeName = 'appData';
 
   private set store(value: any) {
     localStorage.setItem(this.storeName, JSON.stringify(value));

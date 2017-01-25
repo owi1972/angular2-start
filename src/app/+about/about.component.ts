@@ -11,7 +11,7 @@ export class AboutComponent implements OnInit {
 
   constructor(protected route: ActivatedRoute) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.data.forEach((data: {about: any}) => {
       this.about = data.about;
     });

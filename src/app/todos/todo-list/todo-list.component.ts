@@ -11,14 +11,14 @@ import { Todo } from '../todo/todo.model';
 })
 export class TodoListComponent {
   @Input() public items: Todo[];
-  @Output() onUpdate = new EventEmitter<Todo[]>();
+  @Output() public onUpdate = new EventEmitter<Todo[]>();
 
-  edit(item: { id: number, todo: Todo }): void {
+  public edit(item: { id: number, todo: Todo }): void {
     this.items[item.id] = item.todo;
     this.onUpdate.emit(this.items);
   }
 
-  delete(i: number): void {
+  public delete(i: number): void {
     this.items.splice(i, 1);
     this.onUpdate.emit(this.items);
   }

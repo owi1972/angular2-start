@@ -10,10 +10,10 @@ export class AboutResolver implements Resolve<any> {
 
   constructor(protected http: Http) { }
 
-  resolve() {
+  public resolve(): Observable<any> {
     return this.http.get('/assets/data/about.json')
-      .map(res => res.json())
-      .catch(err => { return Observable.throw(err); });
+      .map((res) => res.json())
+      .catch((err) => { return Observable.throw(err); });
   }
 }
 

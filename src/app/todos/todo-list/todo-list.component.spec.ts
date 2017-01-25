@@ -34,7 +34,7 @@ describe('TodoListComponent', () => {
     let todo: Todo = { title: 'Task 1 Edited', done: false };
     expect(comp.items[0]).not.toEqual(todo);
 
-    comp.edit({id: 0, todo: todo});
+    comp.edit({id: 0, todo});
     expect(comp.items.length).toEqual(3);
     expect(comp.items[0]).toEqual(todo);
   }));
