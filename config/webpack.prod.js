@@ -18,6 +18,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
+const PrerenderSpaPlugin = require('prerender-spa-plugin');
 /**
  * Webpack Constants
  */
@@ -120,6 +121,17 @@ module.exports = function (env) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+
+      new PrerenderSpaPlugin(
+        // Absolute path to compiled SPA
+        helpers.root('dist'),
+        // List of routes to prerender
+        [ '/', '/about' ],
+
+        {
+          captureAfterTime: 5000
+        }
+      ),
 
       /**
        * Plugin: ExtractTextPlugin

@@ -3,7 +3,16 @@
   "version": "0.0.0",
   "description": "An Angular 2 starter project written in Typescript 2 and featuring (Router, Forms, Services, Async/Lazy Routes, Directives, Unit tests and E2E tests), Bootstrap 4, Sass CSS, Hot Module Replacement, Karma, Protractor, Jasmine, Saucelabs, CircleCI, NodeJS, Istanbul, Codelyzer, @types, Tslint and Webpack 2",
   "keywords": [
-    "Angular","Angular 2","seed","starter","boilerplate","template","Webpack","Typescript","Bootstrap","Sass"
+    "Angular",
+    "Angular 2",
+    "seed",
+    "starter",
+    "boilerplate",
+    "template",
+    "Webpack",
+    "Typescript",
+    "Bootstrap",
+    "Sass"
   ],
   "homepage": "https://github.com/thisissoon/angular2-start",
   "bugs": {
@@ -35,7 +44,7 @@
     "ci:nobuild": "npm run lint && npm test && npm run e2e",
     "ci:testall": "npm run lint && npm run test && npm run build:prod && npm run e2e && npm run build:aot && npm run e2e",
     "ci:travis": "npm run lint && npm run test && npm run build:dev && npm run e2e:travis && npm run build:prod && npm run e2e:travis && npm run build:aot && npm run e2e:travis",
-    "ci:circle": "npm run build:prod && npm run e2e:ci",
+    "ci:circle": "npm run pree2e && npm run build:prod && npm run e2e:ci",
     "ci": "npm run ci:testall",
     "clean:dll": "npm run rimraf -- dll",
     "clean:aot": "npm run rimraf -- compiled",
@@ -53,7 +62,6 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
     "pree2e": "npm run webdriver:update -- --standalone",
@@ -153,6 +161,7 @@
     "node-sass": "~4.2.0",
     "npm-run-all": "~4.0.0",
     "parse5": "~3.0.1",
+    "prerender-spa-plugin": "~2.0.1",
     "protractor": "~4.0.14",
     "raw-loader": "0.5.1",
     "rimraf": "~2.5.4",
