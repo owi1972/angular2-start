@@ -1,6 +1,6 @@
 # Angular2 Start
 
-An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][@angular/services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
+An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
