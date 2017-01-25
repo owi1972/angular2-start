@@ -117,6 +117,7 @@ angular2-start/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
+* Optionally you can use [yarn][yarn] (`brew install yarn`) to install node modules
 * Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
 
 > If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
@@ -351,6 +352,7 @@ ___
 [webpack]: https://webpack.github.io/
 [angular]: https://angular.io/
 [nvm]: https://github.com/creationix/nvm
+[yarn]: https://yarnpkg.com/
 [saucelabs]: http://saucelabs.com/
 [angularstart]: https://github.com/thisissoon/angular-start
 [types]: https://www.npmjs.com/~types
