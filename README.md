@@ -1,6 +1,6 @@
 # Angular2 Start
 
-An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][@angular/services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
+An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
@@ -117,6 +117,7 @@ angular2-start/
 ## Dependencies
 What you need to run this app:
 * `node` and `npm` (`brew install node`)
+* Optionally you can use [yarn][yarn] (`brew install yarn`) to install node modules
 * Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
 
 > If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
@@ -351,6 +352,7 @@ ___
 [webpack]: https://webpack.github.io/
 [angular]: https://angular.io/
 [nvm]: https://github.com/creationix/nvm
+[yarn]: https://yarnpkg.com/
 [saucelabs]: http://saucelabs.com/
 [angularstart]: https://github.com/thisissoon/angular-start
 [types]: https://www.npmjs.com/~types
