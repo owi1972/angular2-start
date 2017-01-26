@@ -3,7 +3,16 @@
   "version": "0.0.0",
   "description": "An Angular 2 starter project written in Typescript 2 and featuring (Router, Forms, Services, Async/Lazy Routes, Directives, Unit tests and E2E tests), Bootstrap 4, Sass CSS, Hot Module Replacement, Karma, Protractor, Jasmine, Saucelabs, CircleCI, NodeJS, Istanbul, Codelyzer, @types, Tslint and Webpack 2",
   "keywords": [
-    "Angular","Angular 2","seed","starter","boilerplate","template","Webpack","Typescript","Bootstrap","Sass"
+    "Angular",
+    "Angular 2",
+    "seed",
+    "starter",
+    "boilerplate",
+    "template",
+    "Webpack",
+    "Typescript",
+    "Bootstrap",
+    "Sass"
   ],
   "homepage": "https://github.com/thisissoon/angular2-start",
   "bugs": {
@@ -102,7 +111,7 @@
     "@angularclass/conventions-loader": "~1.0.13",
     "@angularclass/hmr": "~1.2.2",
     "@angularclass/hmr-loader": "~3.0.2",
-    "bootstrap": "4.0.0-alpha.5",
+    "bootstrap": "4.0.0-alpha.6",
     "core-js": "~2.4.1",
     "http-server": "~0.9.0",
     "ie-shim": "~0.1.0",
@@ -130,7 +139,7 @@
     "css-loader": "~0.26.1",
     "exports-loader": "~0.6.3",
     "expose-loader": "~0.7.1",
-    "extract-text-webpack-plugin": "~2.0.0-beta.4",
+    "extract-text-webpack-plugin": "~2.0.0-rc.0",
     "file-loader": "~0.9.0",
     "find-root": "~1.0.0",
     "gh-pages": "~0.12.0",

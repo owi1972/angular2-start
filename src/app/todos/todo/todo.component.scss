@@ -1,6 +1,11 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/variables";
 
+:host {
+  display: block;
+  width: 100%;
+}
+
 .checkbox-done {
   display: inline-block;
   margin-right: 5px;

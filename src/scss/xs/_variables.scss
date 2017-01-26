@@ -5,13 +5,6 @@
 // bootstrap config here
 
 
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
-/*$enable-flex:                    true;*/
-
-
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
@@ -34,13 +27,39 @@ $grid-gutter-widths: (
 $black:                          #000000;
 $white:                          #ffffff;
 
+$yellow:                         #fffd00;
+
+$brand-primary:                  $black;
+$brand-inverse:                  $yellow;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                     $brand-inverse;
+
 
 // Jumbotron
 
-$jumbotron-bg:                   lighten($brand-primary, 40%);
-$jumbotron-color:                $gray;
+$jumbotron-bg:                   lighten($black, 20%);
+$jumbotron-color:                $white;
 
 
 // Close
 
 $close-color:                    $body-color;
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-primary-color:              $black;
+$btn-primary-bg:                 $yellow;
+$btn-primary-border:             $btn-primary-bg;
+
+
+// Navbar
+
+$navbar-padding-x:               0;

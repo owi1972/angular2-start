@@ -13,6 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppState, InternalStateType } from './app.service';
 import { NavModule } from './nav';
 
+/**
+ * Import global styles
+ */
+import '../scss/main.scss';
+
 // Application wide providers
 const APP_PROVIDERS = [
   AppState

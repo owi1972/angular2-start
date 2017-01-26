@@ -27,6 +27,7 @@
 @import "~bootstrap/scss/buttons";
 
 // Components
+@import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/navbar";
@@ -39,6 +40,7 @@
 // Import less files specifically for app here
 
 @import "xs/type";
+@import "xs/grid";
 @import "xs/jumbotron";
 
 
