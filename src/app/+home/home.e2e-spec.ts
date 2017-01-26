@@ -74,17 +74,26 @@ describe('Home', () => {
     let submitBtn = home.getAddButton();
     input.sendKeys('task 1');
     submitBtn.click();
+    input.sendKeys('task 2');
+    submitBtn.click();
 
-    let subject = home.getTodos();
-    let result = 1;
+    let subject: any = home.getTodos();
+    let result: any = 2;
     expect(subject.count()).toEqual(result);
 
-    let deleteBtn = home.getDeleteButtons().first();
+    let deleteBtn = home.getDeleteButtons().get(1);
     deleteBtn.click();
 
     subject = home.getTodos();
-    result = 0;
+    result = 1;
     expect(subject.count()).toEqual(result);
+
+    subject = home.getTodos().first().element(by.css('p.title')).getText().then(
+      (res) => {
+        return res.trim();
+      });
+    result = 'task 1';
+    expect(subject).toEqual(result);
   });
 
 });
