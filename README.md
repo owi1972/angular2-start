@@ -99,10 +99,7 @@ angular2-start/
  │   │   └──humans.txt         * for humans to know who the developers are
  │   │
  │   └──scss/                  * Source code for sass global styles
- │       ├──lg/                * styles for device greater than 992px width
- │       ├──md/                * styles for device greater than 768px width
- │       ├──xl/                * styles for device greater than 1200px width
- │       ├──xs/                * styles for all devices
+ │       ├──[module].scss      * global styles for module for all devices
  │       └──main.scss          * entry file for all global sass styles
  │
  ├──tslint.json                * typescript lint config

@@ -9,7 +9,7 @@
 //Bootstrap
 // Core variables and mixins
 @import "~bootstrap/scss/variables";
-@import "xs/variables";
+@import "variables";
 @import "~bootstrap/scss/mixins";
 
 // Reset and dependencies
@@ -39,25 +39,6 @@
 
 // Import less files specifically for app here
 
-@import "xs/type";
-@import "xs/grid";
-@import "xs/jumbotron";
-
-
-// Import less from tablet size devices and larger
-// eg. device width >= 768px
-@media (min-width: #{ map-get($grid-breakpoints, md) }) {
-
-}
-
-// Import less files for desktop sized devices and larger
-// eg. device width >= 992px
-@media (min-width: #{ map-get($grid-breakpoints, lg) }) {
-
-}
-
-// Import less files for large desktop devices
-// eg. device width >= 1200px
-@media (min-width: #{ map-get($grid-breakpoints, xl) }) {
-
-}
+@import "type";
+@import "grid";
+@import "jumbotron";
