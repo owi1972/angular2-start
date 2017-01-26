@@ -121,17 +121,21 @@ module.exports = function (env) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      /**
+       * Plugin: PrerenderSpaPlugin
+       * Description: Prerenders static HTML in a single-page application
+       * Useful for generating static site pages.
+       */
+      // new PrerenderSpaPlugin(
+      //   // Absolute path to compiled SPA
+      //   helpers.root('dist'),
+      //   // List of routes to prerender
+      //   [ '/', '/about' ],
 
-      new PrerenderSpaPlugin(
-        // Absolute path to compiled SPA
-        helpers.root('dist'),
-        // List of routes to prerender
-        [ '/', '/about' ],
-
-        {
-          captureAfterTime: 5000
-        }
-      ),
+      //   {
+      //     captureAfterTime: 5000
+      //   }
+      // ),
 
       /**
        * Plugin: ExtractTextPlugin
