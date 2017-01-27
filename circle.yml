@@ -21,9 +21,10 @@ dependencies:
   pre:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     # - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_REGISTRY
-  override:
     - yarn global add protractor coveralls
-    - yarn
+  override:
+    - yarn --ignore-scripts
+    - npm rebuild phantomjs-prebuilt node-sass # phantomjs-prebuilt fails with yarn
   cache_directories:
     - ~/.cache/yarn
 
