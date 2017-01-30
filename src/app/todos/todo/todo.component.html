@@ -1,7 +1,7 @@
-<div class="todo row flex-items-xs-middle">
+<div class="todo row align-items-center">
 
   <div
-    class="col-xs-10"
+    class="col-10"
     [ngSwitch]="item.done">
     <div class="checkbox-done">
       <input
@@ -17,7 +17,7 @@
     <s class="title text-muted" *ngSwitchCase="true">{{ item.title }}</s>
   </div>
 
-  <div class="col-xs-2 text-xs-right">
+  <div class="col-2 text-right">
     <button
       type="button"
       class="close btn-delete"

@@ -131,8 +131,8 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          loader: ['to-string-loader', 'css-loader'],
-          exclude: [helpers.root('src/index.html')]
+          loader: ['to-string-loader', 'raw-loader', 'postcss-loader'],
+          exclude: [helpers.root('src', 'styles')]
         },
 
         /*
@@ -142,7 +142,8 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader']
+          use: ['to-string-loader', 'raw-loader', 'postcss-loader', 'sass-loader'],
+          exclude: [helpers.root('src', 'scss')]
         },
 
         /**
