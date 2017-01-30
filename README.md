@@ -1,11 +1,11 @@
 # Angular2 Start
 
-An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
+An [Angular 2][angular] starter project written in [Typescript 2][typescript] and featuring ([Ahead of Time Compile][aot], [Router][@angular/router], [Forms][@angular/forms], [Services][services], [Async/Lazy Routes][lazyload], [Directives][directives], [Unit tests][unittest] and [E2E tests][e2etest]), [Bootstrap 4][bootstrap], [Sass][sass] [Hot Module Replacement][HMR], [Prerendering][prerender], [Karma][karma], [Protractor][protractor], [Jasmine][jasmine], [Saucelabs][saucelabs], [CircleCI][circleci], [NodeJS][nodejs], [Istanbul][istanbul], [Codelyzer][codelyzer], [@types][types], [Tslint][tslint] and [Webpack 2][webpack].
 
 [![Circle CI](https://circleci.com/gh/thisissoon/angular2-start.svg?style=shield)](https://circleci.com/gh/thisissoon/angular2-start)
 [![Coverage Status](https://coveralls.io/repos/github/thisissoon/angular2-start/badge.svg?branch=master)](https://coveralls.io/github/thisissoon/angular2-start?branch=master)
 
-[![Build Status](https://saucelabs.com/open_sauce/build_matrix/angular2-start.svg)](https://saucelabs.com/beta/builds/94850a413053429f8e9a6554072b366b)
+[![Build Status](https://saucelabs.com/browser-matrix/angular2-start.svg)](https://saucelabs.com/beta/builds/7d4321eed40e4d44942db3944619e6fd)
 
 If you're looking for Angular 1.x please use [angular-start][angularstart]
 
@@ -26,6 +26,7 @@ This seed repo serves as an Angular 2 starter for anyone looking to get up and r
 * Sass styling compilation
 * Bootstrap 4
 * Angular 4 support via changing package.json and any future Angular versions
+* Prerendering of static site pages at build time. Useful for sites with static content and a low number of pages.
 
 ### Quick start
 **Make sure you have Node version >= 5.0 and NPM >= 3**
@@ -57,6 +58,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
     * [Installing](#installing)
     * [Running the app](#running-the-app)
 * [Configuration](#configuration)
+* [Prerendering](#prerendering)
 * [Contributing](#contributing)
 * [TypeScript](#typescript)
 * [@Types](#types)
@@ -199,6 +201,9 @@ npm run e2e:live
 ```bash
 npm run build:docker
 ```
+
+# Prerendering
+Generating static site pages at build time can be enabled in `config/webpack.prod.ts` by uncommenting the [Prerender Spa Plugin][prerender] block in the plugins section and then adding all applicable routes to the array. This plugin will generate a static version of the sites pages at build time.
 
 # Configuration
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
@@ -368,3 +373,4 @@ ___
 [directives]: https://angular.io/docs/ts/latest/guide/attribute-directives.html
 [unittest]: https://angular.io/docs/ts/latest/guide/testing.html
 [e2etest]: https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-
+[prerender]: https://github.com/chrisvfritz/prerender-spa-plugin

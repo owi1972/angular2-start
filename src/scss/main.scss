@@ -9,8 +9,8 @@
 //Bootstrap
 // Core variables and mixins
 @import "~bootstrap/scss/variables";
-@import "variables";
 @import "~bootstrap/scss/mixins";
+@import "variables";
 
 // Reset and dependencies
 @import "~bootstrap/scss/normalize";
@@ -37,7 +37,7 @@
 // Utility classes
 @import "~bootstrap/scss/utilities";
 
-// Import less files specifically for app here
+// Import styles specifically for app here
 
 @import "type";
 @import "grid";
