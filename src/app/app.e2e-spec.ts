@@ -7,15 +7,15 @@ describe('App', () => {
   });
 
   it('should have a title', () => {
-    let subject = browser.getTitle();
-    let result = 'Angular 2 Start';
-    expect(subject).toEqual(result);
+    let result: any = browser.getTitle();
+    let expected = 'Angular 2 Start';
+    expect(result).toEqual(expected);
   });
 
   it('should have <app-home>', () => {
-    let subject = element(by.css('app-root app-home')).isPresent();
-    let result = true;
-    expect(subject).toEqual(result);
+    let result: any = element(by.css('app-root app-home')).isPresent();
+    let expected = true;
+    expect(result).toEqual(expected);
   });
 
 });
