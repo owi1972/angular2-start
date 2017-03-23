@@ -14,15 +14,15 @@ describe('Home', () => {
   });
 
   it('should have a h1', () => {
-    let subject = home.getH1();
-    let result  = 'Welcome to our todo list app';
-    expect(subject).toEqual(result);
+    let expected: any = 'Welcome to our todo list app';
+    let result = home.getH1();
+    expect(result).toEqual(expected);
   });
 
   it('should have list length', () => {
-    let subject = home.getTodosLengthText();
-    let result  = '0';
-    expect(subject).toEqual(result);
+    let expected: any = '0';
+    let result = home.getTodosLengthText();
+    expect(result).toEqual(expected);
   });
 
   it('should add item to list', () => {
@@ -30,13 +30,13 @@ describe('Home', () => {
     let submitBtn = home.getAddButton();
     input.sendKeys('task 1');
     submitBtn.click();
-    let subject: any = home.getTodosLengthText();
-    let result: any  = '1';
-    expect(subject).toEqual(result);
+    let result: any = home.getTodosLengthText();
+    let expected: any = '1';
+    expect(result).toEqual(expected);
 
-    subject = home.getTodos();
-    result = 1;
-    expect(subject.count()).toEqual(result);
+    result = home.getTodos();
+    expected = 1;
+    expect(result.count()).toEqual(expected);
   });
 
   it('should add item to list as important', () => {
@@ -44,13 +44,13 @@ describe('Home', () => {
     let submitBtn = home.getAddImportantButton();
     input.sendKeys('task 1');
     submitBtn.click();
-    let subject: any = home.getTodosLengthText();
-    let result: any  = '1';
-    expect(subject).toEqual(result);
+    let result: any = home.getTodosLengthText();
+    let expected: any = '1';
+    expect(result).toEqual(expected);
 
-    subject = home.getTodos().first().getCssValue('font-size');
-    result = '24px';
-    expect(subject).toEqual(result);
+    result = home.getTodos().first().getCssValue('font-size');
+    expected = '24px';
+    expect(result).toEqual(expected);
   });
 
   it('should mark item as done', () => {
@@ -58,15 +58,15 @@ describe('Home', () => {
     let submitBtn = home.getAddButton();
     input.sendKeys('task 1');
     submitBtn.click();
-    let subject: any = home.getTodosLengthText();
-    let result: any  = '1';
-    expect(subject).toEqual(result);
+    let result: any = home.getTodosLengthText();
+    let expected: any = '1';
+    expect(result).toEqual(expected);
 
     let done = home.getDoneInputs();
     done.click();
-    subject = home.getTodos().first().element(by.css('s.title')).getText();
-    result = 'task 1';
-    expect(subject).toEqual(result);
+    result = home.getTodos().first().element(by.css('s.title')).getText();
+    expected = 'task 1';
+    expect(result).toEqual(expected);
   });
 
   it('should delete item from list', () => {
@@ -77,23 +77,23 @@ describe('Home', () => {
     input.sendKeys('task 2');
     submitBtn.click();
 
-    let subject: any = home.getTodos();
-    let result: any = 2;
-    expect(subject.count()).toEqual(result);
+    let result: any = home.getTodos();
+    let expected: any = 2;
+    expect(result.count()).toEqual(expected);
 
     let deleteBtn = home.getDeleteButtons().get(1);
     deleteBtn.click();
 
-    subject = home.getTodos();
-    result = 1;
-    expect(subject.count()).toEqual(result);
+    result = home.getTodos();
+    expected = 1;
+    expect(result.count()).toEqual(expected);
 
-    subject = home.getTodos().first().element(by.css('p.title')).getText().then(
+    result = home.getTodos().first().element(by.css('p.title')).getText().then(
       (res) => {
         return res.trim();
       });
-    result = 'task 1';
-    expect(subject).toEqual(result);
+    expected = 'task 1';
+    expect(result).toEqual(expected);
   });
 
 });
